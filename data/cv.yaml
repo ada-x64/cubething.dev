@@ -1,0 +1,307 @@
+# CURRICULA VITAE
+
+- Work Experience:
+    - Valorem Reply:
+        - date: Jun 2022 - Present
+        - title: Consultant Software Engineer
+        - description:
+            - Worked with Disney to bring ESPN+ to the Playstation 5.
+            - Designed and implemented business critical systems for commerce and analytics.
+            - Developed automation and process improvement, hosting the team scripts repository
+            - Lead department training exercise within 5 months of employment.
+    - AllofE Solutions:
+        - date: Aug 2021 - Oct 2021
+        - title: Software Engineer
+        - description:
+            - Developed solutions for eMedley health education web framework.
+            - Worked full-stack on LAMP architecture.
+    - Roll20:
+        - date: Oct 2019 - Aug 2021
+        - title: Front-End Contractor
+        - description:
+            - Brought static design documents to life for the Roll20 Virtual Desktop.
+            - Integrated interactive user experiences for the original game Burn Bryte.
+            - Designed and developed local dev environment tool Mimic.
+    - PriceSpider:
+        - date: Mar 2019 - Oct 2019
+        - title: Client Delivery and Maintanence Specialist
+        - description:
+            - Starting as a maintanence specialist, I negotiated with management to build and
+              lead the first team of front-end engineers at the Kansas City location.
+    - Freelance:
+        - date: Jun 2018 - Jul 2022
+        - title: Freelance Software Engineer
+        - description:
+            - Designed, developed, and integrated full-stack solutions to meet client needs
+            - Worked with clients on various platforms and in various industries including web,
+              mobile, and desktop applications.
+
+- Projects:
+    - cubething.dev:
+        - date: Feb 2021
+        - description:
+            - Simple blog built using Deno and Fresh.
+            - Hosted on a Linux machine using nginx.
+    - sundile:
+        - date: 2018 - 2021
+        - description:
+            - C++ Game Engine prototype.
+            - https://github.com/ada-x64/sundile
+    - sundile_rs:
+        - date: Nov 2021 - Apr 2022
+        - description:
+            - Modular, extensible game engine framework built in Rust.
+            - Custom rendering engine.
+            - Capable of web builds with WASM.
+    - mimic:
+        - date: Oct 2020 - Dec 2020
+        - description:
+            - Electron-based local development environment for the Roll20 Character Sheet creator.
+            - Scrapes and locally caches the Roll20 Compendium to populate data.
+            - Full support for Roll20 API at time of publication.
+
+- Skills:
+    - Real-Time App Development:
+        - Rust:
+            - concepts:
+                - async
+                - threading
+                - scoped threads
+                - lifetimes
+                - derive macros
+                - traits
+                - allocators
+                - dyn
+                - Rc, Arc, RwLock, Mutex
+                - Pin
+                - PhantomData
+                - operator overloading
+                - unsafe
+                - CLI/IO
+            - libraries and frameworks:
+                - serde
+                - wgpu
+                - bevy
+                - chrono
+                - tokio
+                - async-std
+                - egui
+                - winit
+                - log
+                - anyhow
+                - thiserror
+                - futures
+                - wasm-bindgen
+                - web-sys
+                - syn
+                - proc_macro2
+            - build systems and package managers:
+                - cargo
+                - wasm-pack
+        - C++:
+            - versions:
+                - 11
+                - 17
+                - 20
+            - concepts:
+                - RAII
+                - modules
+                - OOP
+                - smart pointers
+                - linking
+                - generics
+                - template metaprogramming
+                - operator overloading
+                - CLI/IO
+            - libraries and frameworks:
+                - DearImGUI
+                - assimp
+                - EnTT
+                - GLFW
+                - glm
+                - stb
+                - SDL2
+                - Boost
+            - build systems, package managers, compilers, linkers:
+                - CMake
+                - Make
+                - vcpkg
+                - vscode
+                - visual studio
+                - msvc
+                - conan
+            - debuggers:
+                - gdb
+                - lldb
+        - C#:
+            - libraries and frameworks:
+                - Unity
+                - dotnet core
+
+    - Web Stack:
+        - Front-end:
+            - languages:
+                - Typescript
+                - Javascript
+                - Elm
+            - concepts:
+                - fetch API
+                - cookies
+                - form security
+                - HTTP GET, POST, PUT, PATCH, DELETE
+            - markup languages:
+                - PUG
+                - EJS
+                - TSX/JSX
+                - Markdown
+                - HTML
+                - XML
+            - styling:
+                - CSS
+                - SASS/SCSS
+                - Bootstrap
+                - Fluent UI
+                - Tailwind CSS
+            - libraries and frameworks:
+                - lodash/underscore
+                - backbone
+                - axios
+                - jQuery
+                - puppeteer
+                - jsdom
+                - electron
+                - TSX/JSX
+                - redux
+                - react
+                - preact
+            - build sytems:
+                - Node.JS
+                - create-react-app
+                - craco
+        - Back-end:
+            - languages:
+                - Typescript/Javascript
+                - C#
+                - Rust
+            - concepts:
+                - SQL Persistence
+                - NoSQL
+                - HTTP requests
+                - MVC Architecture
+            - build systems:
+                - Node.JS
+                - Deno
+                - Dotnet Core
+            - frameworks:
+                - ASP.NET:
+                    - MVC
+                    - Web API
+                - express
+                - deno/http
+                - axum
+            - database:
+                - MySQL
+                - MariaDB
+        - Networking:
+            - security:
+                - SSH, SSHD
+                - TOTP OATH 2FA
+                - X11 forwarding
+                - SSL/TLS
+            - server technology:
+                - nginx
+            - concepts:
+                - port forwarding
+                - DNS
+                - HTTP
+        - Cloud:
+            - Azure:
+                - AZ-900 Certified
+                - Active Directory
+                - VMs
+            - AWS:
+                - EC2
+
+    - Linux Sysadmin:
+        - distros:
+            - Debian
+            - Mint
+            - Ubuntu
+            - Manjaro
+            - Arch
+            - Fedora
+        - package managers:
+            - apt
+            - pacman
+            - pamac
+            - yum
+        - user management:
+            - sudo
+            - /etc/sudoers
+            - chown
+            - chmod
+            - /etc/passwd
+            - w
+        - filesystem management:
+            - mnt
+            - fstab
+            - mkfs
+            - ln
+        - system management and utils:
+            - systemd
+            - GNU coreutils
+            - fzf
+            - rg
+            - bat
+        - editors:
+            - (neo)vim
+            - nano
+        - terminal and shells:
+            - kitty
+            - tmux
+            - zsh
+            - bash
+        - networking and security:
+            - ssh_config
+            - sshd_config
+            - PAM
+            - NFS
+            - chroot jail
+        - GUI:
+            - x11
+            - Wayland
+            - GNOME ricing
+
+    - Scripting and Data:
+        - scripting languages:
+            - lua
+            - javascript/typescript
+            - python3
+            - haskell
+            - BASH scripting
+            - pwsh scripting
+        - shells:
+            - zsh
+            - pwsh
+            - bash
+            - az
+        - data formats:
+            - json
+            - toml
+            - yaml
+            - xml
+            - wasm
+
+    - VCS:
+        - git:
+            - branching
+            - remotes
+            - scripting
+            - logging
+            - merging
+
+    - Project Management:
+        - Agile
+        - Kanban
+        - Scrum
+        - JIRA
