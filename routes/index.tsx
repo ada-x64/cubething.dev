@@ -1,5 +1,6 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getPosts, Post } from "@/utils/posts.ts";
+import Header from "../components/header.tsx";
 
 export const handler: Handlers<Post[]> = {
   async GET(_req, ctx) {
@@ -30,11 +31,13 @@ function PostCard(props: { post: Post }) {
 export default function BlogIndexPage(props: PageProps<Post[]>) {
   const posts = props.data;
   return (
-    <main class="max-w-screen-md px4 pt-15 mx-auto">
-      <h1 class="text-5xl font-bold">cubething</h1>
-      <div class="mt-8">
-        {posts.map((post) => <PostCard post={post}></PostCard>)}
-      </div>
-    </main>
+    <>
+      <Header></Header>
+      <main class="max-w-screen-md px-16 mx-24">
+        <div class="mb-8">
+          {posts.map((post) => <PostCard post={post}></PostCard>)}
+        </div>
+      </main>
+    </>
   );
 }
