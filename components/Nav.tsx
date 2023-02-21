@@ -14,33 +14,29 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Header() {
+export default function Nav() {
   return (
     <>
-      <nav class="absolute h-screen w-24 px-4 bg-gray-900 text-xl font-sans pt-8">
+      <nav class="h-screen w-24 px-4 bg-zinc-900 dark:bg-zinc-700 text-xl font-sans pt-8">
         <div class="flex items-center">
-          {/* MOBILE - TODO */}
-          <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-          </div>
-          <div className="flex flex-col items-center justify-center">
-            {/* LOGO - TODO*/}
-            <div className="flex flex-col flex-shrink-0 items-center pb-8">
+          <div class="flex flex-col items-center justify-center">
+            <div class="flex flex-col flex-shrink-0 items-center pb-8">
               <a href="/">
                 {
                   /*
                 TODO: Replace this with a webgl cube that spins on hover.
               */
                 }
-                <img className="w-auto" src="3d-cube.png" alt="cubething.dev" />
+                <img class="w-auto" src="3d-cube.png" alt="cubething.dev" />
               </a>
             </div>
-            <div className="">
-              <div className="flex flex-col">
+            <div class="">
+              <div class="flex flex-col">
                 {navigation.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
-                    className={classNames(
+                    class={classNames(
                       item.current
                         ? "bg-gray-900 text-white"
                         : "text-gray-300 hover:bg-gray-700 hover:text-white",

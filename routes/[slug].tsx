@@ -2,7 +2,7 @@ import { CSS, render } from "$gfm";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getPost, Post } from "@/utils/posts.ts";
 import { Head } from "$fresh/src/runtime/head.ts";
-import Header from "../components/header.tsx";
+import Layout from "@/components/Layout.tsx";
 
 export const handler: Handlers<Post> = {
   async GET(_req, ctx) {
@@ -18,8 +18,7 @@ export default function PostPage(props: PageProps<Post>) {
       <Head>
         <style dangerouslySetInnerHTML={{ __html: CSS }}></style>
       </Head>
-      <Header></Header>
-      <main class="max-w-screen-md px-16 pt-8 mx-24">
+      <Layout>
         <h1 class="text-4xl font-bold">{post.title}</h1>
         <time class="text-gray-500">
           {new Date(post.publishedAt).toLocaleDateString("en-us", {
@@ -33,7 +32,7 @@ export default function PostPage(props: PageProps<Post>) {
           dangerouslySetInnerHTML={{ __html: render(post.content) }}
         >
         </div>
-      </main>
+      </Layout>
     </>
   );
 }
