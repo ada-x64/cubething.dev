@@ -1,0 +1,12 @@
+svg:hover > polygon {
+  stroke-width: 2;
+  stroke: rgba(255, 255, 255, 1);
+  stroke-linejoin: round;
+  transition: 0.2s;
+}
+polygon {
+  stroke-width: 1;
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-linejoin: round;
+  transition: 0.2s;
+}

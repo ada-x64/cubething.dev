@@ -1,4 +1,4 @@
-#!/usr/bin/env -S deno run -A --watch=static/,routes/
+#!/usr/bin/env -S deno run -A --cached-only --watch=static/,routes/
 
 import dev from "$fresh/dev.ts";
 

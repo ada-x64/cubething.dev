@@ -9,10 +9,14 @@ export interface Post {
   snippet: string;
 }
 
-export async function getPosts(): Promise<Post[]> {
+export async function getPosts(max?: number): Promise<Post[]> {
   const files = Deno.readDir("./posts");
   const promises = [];
+  let count = 0;
   for await (const file of files) {
+    if (max && count++ > max) {
+      break;
+    }
     const slug = file.name.replace(".md", "");
     promises.push(getPost(slug));
   }

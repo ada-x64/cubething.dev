@@ -1,0 +1,8 @@
+<svg 
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 100 100"
+>
+    <polygon points="50,47 13,22 50,0 87,22" shape-rendering="geometricPrecision"></polygon>
+    <polygon points="47,53 10,28 10,72 47,97" shape-rendering="geometricPrecision"></polygon>
+    <polygon points="53,53 90,28 90,72 53,97" shape-rendering="geometricPrecision"></polygon>
+</svg>
