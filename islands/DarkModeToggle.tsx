@@ -2,6 +2,7 @@ import { signal } from "@preact/signals";
 import AutoTheme from "@/components/svg/AutoTheme.svg.tsx";
 import DarkTheme from "@/components/svg/DarkTheme.svg.tsx";
 import LightTheme from "@/components/svg/LightTheme.svg.tsx";
+import { Head } from "$fresh/src/runtime/head.ts";
 
 enum ThemeState {
   auto,
@@ -42,6 +43,19 @@ export default function DarkModeToggle() {
 
   return (
     <>
+      <Head>
+        {/* Detect color scheme FIRST THING */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+window.matchMedia("(prefers-color-scheme: dark)").matches
+? document.documentElement.classList.add("dark")
+: document.documentElement.classList.remove("dark");
+        `,
+          }}
+        >
+        </script>
+      </Head>
       <button onClick={setTheme}>{ThemeIcons[theme]}</button>
     </>
   );
