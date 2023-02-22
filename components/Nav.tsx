@@ -1,4 +1,4 @@
-import { Head } from "$fresh/src/runtime/head.ts";
+import Cube from "@/components/svg/Cube.svg.tsx";
 
 export const navigation = [
   {
@@ -18,9 +18,6 @@ function classNames(...classes: string[]) {
 export default function Nav({ route }: { route: string }) {
   return (
     <>
-      <Head>
-        <link rel="stylesheet" href="style/cube.css" />
-      </Head>
       <nav class="h-auto w-24 px-4 bg-zinc-700 text-xl font-sans pt-8">
         <div class="flex items-center">
           <div class="flex flex-col items-center justify-center">
@@ -31,15 +28,7 @@ export default function Nav({ route }: { route: string }) {
                 TODO: Replace this with a webgl cube that spins on hover.
               */
                 }
-                <svg
-                  viewBox="-3 -3 106 106"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="48"
-                >
-                  <polygon points="50,50 10,25 50,0 90,25"></polygon>
-                  <polygon points="50,50 10,25 10,75 50,100"></polygon>
-                  <polygon points="50,50 90,25 90,75 50,100"></polygon>
-                </svg>
+                <Cube size={48} />
               </a>
             </div>
             <div class="">

@@ -8,6 +8,7 @@ import * as $1 from "./routes/about.tsx";
 import * as $2 from "./routes/archive.tsx";
 import * as $3 from "./routes/contact.tsx";
 import * as $4 from "./routes/index.tsx";
+import * as $$0 from "./islands/DarkModeToggle.tsx";
 
 const manifest = {
   routes: {
@@ -17,7 +18,9 @@ const manifest = {
     "./routes/contact.tsx": $3,
     "./routes/index.tsx": $4,
   },
-  islands: {},
+  islands: {
+    "./islands/DarkModeToggle.tsx": $$0,
+  },
   baseUrl: import.meta.url,
   config,
 };

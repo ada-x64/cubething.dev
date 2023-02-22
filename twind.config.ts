@@ -9,8 +9,10 @@ export default {
   selfURL: import.meta.url,
   theme: {
     fontFamily: {
-      mono: ["UbuntuMono Nerd Font"],
-      sans: ["Quicksand"],
+      mono: ["UbuntuMono Nerd Font", "UbuntuMono"],
+      sans: ["Supreme"],
+      header: ["Chubbo"],
     },
   },
+  darkMode: "class",
 } as Options;
