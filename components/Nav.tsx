@@ -18,7 +18,7 @@ function classNames(...classes: string[]) {
 export default function Nav({ route }: { route: string }) {
   return (
     <>
-      <nav class="h-auto w-24 px-4 bg-zinc-700 text-xl font-sans pt-8">
+      <nav class="h-auto w-24 px-4 border-r border-zinc-700 text-xl font-sans pt-8">
         <div class="flex items-center">
           <div class="flex flex-col items-center justify-center">
             <div class="flex flex-col flex-shrink-0 items-center pb-8">

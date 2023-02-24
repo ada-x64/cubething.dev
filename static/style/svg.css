@@ -5,13 +5,8 @@ svg:hover > * {
   transition: 0.2s;
 }
 svg > * {
-  stroke-width: 1;
+  stroke-width: 2;
   stroke: rgba(255, 255, 255, 0.5);
   stroke-linejoin: round;
   transition: 0.2s;
 }
-
-/* article, */
-/* h1 { */
-/*   transition: 1s; */
-/* } */

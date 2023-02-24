@@ -6,15 +6,15 @@ import { Head } from "$fresh/src/runtime/head.ts";
 
 enum ThemeState {
   auto,
-  dark,
   light,
+  dark,
   LEN,
 }
 
 const ThemeIcons = [
   <AutoTheme size={48} />,
-  <DarkTheme size={48} />,
   <LightTheme size={48} />,
+  <DarkTheme size={48} />,
 ];
 
 const Theme = signal(ThemeState.auto);

@@ -15,10 +15,18 @@ export default function Index(props: PageProps<Post[]>) {
   return (
     <Layout route={props.route}>
       <div>
+        <div class="mb-8">
+          This is the personal website of{" "}
+          <a
+            class="underline decoration-rose-500 decoration-wavy decoration-from-font"
+            href="/about"
+          >
+            Phoenix Ada Rose Mandala.
+          </a>
+        </div>
         <h2 class="text-3xl">Recent Posts</h2>
         <div class="mb-8" id="articles">
           {posts.map((post) => <PostCard post={post}></PostCard>)}
- 
         </div>
       </div>
     </Layout>

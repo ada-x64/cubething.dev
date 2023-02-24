@@ -1,20 +1,23 @@
-import { Head } from "$fresh/src/runtime/head.ts";
-import { render } from "$gfm";
+import Prism from "prismjs";
+import "prismjs/components/prism-rust";
+import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-tsx";
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-bash";
 
-export function Markdown({ css, content }: { css: string; content: string }) {
+import MarkdownIt from "markdown-it";
+const md = MarkdownIt({
+  highlight: (str: string, lang: string) => {
+    return Prism.highlight(str, Prism.languages[lang], lang);
+  },
+});
+
+export default function renderMarkdown({ content }: { content: string }) {
   return (
-    <>
-      <Head>
-        <style dangerouslySetInnerHTML={{ __html: css }}></style>
-      </Head>
-      <div
-        data-color-mode="auto"
-        data-light-theme="light"
-        data-dark-theme="dark"
-        class="mt-8 markdown-body"
-        dangerouslySetInnerHTML={{ __html: render(content) }}
-      >
-      </div>
-    </>
+    <div
+      class="prose prose-zinc dark:prose-invert mb-8"
+      dangerouslySetInnerHTML={{ __html: md.render(content) }}
+    >
+    </div>
   );
 }

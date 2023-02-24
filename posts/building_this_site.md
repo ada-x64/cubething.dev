@@ -1,6 +1,7 @@
 ---
-title: Building This Website
-publishedAt: (tbd)
+title: Building This Site
+lastEdit: (tbd)
+firstPublished: (tbd)
 snippet: How I built this website using Deno, Fresh, and Tailwind CSS
 ---
 
