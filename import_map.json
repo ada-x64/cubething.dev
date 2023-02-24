@@ -18,7 +18,8 @@
     "preact/": "https://esm.sh/v107/preact@10.13.0/",
     "prismjs": "https://esm.sh/v107/prismjs@1.29.0",
     "prismjs/": "https://esm.sh/v107/prismjs@1.29.0/",
-    "markdown-it": "npm:/markdown-it"
+    "markdown-it": "npm:/markdown-it",
+    "ayu": "./ayu-colors/src/colors.ts"
   },
   "scopes": {
     "https://deno.land/x/fresh_twindv1_plugin@v1.2.1/": {

@@ -16,14 +16,4 @@ export default {
     },
   },
   darkMode: "class",
-  files: ["./posts/*.md"],
-  safelist: [
-    { pattern: /text-\d?xl/ },
-    "underline",
-    "decoration-rose-500",
-    "decoration-wavy",
-    "decoration-from-font",
-    "mb-8",
-    "font-monospace",
-  ],
 } as Options;

@@ -6,6 +6,8 @@ import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-bash";
 
 import MarkdownIt from "markdown-it";
+import { Head } from "$fresh/src/runtime/head.ts";
+
 const md = MarkdownIt({
   highlight: (str: string, lang: string) => {
     return Prism.highlight(str, Prism.languages[lang], lang);
@@ -14,10 +16,15 @@ const md = MarkdownIt({
 
 export default function renderMarkdown({ content }: { content: string }) {
   return (
-    <div
-      class="prose prose-zinc dark:prose-invert mb-8"
-      dangerouslySetInnerHTML={{ __html: md.render(content) }}
-    >
-    </div>
+    <>
+      <Head>
+        <link rel="stylesheet" href="style/code.css" />
+      </Head>
+      <div
+        class="prose prose-zinc dark:prose-invert mb-8"
+        dangerouslySetInnerHTML={{ __html: md.render(content) }}
+      >
+      </div>
+    </>
   );
 }
