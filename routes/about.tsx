@@ -1,23 +1,19 @@
 import { render } from "$gfm";
 import Layout from "@/components/Layout.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
+import Markdown from "@/components/Markdown.tsx";
 
 export const handler: Handlers<string> = {
   async GET(_req, ctx) {
     const data = await Deno.readTextFile("./data/about.md");
-    const md = render(data);
-    return ctx.render(md);
+    return ctx.render(data);
   },
 };
 
 export default function About(props: PageProps<string>) {
   return (
     <Layout route={props.route}>
-      <div
-        class="mt-8 markdown-body"
-        dangerouslySetInnerHTML={{ __html: props.data }}
-      >
-      </div>
+      <Markdown content={props.data} />
     </Layout>
   );
 }
