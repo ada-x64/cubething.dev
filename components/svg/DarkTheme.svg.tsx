@@ -1,8 +1,8 @@
-export default function f({ size }: { size: number }) {
+export default function f({ size }: { size?: string | number }) {
   return (
     <svg
-      width={size}
-      height={size}
+      width={size ?? "1em"}
+      height={size ?? "1em"}
       viewBox="0 0 100 100"
       version="1.1"
       id="svg5"

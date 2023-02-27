@@ -11,11 +11,7 @@ enum ThemeState {
   LEN,
 }
 
-const ThemeIcons = [
-  <AutoTheme size={48} />,
-  <LightTheme size={48} />,
-  <DarkTheme size={48} />,
-];
+const ThemeIcons = [<AutoTheme />, <LightTheme />, <DarkTheme />];
 
 const Theme = signal(ThemeState.auto);
 

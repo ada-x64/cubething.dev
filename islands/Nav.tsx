@@ -18,15 +18,15 @@ function classNames(...classes: string[]) {
 export default function Nav({ route }: { route: string }) {
   return (
     <>
-      <nav class="h-auto w-24 px-4 text-xl font-sans pt-8 sticky top-0 self-start">
+      <nav class="h-auto w-24 px-4 text-xl font-sans pt-4 sticky top-0 self-start">
         <div class="flex items-center">
           <div class="flex flex-col items-center justify-center">
-            <div class="flex flex-col flex-shrink-0 items-center pb-8">
+            <div
+              class="flex flex-col flex-shrink-0 items-center pb-4 mb-4 border-b border-zinc-700 w-full text-4xl transition-all ease-linear"
+              id="homeBtn"
+            >
               <a href="/">
-                {/*
-                TODO: Replace this with a webgl cube that spins on hover.
-              */}
-                <Cube size={48} />
+                <Cube />
               </a>
             </div>
             <div class="">
@@ -41,7 +41,7 @@ export default function Nav({ route }: { route: string }) {
                         current
                           ? "text-white bg-zinc-900 outline-2"
                           : "text-white hover:outline-2 hover:outline-offset-4 hover:outline-white",
-                        "px-2 py-1 mb-1 rounded-sm text-sm font-medium text-center"
+                        "px-2 py-1 mb-1 rounded-sm text-sm font-medium text-center",
                       )}
                       aria-current={current ? "page" : undefined}
                     >
