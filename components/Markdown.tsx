@@ -4,6 +4,7 @@ import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-tsx";
 import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-bash";
+import "prismjs/components/prism-nginx";
 
 import MarkdownIt from "markdown-it";
 import { Head } from "$fresh/src/runtime/head.ts";

@@ -15,7 +15,7 @@ export default function PostPage(props: PageProps<Post>) {
   return (
     <>
       <Layout route={`/${props.data.title}`}>
-        <time class="block text-gray-500 text-right">
+        <time class="block text-gray-500 text-center -mt-2 mb-2">
           {new Date(post.publishedAt).toLocaleDateString("en-us", {
             year: "numeric",
             month: "long",
