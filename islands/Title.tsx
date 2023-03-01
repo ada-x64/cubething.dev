@@ -1,16 +1,16 @@
 window.onscroll = () => {
   const header = document.getElementById("header");
-  const homeBtn = document.getElementById("homeBtn");
-  const themeBtn = document.getElementById("themeBtn");
+  // const homeBtn = document.getElementById("homeBtn");
+  // const themeBtn = document.getElementById("themeBtn");
   // if (window.scrollY > 50) {
   if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
     header!.classList.replace("text-4xl", "text-3xl");
-    homeBtn!.classList.replace("text-4xl", "text-3xl");
-    themeBtn!.classList.replace("text-4xl", "text-3xl");
+    // homeBtn!.classList.replace("text-4xl", "text-3xl");
+    // themeBtn!.classList.replace("text-4xl", "text-3xl");
   } else {
     header!.classList.replace("text-3xl", "text-4xl");
-    homeBtn!.classList.replace("text-3xl", "text-4xl");
-    themeBtn!.classList.replace("text-3xl", "text-4xl");
+    // homeBtn!.classList.replace("text-3xl", "text-4xl");
+    // themeBtn!.classList.replace("text-3xl", "text-4xl");
   }
 };
 

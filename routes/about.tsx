@@ -1,4 +1,3 @@
-import { render } from "$gfm";
 import Layout from "@/components/Layout.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import Markdown from "@/components/Markdown.tsx";

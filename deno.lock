@@ -2,6 +2,23 @@
   "version": "2",
   "remote": {
     "https://cdn.jsdelivr.net/combine/npm/@twind/core@1,npm/@twind/preset-typography@1": "bc83efd1d86aa3b06d39dc2f2081bb4a12efca0e5ffd2d4148ad7edf75723393",
+    "https://cdn.jsdelivr.net/npm/entities@3.0.1/lib/maps/entities.json/+esm": "e3049fc617db3012746a52d34be2042c1fbeb137dbc618c94284b984a634a48c",
+    "https://cdn.jsdelivr.net/npm/linkify-it@4.0.1/+esm": "2fbdf3cdd83dcaf55c51cc81d5c347665ed2cafff6abb7974d79875166c218c1",
+    "https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/+esm": "c572a629465748580e67c40890f400f46091f4a853c693d494bc5cfde01567f9",
+    "https://cdn.jsdelivr.net/npm/mdurl@1.0.1/+esm": "ca63f2967056e92b6359348efa307153140723fc780e1c0bb60b93e5f6a80a9d",
+    "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/+esm": "cff11ee662cb77eb949bbf0c1ff78e43298cbfa4f9c78031dd2cd1e8a8b79cb9",
+    "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components.js": "8082eb567f826350deb59e25504ab533f014f5c676fbc3d11419cc42ec018f75",
+    "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.js": "6c67db1a4c86269dc754b588d0ad3a0cdb295044fd466ea6f66bbf01dec306bd",
+    "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.js": "a361a285f771f9677f8d487e08c475fe7b8a36d407d756380a0bbf13b97e8689",
+    "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-nginx.js": "3dfa705d6453714f1b97830733286af789fa9d3d7182a327719a7b518bf20bfb",
+    "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-rust.js": "5033845938d1a958bb2a663baa116cecfea679faee91f48c4b9bf0fbdd5b0ae3",
+    "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.js": "9f022f13072288931b8ce4f811fe26f1b276307ad7ee235049b19a8c608c494e",
+    "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-typescript.js": "9a5181760da3863cb8d414bc756f48853320df224c16bf9f5af2541131bc9412",
+    "https://cdn.jsdelivr.net/npm/uc.micro@1.0.6/+esm": "afe5bbdb5c0f546d6f22728a9841a8162cbea4b791e948157b7ec78155462e1e",
+    "https://cdn.jsdelivr.net/npm/uc.micro@1.0.6/categories/Cc/regex/+esm": "cb870de9a508314af4b1e683a20b1a355b8bfd1ee1e10b0b8a67a8cb1166cc6c",
+    "https://cdn.jsdelivr.net/npm/uc.micro@1.0.6/categories/P/regex/+esm": "77260dcc91c93daefd14bfee6498e5ffe0c3313254f31f0723df766dcbba2392",
+    "https://cdn.jsdelivr.net/npm/uc.micro@1.0.6/categories/Z/regex/+esm": "2fb2e7d288319c924a9953d3a7c1d26aee6a0d982332fcb043afeb9119791396",
+    "https://cdn.jsdelivr.net/npm/uc.micro@1.0.6/properties/Any/regex/+esm": "9baa0329faec077f094817a0d3a7ab86e3b57a54809a70609aa3a8b17ab9e0d3",
     "https://cdn.twind.style/typography": "526668c1167684a34fdbae1be39aa98aa95cb7ece382a089a00deb163bc02e6b",
     "https://deno.land/std@0.140.0/_util/assert.ts": "e94f2eb37cebd7f199952e242c77654e43333c1ac4c5c700e929ea3aa5489f74",
     "https://deno.land/std@0.140.0/_util/os.ts": "3b4c6e27febd119d36a416d7a97bd3b0251b77c88942c8f16ee5953ea13e2e49",
@@ -533,11 +550,17 @@
     "https://esm.sh/v107/prismjs@1.29.0": "23c8d787b540a70752a511d25e8c84719514d216500268438fd93e4284919e19",
     "https://esm.sh/v107/prismjs@1.29.0/components/": "bc6da5d7ca8aebb637a34788e1283dea10de69aa03d1a834bc34b3619c37d133",
     "https://esm.sh/v107/prismjs@1.29.0/components/prism-bash": "0e38a3cd4d0ae26261d44580dc1c6a9a43b7ef201b9ba838f0f45aa772d10031",
+    "https://esm.sh/v107/prismjs@1.29.0/components/prism-bash.js": "0e38a3cd4d0ae26261d44580dc1c6a9a43b7ef201b9ba838f0f45aa772d10031",
     "https://esm.sh/v107/prismjs@1.29.0/components/prism-jsx": "37720380b28845c5917f10ff37612e9e8c35371ebff5bb3e8cf2a1ac87d83cd8",
+    "https://esm.sh/v107/prismjs@1.29.0/components/prism-jsx.js": "37720380b28845c5917f10ff37612e9e8c35371ebff5bb3e8cf2a1ac87d83cd8",
     "https://esm.sh/v107/prismjs@1.29.0/components/prism-nginx": "90ea1b105214b5775186c09007c820c431c8e2fe0ed29dd49f44982c0665f968",
+    "https://esm.sh/v107/prismjs@1.29.0/components/prism-nginx.js": "90ea1b105214b5775186c09007c820c431c8e2fe0ed29dd49f44982c0665f968",
     "https://esm.sh/v107/prismjs@1.29.0/components/prism-rust": "f452cfe7295d9097fc5c1da0cf9775a1318707198c83acae6ef4fa24df7728ae",
+    "https://esm.sh/v107/prismjs@1.29.0/components/prism-rust.js": "f452cfe7295d9097fc5c1da0cf9775a1318707198c83acae6ef4fa24df7728ae",
     "https://esm.sh/v107/prismjs@1.29.0/components/prism-tsx": "8c15d9154d1b72eaf09ab25bcd990de0aa1511b1451556526f903aa83894a0ce",
+    "https://esm.sh/v107/prismjs@1.29.0/components/prism-tsx.js": "8c15d9154d1b72eaf09ab25bcd990de0aa1511b1451556526f903aa83894a0ce",
     "https://esm.sh/v107/prismjs@1.29.0/components/prism-typescript": "b94f749d8f81507481cc4e4b12d8c7b70881fbd6cacf45a3416a5773cb582e39",
+    "https://esm.sh/v107/prismjs@1.29.0/components/prism-typescript.js": "b94f749d8f81507481cc4e4b12d8c7b70881fbd6cacf45a3416a5773cb582e39",
     "https://esm.sh/v107/prismjs@1.29.0/deno/components.js": "476ce513097a86dccecfc1d911faec0c369693d9f2c831cddb612fd1b134584d",
     "https://esm.sh/v107/prismjs@1.29.0/deno/components/prism-bash.js": "91108be398dca09048ca4f8793c5c6b4b253eaf15c5c0a7eac8ef12b75881be1",
     "https://esm.sh/v107/prismjs@1.29.0/deno/components/prism-jsx.js": "0cd8e805ed8ee22b4885f97e0a3763507e413b5e348224993ed11a8d31b67d57",
@@ -564,7 +587,8 @@
       "@twind/preset-typography": "@twind/preset-typography@1.0.7",
       "ayu": "ayu@8.0.1",
       "interweave": "interweave@13.0.0",
-      "markdown-it": "markdown-it@13.0.1"
+      "markdown-it": "markdown-it@13.0.1",
+      "prismjs": "prismjs@1.29.0"
     },
     "packages": {
       "@twind/core@1.1.3": {
@@ -650,6 +674,10 @@
       },
       "nonenumerable@1.1.1": {
         "integrity": "sha512-ptUD9w9D8WqW6fuJJkZNCImkf+0vdbgUTbRK3i7jsy3olqtH96hYE6Q/S3Tx9NWbcB/ocAjYshXCAUP0lZ9B4Q==",
+        "dependencies": {}
+      },
+      "prismjs@1.29.0": {
+        "integrity": "sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==",
         "dependencies": {}
       },
       "react@18.2.0": {

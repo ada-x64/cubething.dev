@@ -36,6 +36,13 @@ export function setTheme() {
 
 export default function DarkModeToggle() {
   const theme = Theme.value;
+  const themeText = theme === ThemeState.auto
+    ? "Auto"
+    : theme === ThemeState.light
+    ? "Light"
+    : theme === ThemeState.dark
+    ? "Dark"
+    : "ERROR";
 
   return (
     <>
@@ -52,7 +59,9 @@ window.matchMedia("(prefers-color-scheme: dark)").matches
         >
         </script>
       </Head>
-      <button onClick={setTheme}>{ThemeIcons[theme]}</button>
+      <button title={`Toggle Theme - Current: ${themeText}`} onClick={setTheme}>
+        {ThemeIcons[theme]}
+      </button>
     </>
   );
 }

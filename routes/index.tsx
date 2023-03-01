@@ -19,6 +19,7 @@ export default function Index(props: PageProps<Post[]>) {
           This is the personal website of{" "}
           <a
             class="underline decoration-rose-500 decoration-wavy decoration-from-font"
+            title="about"
             href="/about"
           >
             Phoenix Ada Rose Mandala.

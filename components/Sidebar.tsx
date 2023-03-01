@@ -1,4 +1,4 @@
-import { ComponentChildren } from "preact";
+import { ComponentChild, ComponentChildren } from "preact";
 
 export default function Sidebar({
   icon,
@@ -6,7 +6,7 @@ export default function Sidebar({
   ariaLabel,
   children,
 }: {
-  icon: () => preact.JSX.Element;
+  icon: ComponentChild;
   order: number;
   ariaLabel: string;
   children: ComponentChildren;
@@ -19,7 +19,7 @@ export default function Sidebar({
         tabIndex={0}
       >
         <div class="flex flex-col flex-shrink-0 items-center pb-4 mb-4 border-b border-zinc-700 w-full text-4xl transition-all ease-linear">
-          {icon()}
+          {icon}
         </div>
         <div class="flex flex-col">{children}</div>
       </nav>
