@@ -1,6 +1,6 @@
-import Nav from "@/islands/Nav.tsx";
+import MainNav from "@/components/MainNav.tsx";
 import { ComponentChildren } from "preact";
-import Controls from "@/islands/Controls.tsx";
+import ArticleNav from "@/components/ArticleNav.tsx";
 import { Head } from "$fresh/src/runtime/head.ts";
 import Title from "@/islands/Title.tsx";
 
@@ -19,15 +19,16 @@ export default function Layout({
 
       <main class="dark:bg-zinc-900 dark:text-zinc-100 ">
         <div class="mx-auto flex max-w-screen-lg min-h-screen">
-          <Nav route={route} />
+          <MainNav route={route} />
+          <ArticleNav />
           <article
             id="article"
-            class="max-w-screen-md px-16 md:mx-auto border-x border-zinc-700 flex flex-col"
+            class="order-2 max-w-screen-md px-16 md:mx-auto border-x border-zinc-700 flex flex-col"
+            tabIndex={0}
           >
             <Title route={route} />
             {children}
           </article>
-          <Controls />
         </div>
       </main>
     </>
