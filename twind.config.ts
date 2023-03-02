@@ -11,18 +11,12 @@ export default {
     presetTailWind,
     presetTypography({
       extend: {
-        "h2::before": {
-          content: "<",
-        },
-        "h2::after": {
-          content: "/>",
-        },
-        "h1, h2": {
+        "h1, h2, h3, h4": {
           "text-transform": "lowercase",
           "font-family": "Chillax, sans",
           "text-align": "center",
         },
-        h2: {
+        "h2, h3, h4": {
           "margin-top": 0,
         },
       },

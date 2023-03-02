@@ -1,5 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getPost, Post } from "@/utils/posts.ts";
+import { getPost, getTime, Post } from "@/utils/posts.ts";
 import Layout from "@/components/Layout.tsx";
 import Markdown from "@/components/Markdown.tsx";
 
@@ -16,11 +16,7 @@ export default function PostPage(props: PageProps<Post>) {
     <>
       <Layout route={`/${props.data.title}`}>
         <time class="block text-gray-500 text-center -mt-2 mb-2">
-          {new Date(post.publishedAt).toLocaleDateString("en-us", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
+          {getTime(post.mtime)}
         </time>
         <Markdown content={post.content} />
       </Layout>

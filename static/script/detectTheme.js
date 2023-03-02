@@ -4,6 +4,7 @@ if (storedTheme === null || storedTheme === "0") {
   prefersDark
     ? document.documentElement.classList.add("dark")
     : document.documentElement.classList.remove("dark");
+  localStorage.setItem("theme", "0");
 } else {
   storedTheme === "2"
     ? document.documentElement.classList.add("dark")

@@ -1,6 +1,5 @@
 ---
 title: Building This Site
-publishedAt: Thu Mar  2 11:50:18 AM CST 2023
 snippet: How I built this website using Deno, Fresh, and Tailwind CSS. Also includes server setup with Debian, OpenSSH, and Nginx.
 ---
 
@@ -8,13 +7,13 @@ With the perpetual living death of social media, I've been looking for a place t
 
 The first step was to set up a server machine.
 
-# Setting up the Server
+## Setting up the Server
 
-## SSH
+### SSH
 
 When I'm out and about I always miss having my PC at my fingertips. As of writing, my build is running Debian Bookworm on a Ryzen 9, and anything else feels unacceptably slow. So my original goal in setting up a server was to have secure network-based access to my PC. To do this I installed OpenSSH, set up SSHD to run from an alternate port, and set up TOTP MFA with [Linux PAM](https://linux-pam.org). I followed [this blog post by chrisjrob](https://chrisjrob.com/2011/04/05/dynamic-dns-and-remote-ssh-and-vnc/) for SSH. The OATH setup largely followed the Arch Wiki guide for setting up [pam_oath](https://wiki.archlinux.org/title/Pam_oath), so I suggest reading that if you're interested in the process. Once I'd gotten SSH set up and secured on my local network, I got a domain from [FreeDNS](https://freedns.afraid.org) for testing. This worked well, but was very slow, so I ended up buying this domain ([ https://cubething.dev ](https://cubething.dev)).
 
-## nginx
+### nginx
 
 Once I had the domain I figured - why not build a website?
 
@@ -63,13 +62,54 @@ ssl_certificate /path/to/your/cert.pem;
 ssl_certificate_key /path/to/your/private.key.pem;
 ```
 
-Just like that the nginx basic server was up and running. With that out of the way, it was time to actually build the blog.
+### ufw
 
-# Building the Site
+Of course, to keep things safe, we need to set up a firewall. [ufw](https://wiki.archlinux.org/title/Uncomplicated_Firewall) is a powerful and simple firewall. On Debian, install with
+
+```bash
+sudo apt install ufw
+```
+
+Then, to set up nginx and SSH access, you'll need to add the appropriate rules:
+
+```bash
+# By default, do not allow access
+sudo ufw default deny
+# But, allow serving from localhost
+sudo ufw allow from 192.168.0.0/24
+# This allows connections through ports 80 and 443
+sudo ufw allow 'Nginx Full'
+# This allows TCP connetcions through port 22
+sudo ufw allow ssh
+# If you're using an alternate port for SSH, set it up like this
+sudo ufw allow 1234/tcp
+```
+
+If this worked, you should be able to connect to your domain and SSH into your server. Your ufw status may look like this:
+
+```bash
+$ sudo ufw status verbose
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+80,443/tcp (Nginx Full)    ALLOW IN    Anywhere
+1234/tcp                   ALLOW IN    Anywhere
+Anywhere                   ALLOW IN    192.168.0.0/24
+80,443/tcp (Nginx Full (v6)) ALLOW IN    Anywhere (v6)
+1234/tcp (v6)              ALLOW IN    Anywhere (v6)
+```
+
+Just like that we have SSH and an nginx server up and running. With that out of the way, it was time to actually build the blog.
+
+## Building the Site
 
 This site is built with Deno on the Fresh framework.
 
-## Deno
+### Deno
 
 [Deno](https://deno.land) is a server-side JavaScript runtime with native Typescript support. It is written in Rust and is focused on security and web compatibility. The original goal for Deno was to be a successor runtime to Node.js. It was announced in a 2018 talk called [10 Things I Regret about Node.js](https://www.youtube.com/watch?v=M3BM9TB-8yA). There was quite a bit of buzz around it when it first launched, but that hype has died down a bit in favor of [Bun](https://bun.sh). Being a Rust programmer, of course I had heard of Deno, and being a Typescript programmer, I wanted to give a native TS runtime a shot. So I decided to give it a try and built this website with it.
 
@@ -77,7 +117,7 @@ My experience with Deno has been pretty good, though there are a few things I st
 
 Aside from these few issues, my experience with Deno has been pretty good. It's fantastic for spinning up quick TS scripts, and using `deno compile` makes it easy to spin up executables. Though, I wonder to what extent this is a good idea. Why not opt for a scripting language that has been designed for server-side use, like Python or Ruby, and which have sane defaults? Perhaps Deno's safety model is appealing, though I wonder if the executable sizes and speeds are worth the tradeoff. (I'll have to look into that.)
 
-## Fresh
+### Fresh
 
 Anyways, let's talk about how this site was actually built.
 
@@ -85,7 +125,7 @@ Anyways, let's talk about how this site was actually built.
 
 Almost everything is statically rendered on the backend. Only the components stored in the `islands/` directory will be rendered client-side. The biggest trade-off of this design IMO is that you may not get access to tools like the React inspector. For this website, that was not an issue anyways.
 
-## Dependency Management
+### Markdown and Dependency Management
 
 To create the blog, I followed [this blog post](https://deno.com/blog/build-a-blog-with-fresh). However, I didn't particularly like the way gfm renders markdown, so I switched to [markdown-it](https://github.com/markdown-it/markdown-it). This was a foreign dependency!
 
@@ -105,7 +145,31 @@ Again, because Node.js uses CommonJS, not every module will be compatible with D
 
 Honestly, Deno's dependency management - one of it's core features - is kind of a mess! There is no centralized method of specifying dependencies, which makes it inconvenient to use, and actively cost me a day and a half of fiddling around with compatible CDNs.
 
-## Styling
+#### Automatic Timestamps
+
+One of the things I changed from the Fresh blog template was to remove timestamps from the frontmatter and instead detect the last modified date. On linux, this is the file's `mtime` (modified time). Deno makes it easy to detect file stats. The code below is fairly self-explanatory:
+
+`util/posts.ts`
+
+```typescript
+export async function getPost(slug: string): Promise<Post | null> {
+  const path = join("./posts", `${slug}.md`);
+  const text = await Deno.readTextFile(path);
+  const mtime = (await Deno.stat(path)).mtime;
+  const { attrs, body } = extract<Record<string, string>>(text);
+  return {
+    slug,
+    title: attrs.title,
+    mtime,
+    content: body,
+    snippet: attrs.snippet,
+  };
+}
+```
+
+The ease with which Deno can perform I/O operations is definitely one of its stronger suits.
+
+### Styling
 
 Once the blog was in place and I was rendering basic Markdown, I needed to style the site. Fresh comes with a [twind](https://twind.style) plugin, and will prompt you to install it on project initialization, so I was good to go. However, rendering Markdown on the fly meant that twind wouldn't be able to pre-load the right styles. Of course, there is a solution, the [typography plugin](https://tailwindcss.com/docs/typography-plugin). Luckily, [twind supports this](https://twind.style/packages/@twind/preset-typography) (and many other plugins).
 
@@ -115,8 +179,136 @@ There was one issue I had when styling. I wanted to include some hand-made SVGs 
 
 This site also makes an attempt to be screen-reader and tab-through friendly. I use these technologies a lot myself.
 
-# Deploying
+## Deploying
 
-## Azure
+### Local Deployment with Nginx
+
+In order to deploy to nginx, you need to set up a proxy. Essentially, this will tell the server to look at an application which is hosted at a localhost port. So, we need some way to daemonize our Deno process. There are many Node.js process managers, but the only one which will work with Deno (or any other interpreter) is [PM2](https://pm2.keymetrics.io). To run a deno process in PM2, use the `--interpreter` and `--interpreter-args` flags.
+
+```bash
+sudo npm i pm2 -g
+pm2 start main.ts --name test --interpreter="deno" --interpreter-args="run -A"
+```
+
+This works just fine, navigating to port 8080 shows the site. But, I want the deployed site to be on a different port than the development port. To do this I added an environemnt check to my `main.ts`
+
+`main.ts`
+
+```typescript
+/// <reference no-default-lib="true" />
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+/// <reference lib="dom.asynciterable" />
+/// <reference lib="deno.ns" />
+
+import { start } from "$fresh/server.ts";
+import manifest from "@/fresh.gen.ts";
+
+import twindPlugin from "twind_fresh_plugin/twind.ts";
+import twindConfig from "@/twind.config.ts";
+
+await start(manifest, {
+  port: parseInt(Deno.env.get("DENO_PORT") ?? "8000"),
+  plugins: [twindPlugin(twindConfig)],
+});
+```
+
+Running a Fresh application directly through PM2 will cause erros due to the way Fresh caches the rendered artefacts. So, we need to create a deployment script, and run _that_ through PM2.
+
+`deploy.sh`
+
+```bash
+#!/bin/bash
+MAIN=/path/to/your/main.ts
+export DENO_PORT=1234
+
+GIT_REVISION=$(git rev-parse HEAD)
+export DENO_DEPLOYMENT_ID=${GIT_REVISION}
+
+deno cache "$MAIN"
+deno run -A "$MAIN"
+```
+
+(This is adapted from the [Container section](https://fresh.deno.dev/docs/concepts/deployment) of Fresh's deployment docs.)
+
+I ran the script:
+
+```bash
+sudo pm2 start deploy.sh
+```
+
+Then, I updated my site config to match the [PM2 specifications](https://pm2.keymetrics.io/docs/tutorials/pm2-nginx-production-setup):
+
+`/etc/nginx/sites-available/YOUR_SITE`
+
+```nginx
+upstream YOUR_SITE {
+	server 127.0.0.1:1234;
+	keepalive 64;
+}
+
+server {
+	listen 443 ssl default_server;
+	listen [::]:443 ssl default_server;
+	include snippets/certs.conf;
+
+	server_name www.YOUR_SITE.tld;
+
+	location / {
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header Host $http_host;
+
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
+
+		proxy_pass http://YOUR_SITE/;
+		proxy_redirect off;
+		proxy_read_timeout 240s;
+	}
+}
+```
+
+The last thing to do was to add PM2 as a systemd unit:
+
+```bash
+sudo pm2 startup;
+sudo pm2 save
+```
+
+Now we have a simple blog routing through nginx, protected by ufw and SSL, and safely allowing remote access through SSH and TOTP.
+
+### Cloud Deployment
 
 I wanted to get some practice deploying to the cloud, so I decided to deploy this app to Azure in addition to my own domain just to test it. To do so I followed [this tutorial](https://www.codestack.be/blog/run-deno-containerized-web-application-on-microsoft-azure-container-registry/).
+
+The first thing was to install Docker on my machine. The installation was simple enough, and you can follow the [offical guide](https://docs.docker.com/desktop/install) for your OS.
+
+Then, I created a Container Registry on Azure. This was simple. The next step was to follow the instructions in the Quick Start blade.
+
+Logging in proved to be difficult. In order to use `docker login`, I needed to install a few password management packages. This is what worked for me:
+
+```bash
+sudo apt install gnupg2 pass
+```
+
+Then, in order to intialize my password manager, I ran the following:
+
+```bash
+gpg --generate-key
+```
+
+This produced a public key, which I then copied into this command:
+
+```bash
+pass init $PUB_KEY
+```
+
+Once you've done this, you can always find your public keys again by running
+
+```bash
+gpg --list-public-keys
+```
+
+I was then able to log in to my Azure container.

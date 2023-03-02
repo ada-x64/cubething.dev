@@ -4,7 +4,7 @@ import extract from "$std/encoding/front_matter/any.ts";
 export interface Post {
   slug: string;
   title: string;
-  publishedAt: Date;
+  mtime: Date | null;
   content: string;
   snippet: string;
 }
@@ -21,18 +21,37 @@ export async function getPosts(max?: number): Promise<Post[]> {
     promises.push(getPost(slug));
   }
   const posts = (await Promise.all(promises)) as Post[];
-  posts.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+  posts.sort((a, b) =>
+    a.mtime && b.mtime ? b.mtime.getTime() - a.mtime.getTime() : Infinity
+  );
   return posts;
 }
 
 export async function getPost(slug: string): Promise<Post | null> {
-  const text = await Deno.readTextFile(join("./posts", `${slug}.md`));
+  const path = join("./posts", `${slug}.md`);
+  const text = await Deno.readTextFile(path);
+  const mtime = (await Deno.stat(path)).mtime;
   const { attrs, body } = extract<Record<string, string>>(text);
   return {
     slug,
     title: attrs.title,
-    publishedAt: new Date(attrs.publishedAt),
+    mtime,
     content: body,
     snippet: attrs.snippet,
   };
+}
+
+export function getTime(mtime: Date | null) {
+  if (mtime !== null) {
+    const dateString = mtime.toLocaleDateString("en-us", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    });
+    return `Last modified ${dateString}`;
+  } else {
+    return null;
+  }
 }
