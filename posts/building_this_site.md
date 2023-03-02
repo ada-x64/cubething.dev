@@ -1,6 +1,6 @@
 ---
 title: Building This Site
-publishedAt: todo
+publishedAt: Thu Mar  2 11:50:18 AM CST 2023
 snippet: How I built this website using Deno, Fresh, and Tailwind CSS. Also includes server setup with Debian, OpenSSH, and Nginx.
 ---
 
