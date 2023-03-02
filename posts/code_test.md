@@ -1,16 +1,15 @@
 ---
-title: Hello, World
+title: Highlighting Test
 publishedAt: 2022-02-20 14:28:00
-snippet: This is an excerpt of my first blog post.
+snippet: A post with codeblocks to test highlighting.
 ---
 
-# Hello, world!
+Rendered in the [ayu colorscheme](https://github.com/ayu-theme/ayu-colors) using [prismjs](https://prismjs.com).
 
-my name is ada mandala and this is fucking _blog_
-
-## here are some code blocks with langauges i use often
+### rust
 
 ```rust
+// This is some random code I got off the internet. I didn't write it, and I have no idea where it's from.
 #[entry]
 fn main() -> ! {
     if let (Some(p), Some(cp)) = (stm32::Peripherals::take(), Peripherals::take()) {
@@ -61,6 +60,8 @@ fn main() -> ! {
 }
 ```
 
+### tsx
+
 ```tsx
 import Nav from "@/components/Nav.tsx";
 import { ComponentChildren } from "preact";
@@ -104,6 +105,8 @@ export default function Layout({
 }
 ```
 
+### bash
+
 ```bash
 #!/bin/bash
 fileType="$(file "$1" | grep -o 'text')"
@@ -115,7 +118,3 @@ fi
 cat $1
 echo -en "\033[0m"
 ```
-
-## here's some lorem ipsum to fill out the post :)
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
