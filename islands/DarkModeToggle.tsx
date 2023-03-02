@@ -1,8 +1,8 @@
-import { signal } from "@preact/signals";
 import AutoTheme from "@/components/svg/AutoTheme.svg.tsx";
 import DarkTheme from "@/components/svg/DarkTheme.svg.tsx";
 import LightTheme from "@/components/svg/LightTheme.svg.tsx";
 import { Head } from "$fresh/src/runtime/head.ts";
+import { signal } from "@preact/signals";
 
 enum ThemeState {
   auto,
@@ -13,10 +13,16 @@ enum ThemeState {
 
 const ThemeIcons = [<AutoTheme />, <LightTheme />, <DarkTheme />];
 
-const Theme = signal(ThemeState.auto);
+function getTheme() {
+  return parseInt(localStorage.getItem("theme") ?? "0");
+}
+
+const ThemeSignal = signal(getTheme());
 
 export function setTheme() {
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  let theme = getTheme();
+
   const addDark = () => {
     document.documentElement.classList.add("dark");
   };
@@ -27,15 +33,17 @@ export function setTheme() {
     prefersDark ? addDark() : rmDark();
   };
   const checkManual = () => {
-    Theme.value === ThemeState.dark ? addDark() : rmDark();
+    theme === ThemeState.dark ? addDark() : rmDark();
   };
 
-  Theme.value = (Theme.value + 1) % ThemeState.LEN;
-  Theme.value === ThemeState.auto ? checkAuto() : checkManual();
+  theme = (theme + 1) % ThemeState.LEN;
+  localStorage.setItem("theme", theme.toString());
+  ThemeSignal.value = theme;
+  theme === ThemeState.auto ? checkAuto() : checkManual();
 }
 
 export default function DarkModeToggle() {
-  const theme = Theme.value;
+  const theme = ThemeSignal.value;
   const themeText = theme === ThemeState.auto
     ? "Auto"
     : theme === ThemeState.light
@@ -47,17 +55,8 @@ export default function DarkModeToggle() {
   return (
     <>
       <Head>
-        {/* Detect color scheme FIRST THING */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-window.matchMedia("(prefers-color-scheme: dark)").matches
-? document.documentElement.classList.add("dark")
-: document.documentElement.classList.remove("dark");
-        `,
-          }}
-        >
-        </script>
+        {/* Detect color scheme immediately to avoid FOUC */}
+        <script src="/script/detectTheme.js"></script>
       </Head>
       <button title={`Toggle Theme - Current: ${themeText}`} onClick={setTheme}>
         {ThemeIcons[theme]}
