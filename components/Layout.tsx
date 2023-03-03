@@ -15,6 +15,7 @@ export default function Layout({
     <>
       <Head>
         <link rel="stylesheet" href="style/svg.css" />
+        <link rel="stylesheet" href="style/font.css" />
       </Head>
 
       <main class="dark:bg-zinc-900 dark:text-zinc-100 ">

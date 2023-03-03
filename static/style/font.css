@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Ubuntu Mono Nerd Font";
+  src: url("../font/Ubuntu Mono Nerd Font Complete.ttf");
+}
+
+@font-face {
+  font-family: "Ubuntu Mono";
+  src: url("../font/UbuntuMono-R.ttf");
+}
+
+@font-face {
+  font-family: "Chillax";
+  src: url("../font/Chillax-Regular.otf");
+}
+
+@font-face {
+  font-family: "Synonym";
+  src: url("../font/Synonym-Regular.otf");
+}

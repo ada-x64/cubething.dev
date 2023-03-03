@@ -3,6 +3,8 @@ import DarkTheme from "@/components/svg/DarkTheme.svg.tsx";
 import LightTheme from "@/components/svg/LightTheme.svg.tsx";
 import { Head } from "$fresh/src/runtime/head.ts";
 import { signal } from "@preact/signals";
+import { join } from "$std/path/mod.ts";
+import { ScriptsPath } from "@/deps/paths.ts";
 
 enum ThemeState {
   auto,
@@ -56,7 +58,7 @@ export default function DarkModeToggle() {
     <>
       <Head>
         {/* Detect color scheme immediately to avoid FOUC */}
-        <script src="/script/detectTheme.js"></script>
+        <script src={"./scripts/detectTheme.js"}></script>
       </Head>
       <button title={`Toggle Theme - Current: ${themeText}`} onClick={setTheme}>
         {ThemeIcons[theme]}

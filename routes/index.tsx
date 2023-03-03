@@ -16,7 +16,7 @@ export default function Index(props: PageProps<Post[]>) {
     <Layout route={props.route}>
       <div>
         <div class="mb-8">
-          This is the personal website of
+          This is the personal website of{" "}
           <a
             class="underline decoration-rose-500 decoration-wavy decoration-from-font"
             title="about"

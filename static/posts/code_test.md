@@ -118,3 +118,29 @@ fi
 cat $1
 echo -en "\033[0m"
 ```
+
+### Nerd Font
+
+```plaintext
+~/dev/deno/cubething/..
+  .git
+  ayu-colors
+  ✗ components
+  ✗ deps
+  ✗ islands
+  models
+  ✗ routes
+  ✗ ★ static
+   .gitignore
+   .gitmodules
+   ★ cspell.json
+   deno.json
+   deno.lock
+   deploy.sh
+   dev.ts
+  󰡨 Dockerfile
+   import_map.json
+   main.ts
+   README.md
+   ✗ twind.config.ts
+```

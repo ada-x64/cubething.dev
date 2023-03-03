@@ -25,7 +25,7 @@ export default {
   selfURL: import.meta.url,
   theme: {
     fontFamily: {
-      mono: ["UbuntuMono Nerd Font", "UbuntuMono"],
+      mono: ["Ubuntu Mono Nerd Font", "Ubuntu Mono", "Consolas", "mono"],
       header: ["Chillax", "sans"],
       sans: ["Synonym", "sans"],
     },

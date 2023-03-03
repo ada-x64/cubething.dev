@@ -36,7 +36,7 @@ By default, nginx on Debian has a sample site made available. I suggest copying 
 
 ```bash
 cd /etc/nginx/
-cp ./sites-available/defualt ./sites-available/YOUR_SITE
+cp ./sites-available/default ./sites-available/YOUR_SITE
 ln -s ./sites-available/YOUR_SITE ./sites_enabled/YOUR_SITE
 ```
 
@@ -79,7 +79,7 @@ sudo ufw default deny
 sudo ufw allow from 192.168.0.0/24
 # This allows connections through ports 80 and 443
 sudo ufw allow 'Nginx Full'
-# This allows TCP connetcions through port 22
+# This allows TCP connections through port 22
 sudo ufw allow ssh
 # If you're using an alternate port for SSH, set it up like this
 sudo ufw allow 1234/tcp
@@ -113,7 +113,7 @@ This site is built with Deno on the Fresh framework.
 
 [Deno](https://deno.land) is a server-side JavaScript runtime with native Typescript support. It is written in Rust and is focused on security and web compatibility. The original goal for Deno was to be a successor runtime to Node.js. It was announced in a 2018 talk called [10 Things I Regret about Node.js](https://www.youtube.com/watch?v=M3BM9TB-8yA). There was quite a bit of buzz around it when it first launched, but that hype has died down a bit in favor of [Bun](https://bun.sh). Being a Rust programmer, of course I had heard of Deno, and being a Typescript programmer, I wanted to give a native TS runtime a shot. So I decided to give it a try and built this website with it.
 
-My experience with Deno has been pretty good, though there are a few things I struggled with. Installing and using Deno has been a breeze. The native typescript support is fantastic, and the global cache means your repository doesn't get cluttered with nonsense - and you save disk space. My main problem is that some TypeScript dependency resolution fails. For example, this website is using [ PrismJS ](https://prismjs.com) to highlight code blocks. However, the type specifications for language extensions fail to load, causing around 1 second of latency between builds while it tries to fetch the (non-existent) depedencies. This is likely a compatibility issue, since Deno doesn't aim for total Node.js interoperation. There is probably workaround for this, but I have to find this. However, I also got this error when loading in the Katex dependencies from [deno gfm](https://deno.land/x/gfm@0.2.1), which is used in the offically supported Fresh framework.
+My experience with Deno has been pretty good, though there are a few things I struggled with. Installing and using Deno has been a breeze. The native typescript support is fantastic, and the global cache means your repository doesn't get cluttered with nonsense - and you save disk space. My main problem is that some TypeScript dependency resolution fails. For example, this website is using [ PrismJS ](https://prismjs.com) to highlight code blocks. However, the type specifications for language extensions fail to load, causing around 1 second of latency between builds while it tries to fetch the (non-existent) dependencies. This is likely a compatibility issue, since Deno doesn't aim for total Node.js interoperation. There is probably workaround for this, but I have to find this. However, I also got this error when loading in the Katex dependencies from [deno gfm](https://deno.land/x/gfm@0.2.1), which is used in the officially supported Fresh framework.
 
 Aside from these few issues, my experience with Deno has been pretty good. It's fantastic for spinning up quick TS scripts, and using `deno compile` makes it easy to spin up executables. Though, I wonder to what extent this is a good idea. Why not opt for a scripting language that has been designed for server-side use, like Python or Ruby, and which have sane defaults? Perhaps Deno's safety model is appealing, though I wonder if the executable sizes and speeds are worth the tradeoff. (I'll have to look into that.)
 
@@ -137,13 +137,64 @@ import { foobar } from "https://some.example.url/mod.ts";
 
 If you're building an executable application (like a blog), you're encouraged to use an [import map](https://deno.land/manual@v1.31.1/basics/import_maps) to manage your dependencies. However, if you're building a library, you're encouraged to use a [`deps` module](https://deno.land/manual@v1.31.1/examples/manage_dependencies). This is slightly confusing, but not a huge issue.
 
-It can be very annoying to manually enter the URLs every time you want to import something. Thankfully, there are several CDNs out there which host deno-compatible modules. The officially deigned options are [deno.land/x/](https://deno.land/x/), which hosts Deno-specific libraries; [skypack.dev](https://skypack.dev), which is basically a browser bundler for NPM packges; and [esm.sh](https://esm.sh) which is specifically designed for ESM libraries. Deno.land/x/ works great, obviously. Skypack's search seems broken, so I haven't been able to try it. I was initially excited about esm.sh because they offer a [CLI](https://esm.sh/#cli) - but they do not offer a search functionality at all. So my process has been `npm search $PKG`; `deno task esm:add $PKG`. However, most of the modules I need are not available through esm.sh. So, I've stared using [jsdelivr](https://jsdelivr.com). This is nice
+It can be very annoying to manually enter the URLs every time you want to import something. Thankfully, there are several CDNs out there which host Deno-compatible modules. The officially deigned options are [deno.land/x/](https://deno.land/x/), which hosts Deno-specific libraries; [skypack.dev](https://skypack.dev), which is basically a browser bundler for NPM packages; and [esm.sh](https://esm.sh) which is specifically designed for ESM libraries. Deno.land/x/ works great, obviously. Skypack's search seems broken, so I haven't been able to try it. I was initially excited about esm.sh because they offer a [CLI](https://esm.sh/#cli) - but they do not offer a search functionality at all. So my process has been `npm search $PKG`; `deno task esm:add $PKG`. However, most of the modules I need are not available through esm.sh. So, I tried using [jsdelivr](https://jsdelivr.com), but Deno's import maps can't grab types independently (cannot find the module located at `index.ts`). The best option I've found is just to use the NPM package directly (`import {foo} from "npm:/SomePkg"`).
 
 Again, because Node.js uses CommonJS, not every module will be compatible with Deno. If you run into this issue, you can polyfill the import map to override any missing dependencies, such as `fs`.
 
 `esm.sh` worked just fine for importing PrismJS. But `markdown-it` is not included on esm.sh. However, Deno now offers direct npm compatibility. You can specify a dependency as just `npm:/some-package`. This worked just fine for `markdown-it`.
 
 Honestly, Deno's dependency management - one of it's core features - is kind of a mess! There is no centralized method of specifying dependencies, which makes it inconvenient to use, and actively cost me a day and a half of fiddling around with compatible CDNs.
+
+#### A Solution to Dependency Hell
+
+The most consistent solution I've found is to create a `deps` folder with an individual file for each dependency. Traditionally, there is the `deps.ts` file, but this [may lead to compile time issues](https://github.com/wongjiahau/deno-mod-benchmark). This article is rather old, though. I just prefer to have each dependency individually listed for clarity. This also allows you to import types for NPM packages that lack them, and to do any preprocessing necessary for the dependencies. prismjs was especially in need of this:
+
+`prismjs.ts`
+
+```typescript
+//@deno-types="npm:/@types/prismjs@1.26.0"
+import Prism from "npm:/prismjs";
+import loadLanguages from "npm:/prismjs/components/index.js";
+loadLanguages([
+  "rust",
+  "jsx",
+  "tsx",
+  "typescript",
+  "bash",
+  "nginx",
+  "docker",
+  "dockerfile",
+]);
+
+export default Prism;
+```
+
+```plaintext
+~/dev/deno/cubething/..
+  .git
+  ayu-colors
+  ✗ components
+  ✗ deps
+     markdown-it.ts
+     ✗ paths.ts
+     ✗ prismjs.ts
+  ✗ islands
+  models
+  ✗ routes
+  ✗ ★ static
+   .gitignore
+   .gitmodules
+   ★ cspell.json
+   deno.json
+   deno.lock
+   deploy.sh
+   dev.ts
+  󰡨 Dockerfile
+   import_map.json
+   main.ts
+   README.md
+   ✗ twind.config.ts
+```
 
 #### Automatic Timestamps
 
@@ -190,7 +241,7 @@ sudo npm i pm2 -g
 pm2 start main.ts --name test --interpreter="deno" --interpreter-args="run -A"
 ```
 
-This works just fine, navigating to port 8080 shows the site. But, I want the deployed site to be on a different port than the development port. To do this I added an environemnt check to my `main.ts`
+This works just fine, navigating to port 8080 shows the site. But, I want the deployed site to be on a different port than the development port. To do this I added an environment check to my `main.ts`
 
 `main.ts`
 
@@ -213,7 +264,7 @@ await start(manifest, {
 });
 ```
 
-Running a Fresh application directly through PM2 will cause erros due to the way Fresh caches the rendered artefacts. So, we need to create a deployment script, and run _that_ through PM2.
+Running a Fresh application directly through PM2 will cause errors due to the way Fresh caches the rendered artifacts. So, we need to create a deployment script, and run _that_ through PM2.
 
 `deploy.sh`
 
@@ -285,7 +336,7 @@ I wanted to get some practice deploying to the cloud, so I decided to deploy thi
 
 #### Setting up Docker and Azure
 
-The first thing was to install Docker on my machine. The installation was simple enough, and you can follow the [offical guide](https://docs.docker.com/desktop/install) for your OS.
+The first thing was to install Docker on my machine. The installation was simple enough, and you can follow the [official guide](https://docs.docker.com/desktop/install) for your OS.
 
 Then, I created a Container Registry on Azure. This can be accomplished through the portal, or [through the CLI](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli). The next step was to follow the instructions in the Quick Start blade.
 
@@ -295,7 +346,7 @@ Logging in proved to be difficult. In order to use `docker login`, I needed to i
 sudo apt install gnupg2 pass
 ```
 
-Then, in order to intialize my password manager, I ran the following:
+Then, in order to initialize my password manager, I ran the following:
 
 ```bash
 gpg --generate-key
@@ -319,13 +370,13 @@ I was then able to log in to my Azure container using the information provided i
 docker login mytestdomain.azurecr.io
 ```
 
-#### Creating the Fresh Container
+#### Containerizing the App
 
 Creating the container for the Fresh application was fairly simple. You can follow the instructions [on the Fresh page](https://fresh.deno.dev/docs/concepts/deployment).
 
 Create the Dockerfile:
 
-```Dockerfile
+```dockerfile
 FROM denoland/deno:1.25.0
 
 ARG GIT_REVISION
@@ -364,6 +415,4 @@ docker push mytestdomain.azurecr.io/deno
 
 Now the container is on the repo! The next step is to get it running.
 
-#### Creating the Container Application
-
-This one is easy. Just create a Container Application. On the portal, you will be given the option to select your previously created registry. Select that registry, and select the container you just pushed. Make sure to enable Ingress and select the appropriate port - in this case, port 8000.
+This one is easy. Just create a Container Application. On the portal, you will be given the option to select your previously created registry. Select that registry, and select the container you just pushed. Make sure to enable Ingress and select the appropriate port - in this case, port 8000. Wait for it to initialize, and your application will be running on an azure server :) Easy.

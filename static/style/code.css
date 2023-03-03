@@ -29,8 +29,6 @@
 code[class*="language-"],
 pre[class*="language-"] {
   color: #bfbdb6;
-  /* background: #0d1017; */
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; /* this is the default */
   /* The following properties are standard, please leave them as they are */
   font-size: 1em;
   direction: ltr;
