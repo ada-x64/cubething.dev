@@ -1,12 +1,5 @@
-import Prism from "prismjs";
-import "prismjs/components/prism-rust.js";
-import "prismjs/components/prism-jsx.js";
-import "prismjs/components/prism-tsx.js";
-import "prismjs/components/prism-typescript.js";
-import "prismjs/components/prism-bash.js";
-import "prismjs/components/prism-nginx.js";
-
-import MarkdownIt from "markdown-it";
+import Prism from "@/deps/prismjs.ts";
+import MarkdownIt from "@/deps/markdown-it.ts";
 import { Head } from "$fresh/src/runtime/head.ts";
 
 const md = MarkdownIt({

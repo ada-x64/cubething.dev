@@ -283,9 +283,11 @@ Now we have a simple blog routing through nginx, protected by ufw and SSL, and s
 
 I wanted to get some practice deploying to the cloud, so I decided to deploy this app to Azure in addition to my own domain just to test it. To do so I followed [this tutorial](https://www.codestack.be/blog/run-deno-containerized-web-application-on-microsoft-azure-container-registry/).
 
+#### Setting up Docker and Azure
+
 The first thing was to install Docker on my machine. The installation was simple enough, and you can follow the [offical guide](https://docs.docker.com/desktop/install) for your OS.
 
-Then, I created a Container Registry on Azure. This was simple. The next step was to follow the instructions in the Quick Start blade.
+Then, I created a Container Registry on Azure. This can be accomplished through the portal, or [through the CLI](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli). The next step was to follow the instructions in the Quick Start blade.
 
 Logging in proved to be difficult. In order to use `docker login`, I needed to install a few password management packages. This is what worked for me:
 
@@ -311,4 +313,57 @@ Once you've done this, you can always find your public keys again by running
 gpg --list-public-keys
 ```
 
-I was then able to log in to my Azure container.
+I was then able to log in to my Azure container using the information provided in the portal.
+
+```bash
+docker login mytestdomain.azurecr.io
+```
+
+#### Creating the Fresh Container
+
+Creating the container for the Fresh application was fairly simple. You can follow the instructions [on the Fresh page](https://fresh.deno.dev/docs/concepts/deployment).
+
+Create the Dockerfile:
+
+```Dockerfile
+FROM denoland/deno:1.25.0
+
+ARG GIT_REVISION
+ENV DENO_DEPLOYMENT_ID=${GIT_REVISION}
+
+WORKDIR /app
+
+COPY . .
+RUN deno cache main.ts --import-map=import_map.json
+
+EXPOSE 8000
+
+CMD ["run", "-A", "main.ts"]
+```
+
+Then, build the image:
+
+```bash
+docker build --build-arg GIT_REVISION=$(git rev-parse HEAD) -t my-fresh-app .
+```
+
+Feel free to run it to test it.
+
+The next step to deploy it is to push it to your azure repository. First, ensure you're logged in.
+
+```bash
+az acr login --name mytestdomain
+```
+
+Then, tag your container, and push it to the repository:
+
+```bash
+docker tag my-fresh-app mytestdomain.azurecr.io/deno
+docker push mytestdomain.azurecr.io/deno
+```
+
+Now the container is on the repo! The next step is to get it running.
+
+#### Creating the Container Application
+
+This one is easy. Just create a Container Application. On the portal, you will be given the option to select your previously created registry. Select that registry, and select the container you just pushed. Make sure to enable Ingress and select the appropriate port - in this case, port 8000.

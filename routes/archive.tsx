@@ -1,5 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getPosts, Post } from "@/utils/posts.ts";
+import { getPosts, Post } from "@/models/posts.ts";
 import Layout from "@/components/Layout.tsx";
 import PostCard from "@/components/PostCard.tsx";
 

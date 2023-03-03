@@ -1,5 +1,6 @@
 import { join } from "$std/path/posix.ts";
 import extract from "$std/encoding/front_matter/any.ts";
+import { PostsPath } from "@/deps/paths.ts";
 
 export interface Post {
   slug: string;
@@ -10,7 +11,7 @@ export interface Post {
 }
 
 export async function getPosts(max?: number): Promise<Post[]> {
-  const files = Deno.readDir("./posts");
+  const files = Deno.readDir(PostsPath);
   const promises = [];
   let count = 0;
   for await (const file of files) {
@@ -28,7 +29,7 @@ export async function getPosts(max?: number): Promise<Post[]> {
 }
 
 export async function getPost(slug: string): Promise<Post | null> {
-  const path = join("./posts", `${slug}.md`);
+  const path = join(PostsPath, `${slug}.md`);
   const text = await Deno.readTextFile(path);
   const mtime = (await Deno.stat(path)).mtime;
   const { attrs, body } = extract<Record<string, string>>(text);

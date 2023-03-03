@@ -1,5 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getPost, getTime, Post } from "@/utils/posts.ts";
+import { getPost, getTime, Post } from "@/models/posts.ts";
 import Layout from "@/components/Layout.tsx";
 import Markdown from "@/components/Markdown.tsx";
 

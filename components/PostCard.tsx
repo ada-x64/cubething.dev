@@ -1,4 +1,4 @@
-import { getTime, Post } from "@/utils/posts.ts";
+import { getTime, Post } from "@/models/posts.ts";
 
 export default function PostCard(props: { post: Post }) {
   const { post } = props;

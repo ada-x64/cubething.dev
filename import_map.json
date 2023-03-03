@@ -15,9 +15,6 @@
     "preact-render-to-string/": "https://esm.sh/v107/*preact-render-to-string@5.2.6/",
     "preact": "https://esm.sh/v107/preact@10.13.0",
     "preact/": "https://esm.sh/v107/preact@10.13.0/",
-    "prismjs": "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/+esm",
-    "prismjs/": "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/",
-    "markdown-it": "https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/+esm",
     "ayu": "./ayu-colors/src/colors.ts"
   },
   "scopes": {
