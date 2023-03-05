@@ -2,7 +2,7 @@ import MainNav from "@/components/MainNav.tsx";
 import { ComponentChildren } from "preact";
 import ArticleNav from "@/components/ArticleNav.tsx";
 import { Head } from "$fresh/src/runtime/head.ts";
-import Title from "@/islands/Title.tsx";
+import Article from "@/components/Article.tsx";
 
 export default function Layout({
   route,
@@ -23,14 +23,7 @@ export default function Layout({
         <div class="mx-auto flex min-h-screen">
           <MainNav route={route} />
           <ArticleNav />
-          <article
-            id="article"
-            class="order-2 max-w-screen-md px-16 md:mx-auto flex-auto flex flex-col"
-            tabIndex={0}
-          >
-            <Title route={route} />
-            {children}
-          </article>
+          <Article route={route} children={children} />
         </div>
       </main>
     </>

@@ -19,7 +19,7 @@ export default function Sidebar({
     <>
       <nav
         aria-label={ariaLabel}
-        class={`h-screen flex flex-auto px-4 text-xl font-sans pt-4 sticky top-0 self-start order-${order} opacity-100 transition-all ease-linear hover:opacity-100 justify-${justify}`}
+        class={`h-screen flex flex-auto px-4 text-xl font-sans pt-4 sticky top-0 self-start order-${order} opacity-100 transition-all ease-linear hover:opacity-100 justify-${justify} focus:opacity-100`}
         tabIndex={0}
         id={id}
       >

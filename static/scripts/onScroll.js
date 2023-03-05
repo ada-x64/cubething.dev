@@ -52,7 +52,7 @@ document.onreadystatechange = () => {
         lastScrollDirection = scrollDirection;
         timeoutId = setTimeout(() => {
           timeoutId = null;
-        }, 100);
+        }, 250);
       }
     };
 
@@ -63,7 +63,5 @@ document.onreadystatechange = () => {
     mainNav.onmouseexit = () => {
       mainNav.style.opacity = "1";
     };
-
-    setNavBig();
   }
 };

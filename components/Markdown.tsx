@@ -9,7 +9,7 @@ export default function renderMarkdown({ content }: { content: string }) {
       </Head>
       <div
         class="prose prose-zinc dark:prose-invert mb-8"
-        dangerouslySetInnerHTML={{ __html: MarkdownIt().render(content) }}
+        dangerouslySetInnerHTML={{ __html: MarkdownIt.render(content) }}
       >
       </div>
     </>
