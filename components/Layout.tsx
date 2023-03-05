@@ -19,7 +19,7 @@ export default function Layout({
         <script src="scripts/onScroll.js" />
       </Head>
 
-      <main class="dark:bg-zinc-900 dark:text-zinc-100 ">
+      <main class="bg-stone-100 text-stone-900 dark:bg-zinc-900 dark:text-zinc-100 ">
         <div class="mx-auto flex min-h-screen">
           <MainNav route={route} />
           <ArticleNav />

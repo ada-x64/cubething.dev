@@ -24,7 +24,7 @@ export default function Sidebar({
         id={id}
       >
         <div class="w-24">
-          <div class="flex flex-col flex-shrink-0 items-center pb-4 mb-4 border-b border-zinc-700 w-full text-4xl transition-all ease-linear">
+          <div class="flex flex-col flex-shrink-0 items-center pb-4 mb-4 border-b border-zinc-700 w-full text-4xl">
             {icon}
           </div>
           <div class="flex flex-col">{children}</div>

@@ -1,12 +1,35 @@
-svg:hover > * {
-  stroke-width: 4;
-  stroke: rgba(255, 255, 255, 1);
-  stroke-linejoin: round;
-  transition: 0.2s;
+:root {
+  --stone-900: rgb(28 25 23);
+  --stone-100: rgb(245 245 244);
+  --zinc-900: rgb(24 24 27);
+  --zinc-100: rgb(244 244 245);
+  --rose-500: rgb(244 63 94);
+  --amber-500: rgb(245 158 11);
 }
-svg > * {
-  stroke-width: 4;
-  stroke: rgba(255, 255, 255, 0.5);
+
+svg:hover * {
+  transition: all linear 0.125s;
+}
+
+svg * {
+  stroke-width: 3;
   stroke-linejoin: round;
-  transition: 0.2s;
+  transition: all linear 0.125s;
+}
+
+:not(.dark) svg:hover * {
+  stroke: var(--rose-500);
+}
+:not(.dark) svg * {
+  stroke: var(--stone-900);
+  fill: var(--stone-100);
+}
+
+.dark svg:hover * {
+  stroke: var(--amber-500);
+}
+
+.dark svg * {
+  fill: var(--zinc-900);
+  stroke: var(--zinc-100);
 }

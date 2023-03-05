@@ -10,7 +10,7 @@ export default function ArticleNav() {
       icon={<DarkModeToggle />}
       justify="left"
     >
-      {""}
+      <div class="flex"></div>
     </Sidebar>
   );
 }

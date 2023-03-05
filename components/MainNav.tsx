@@ -35,9 +35,9 @@ export default function Nav({ route }: { route: string }) {
             tabIndex={0}
             class={classNames(
               current
-                ? "text-white bg-zinc-900 outline-2"
-                : "text-white hover:outline-2 hover:outline-offset-4 hover:outline-white",
-              "px-2 py-1 mb-1 rounded-sm text-sm font-medium text-center",
+                ? "text-white bg-zinc-700 outline-2"
+                : "text-zinc-900 dark:text-zinc-300 dark:hover:text-amber-500 hover:text-rose-500",
+              "px-2 py-1 mb-1 rounded-sm text-sm font-medium text-center transition",
             )}
             aria-current={current ? "page" : undefined}
           >
