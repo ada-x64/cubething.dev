@@ -20,12 +20,12 @@ export default function Layout({
       </Head>
 
       <main class="dark:bg-zinc-900 dark:text-zinc-100 ">
-        <div class="mx-auto flex max-w-screen-lg min-h-screen">
+        <div class="mx-auto flex min-h-screen">
           <MainNav route={route} />
           <ArticleNav />
           <article
             id="article"
-            class="order-2 max-w-screen-md px-16 md:mx-auto flex flex-col"
+            class="order-2 max-w-screen-md px-16 md:mx-auto flex-auto flex flex-col"
             tabIndex={0}
           >
             <Title route={route} />

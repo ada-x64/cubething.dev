@@ -7,26 +7,38 @@ document.onreadystatechange = () => {
     const mainNav = document.getElementById("main-nav");
     const articleNav = document.getElementById("article-nav");
 
+    const hideNav = (nav) => {
+      nav.style.opacity = "0";
+      nav.onmouseleave = () => {
+        nav.style.opacity = "0";
+      };
+      nav.onmouseenter = () => {
+        nav.style.opacity = "1";
+      };
+    };
+
+    const showNav = (nav) => {
+      nav.style.opacity = "1";
+      nav.onmouseleave = null;
+      nav.onmouseenter = null;
+    };
+
     const setNavSmall = () => {
       // set header to text-3xl
       header.style.fontSize = "1.875rem";
       header.style.lineHeight = "2.25rem";
       // hide navs
-      mainNav.style.opacity = "0";
-      mainNav.style.visibility = "collapse";
-      articleNav.style.opacity = "0";
-      articleNav.style.visibility = "collapse";
+      hideNav(mainNav);
+      hideNav(articleNav);
     };
 
     const setNavBig = () => {
       // set header to text-4xl
       header.style.fontSize = "2.25rem";
       header.style.lineHeight = "2.5rem";
-      // show navs
-      mainNav.style.opacity = "1";
-      mainNav.style.visibility = "visible";
-      articleNav.style.opacity = "1";
-      articleNav.style.visibility = "visible";
+      // hide navs
+      showNav(mainNav);
+      showNav(articleNav);
     };
 
     const onScroll = () => {
@@ -34,17 +46,23 @@ document.onreadystatechange = () => {
         const scrollY = Math.floor(window.scrollY);
         const scrollDirection = Math.sign(scrollY - lastScrollY);
         if (lastScrollDirection != scrollDirection) {
-          (scrollDirection > 0) ? setNavSmall() : setNavBig();
+          scrollDirection > 0 ? setNavSmall() : setNavBig();
         }
         lastScrollY = scrollY;
         lastScrollDirection = scrollDirection;
         timeoutId = setTimeout(() => {
           timeoutId = null;
-        }, 500);
+        }, 100);
       }
     };
 
     window.onscroll = () => onScroll();
+    mainNav.onmouseenter = () => {
+      mainNav.style.opacity = "1";
+    };
+    mainNav.onmouseexit = () => {
+      mainNav.style.opacity = "1";
+    };
 
     setNavBig();
   }

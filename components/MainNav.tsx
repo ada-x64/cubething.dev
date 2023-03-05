@@ -23,6 +23,7 @@ export default function Nav({ route }: { route: string }) {
       id={"main-nav"}
       ariaLabel={"main-nav"}
       icon={<HomeBtn />}
+      justify="right"
     >
       {navigation.map((item) => {
         const current = item.href === route;

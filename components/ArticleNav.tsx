@@ -8,6 +8,7 @@ export default function ArticleNav() {
       id="article-nav"
       ariaLabel="article-nav"
       icon={<DarkModeToggle />}
+      justify="left"
     >
       {""}
     </Sidebar>
