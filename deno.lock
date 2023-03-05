@@ -1,18 +1,6 @@
 {
   "version": "2",
   "remote": {
-    "https://cdn.jsdelivr.net/npm/@types/markdown-it@12.2.3/index.d.ts": "ee0af0f2b8d3b4d0baf669f2ff6fcef4a8816a473c894cc7c905029f7505fed0",
-    "https://cdn.jsdelivr.net/npm/entities@3.0.1/lib/maps/entities.json/+esm": "e3049fc617db3012746a52d34be2042c1fbeb137dbc618c94284b984a634a48c",
-    "https://cdn.jsdelivr.net/npm/linkify-it@4.0.1/+esm": "2fbdf3cdd83dcaf55c51cc81d5c347665ed2cafff6abb7974d79875166c218c1",
-    "https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/+esm": "c572a629465748580e67c40890f400f46091f4a853c693d494bc5cfde01567f9",
-    "https://cdn.jsdelivr.net/npm/mdurl@1.0.1/+esm": "ca63f2967056e92b6359348efa307153140723fc780e1c0bb60b93e5f6a80a9d",
-    "https://cdn.jsdelivr.net/npm/prismjs@1.26.0/+esm": "53ffb736da1f43060c347d0c18827edda3294cffb71fbff743cc511e32b1fc0f",
-    "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/+esm": "cff11ee662cb77eb949bbf0c1ff78e43298cbfa4f9c78031dd2cd1e8a8b79cb9",
-    "https://cdn.jsdelivr.net/npm/uc.micro@1.0.6/+esm": "afe5bbdb5c0f546d6f22728a9841a8162cbea4b791e948157b7ec78155462e1e",
-    "https://cdn.jsdelivr.net/npm/uc.micro@1.0.6/categories/Cc/regex/+esm": "cb870de9a508314af4b1e683a20b1a355b8bfd1ee1e10b0b8a67a8cb1166cc6c",
-    "https://cdn.jsdelivr.net/npm/uc.micro@1.0.6/categories/P/regex/+esm": "77260dcc91c93daefd14bfee6498e5ffe0c3313254f31f0723df766dcbba2392",
-    "https://cdn.jsdelivr.net/npm/uc.micro@1.0.6/categories/Z/regex/+esm": "2fb2e7d288319c924a9953d3a7c1d26aee6a0d982332fcb043afeb9119791396",
-    "https://cdn.jsdelivr.net/npm/uc.micro@1.0.6/properties/Any/regex/+esm": "9baa0329faec077f094817a0d3a7ab86e3b57a54809a70609aa3a8b17ab9e0d3",
     "https://deno.land/std@0.140.0/_util/assert.ts": "e94f2eb37cebd7f199952e242c77654e43333c1ac4c5c700e929ea3aa5489f74",
     "https://deno.land/std@0.140.0/_util/os.ts": "3b4c6e27febd119d36a416d7a97bd3b0251b77c88942c8f16ee5953ea13e2e49",
     "https://deno.land/std@0.140.0/fs/_util.ts": "0fb24eb4bfebc2c194fb1afdb42b9c3dda12e368f43e8f2321f84fc77d42cb0f",
@@ -208,7 +196,6 @@
   "npm": {
     "specifiers": {
       "@types/markdown-it": "@types/markdown-it@12.2.3",
-      "@types/prismjs": "@types/prismjs@1.26.0",
       "@types/prismjs@1.26.0": "@types/prismjs@1.26.0",
       "markdown-it": "markdown-it@13.0.1",
       "prismjs": "prismjs@1.29.0"
