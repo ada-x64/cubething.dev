@@ -18,7 +18,12 @@ function classNames(...classes: string[]) {
 
 export default function Nav({ route }: { route: string }) {
   return (
-    <Sidebar order={1} ariaLabel={"main-nav"} icon={<HomeBtn />}>
+    <Sidebar
+      order={1}
+      id={"main-nav"}
+      ariaLabel={"main-nav"}
+      icon={<HomeBtn />}
+    >
       {navigation.map((item) => {
         const current = item.href === route;
         return (

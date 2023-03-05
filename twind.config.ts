@@ -31,5 +31,5 @@ export default {
     },
   },
   darkMode: "class",
-  safelist: ["text-3xl", "text-4xl", "text-5xl"],
+  safelist: ["text-3xl", "text-4xl", "text-5xl", "visible", "collapsed"],
 } as Options;

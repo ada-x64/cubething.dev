@@ -1,11 +1,11 @@
 svg:hover > * {
-  stroke-width: 2;
+  stroke-width: 4;
   stroke: rgba(255, 255, 255, 1);
   stroke-linejoin: round;
   transition: 0.2s;
 }
 svg > * {
-  stroke-width: 2;
+  stroke-width: 4;
   stroke: rgba(255, 255, 255, 0.5);
   stroke-linejoin: round;
   transition: 0.2s;

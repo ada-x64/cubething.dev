@@ -16,6 +16,7 @@ export default function Layout({
       <Head>
         <link rel="stylesheet" href="style/svg.css" />
         <link rel="stylesheet" href="style/font.css" />
+        <script src="scripts/onScroll.js" />
       </Head>
 
       <main class="dark:bg-zinc-900 dark:text-zinc-100 ">
@@ -24,7 +25,7 @@ export default function Layout({
           <ArticleNav />
           <article
             id="article"
-            class="order-2 max-w-screen-md px-16 md:mx-auto border-x border-zinc-700 flex flex-col"
+            class="order-2 max-w-screen-md px-16 md:mx-auto flex flex-col"
             tabIndex={0}
           >
             <Title route={route} />
