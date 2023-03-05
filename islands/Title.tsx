@@ -7,8 +7,8 @@ export default function Title({ route }: { route: string }) {
     <>
       <h1
         id="header"
-        class="text-center py-4 mb-[0.5em] font-bold font-header text-rose-500 dark:text-amber-500 lowercase sticky top-0 self-start transition-all ease-linear border-b border-zinc-700 dark:bg-zinc-900 bg-stone-100 w-full z-50"
-        style="font-size: 2.25rem; line-height:2.5rem;"
+        class="text-center py-4 mb-[0.5em] font-bold font-header text-rose-500 dark:text-amber-500 lowercase sticky top-0 self-start border-b border-zinc-700 dark:bg-zinc-900 bg-stone-100 w-full z-50"
+        style="font-size: 2.25rem; line-height:2.5rem; transition: 0.125s linear; transition-property: color, height, margin, padding, font-size;"
       >
         <button
           title={`${title} - go to top`}
