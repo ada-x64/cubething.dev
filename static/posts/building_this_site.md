@@ -466,24 +466,21 @@ OLDREV="$GIT_DIR"/$1
 NEWREV="$GIT_DIR"/$2
 REF="$GIT_DIR"/$3
 
-while read "$OLDREV" "$NEWREV" "$REF"
-do
-    if [[ $REF = "$GIT_DIR"/refs/heads/$BRANCH ]];
+if [[ $REF = "$GIT_DIR"/refs/heads/$BRANCH ]];
+then
+        echo "Ref $REF received. Deploying ${BRANCH} branch to production..."
+        if [ -d "$TARGET" ]
         then
-                echo "Ref $REF received. Deploying ${BRANCH} branch to production..."
-                if [ -d "$TARGET" ]
-                then
-                    rm -rf "$TARGET"
-                fi
-                mkdir -p "$TARGET"
-                git --work-tree="$TARGET" --git-dir="$GIT_DIR" checkout -f
-
-                "$TARGET"/deploy.sh "$TARGET"
-
-        else
-                echo "Ref $REF received. Doing nothing: only the ${BRANCH} branch may be deployed on this server."
+            rm -rf "$TARGET"
         fi
-done
+        mkdir -p "$TARGET"
+        git --work-tree="$TARGET" --git-dir="$GIT_DIR" checkout -f
+
+        "$TARGET"/deploy.sh "$TARGET"
+
+else
+        echo "Ref $REF received. Doing nothing: only the ${BRANCH} branch may be deployed on this server."
+fi
 ```
 
 #### GitHub Actions
