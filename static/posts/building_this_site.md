@@ -458,13 +458,13 @@ Copy the post-update.sample file. I've added this code to it (adapted from [@bmi
 ```bash
 #!/bin/bash
 
-OLDREV=$1
-NEWREV=$2
-REF=$3
-
 TARGET="/var/www/"
 GIT_DIR="/mnt/hotplate/repos/cubething.git"
 BRANCH="main"
+
+OLDREV="$GIT_DIR"/$1
+NEWREV="$GIT_DIR"/$2
+REF="$GIT_DIR"/$3
 
 while read "$OLDREV" "$NEWREV" "$REF"
 do
