@@ -4,6 +4,7 @@ PWD=$1
 MAIN="$PWD"/main.ts
 GIT_REVISION=$(git rev-parse HEAD)
 
+cd "$PWD";
 sudo deno cache "$MAIN"
 
 tee "$PWD"/run.sh << EOF
