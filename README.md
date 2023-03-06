@@ -1,11 +1,5 @@
-# NOTE:
+# cubething.dev
 
-- Downgraded from gfm 2.0.0 to 1.30.0 due to Katex supply chain issues. Can no longer render math syntax.
-  - This will probably be fixed by the time it's relevant again.
+This is the source code for https://cubething.dev , the personal website of Phoenix Ada Rose Mandala (this user).
 
-# TODO:
-
-- fix up markdown styling. possibly switch libraries.
-  - https://deno.land/x/markdown_renderer@0.1.3
-- Error pages
-- Git hooks - Automatically update front matter when committing changes to a post
+Content presented here is subject to change. For an overview of the contents, see https://cubething.dev/articles/building_this_site.
