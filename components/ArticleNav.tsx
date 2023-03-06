@@ -4,14 +4,25 @@ import Sidebar, {
   ItemStyle,
 } from "@/components/Sidebar.tsx";
 
-export const navigation = [
+type tNav = { name: string; href: string }[];
+
+export const article_nav: tNav = [
   {
     name: "top",
     href: "#",
   },
 ];
 
-export default function ArticleNav() {
+export const all_nav: tNav = [];
+
+const classes = [ItemSelectableStyle, ItemStyle].join(" ");
+
+export default function ArticleNav({ route }: { route: string }) {
+  let navigation = all_nav;
+  if (route.includes("articles")) {
+    navigation = navigation.concat(article_nav);
+  }
+
   return (
     <Sidebar
       order={3}
@@ -21,8 +32,6 @@ export default function ArticleNav() {
       justify="left"
     >
       {navigation.map((item) => {
-        const classes = [ItemSelectableStyle, ItemStyle].join(" ");
-
         return (
           <a
             key={item.name}

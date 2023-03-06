@@ -3,7 +3,7 @@ title: Building This Site
 snippet: How I built this website using Deno, Fresh, and Tailwind CSS. Also includes server setup with Debian, OpenSSH, and Nginx.
 ---
 
-With the perpetual living death of social media, I've been looking for a place to put my spare thoughts - hopefully one that isn't owned by a corproate mass whose sole goal is to monetize my inner monologue. To that end I've decided to make a little blog. It's also served as a nice design and technical challenge, and I'm pretty happy with the results so far.
+With the perpetual living death of social media, I've been looking for a place to put my spare thoughts - hopefully one that isn't owned by a corporate mass whose sole goal is to monetize my inner monologue. To that end I've decided to make a little blog. It's also served as a nice design and technical challenge, and I'm pretty happy with the results so far.
 
 [[toc]]
 
@@ -13,7 +13,7 @@ The first step was to set up a server machine.
 
 ### SSH
 
-When I'm out and about I always miss having my PC at my fingertips. As of writing, my build is running Debian Bookworm on a Ryzen 9, and anything else feels unacceptably slow. So my original goal in setting up a server was to have secure network-based access to my PC. To do this I installed OpenSSH, set up SSHD to run from an alternate port, and set up TOTP MFA with [Linux PAM](https://linux-pam.org). I followed [this blog post by chrisjrob](https://chrisjrob.com/2011/04/05/dynamic-dns-and-remote-ssh-and-vnc/) for SSH. The OATH setup largely followed the Arch Wiki guide for setting up [pam_oath](https://wiki.archlinux.org/title/Pam_oath), so I suggest reading that if you're interested in the process. Once I'd gotten SSH set up and secured on my local network, I got a domain from [FreeDNS](https://freedns.afraid.org) for testing. This worked well, but was very slow, so I ended up buying this domain ([ https://cubething.dev ](https://cubething.dev)).
+When I'm out and about I always miss having my PC at my fingertips. As of writing, my build is running Debian Bookworm on a Ryzen 9, and anything else feels unacceptably slow. So my original goal in setting up a server was to have secure network-based access to my PC. To do this I installed OpenSSH, set up SSHD to run from an alternate port, and set up TOTP MFA with [Linux PAM](https://linux-pam.org). I followed [this blog post by chrisjrob](https://chrisjrob.com/2011/04/05/dynamic-dns-and-remote-ssh-and-vnc/) for SSH. The OATH setup largely followed the Arch Wiki guide for setting up [pam_oath](https://wiki.archlinux.org/title/Pam_oath), so I suggest reading that if you're interested in the process. Once I'd gotten SSH set up and secured on my local network, I got a domain from [FreeDNS](https://freedns.afraid.org) for testing. This worked well, but was very slow, so I ended up buying this domain ([https://cubething.dev](https://cubething.dev)).
 
 ### nginx
 
@@ -115,7 +115,7 @@ This site is built with Deno on the Fresh framework.
 
 [Deno](https://deno.land) is a server-side JavaScript runtime with native Typescript support. It is written in Rust and is focused on security and web compatibility. The original goal for Deno was to be a successor runtime to Node.js. It was announced in a 2018 talk called [10 Things I Regret about Node.js](https://www.youtube.com/watch?v=M3BM9TB-8yA). There was quite a bit of buzz around it when it first launched, but that hype has died down a bit in favor of [Bun](https://bun.sh). Being a Rust programmer, of course I had heard of Deno, and being a Typescript programmer, I wanted to give a native TS runtime a shot. So I decided to give it a try and built this website with it.
 
-My experience with Deno has been pretty good, though there are a few things I struggled with. Installing and using Deno has been a breeze. The native typescript support is fantastic, and the global cache means your repository doesn't get cluttered with nonsense - and you save disk space. My main problem is that some TypeScript dependency resolution fails. For example, this website is using [ PrismJS ](https://prismjs.com) to highlight code blocks. However, the type specifications for language extensions fail to load, causing around 1 second of latency between builds while it tries to fetch the (non-existent) dependencies. This is likely a compatibility issue, since Deno doesn't aim for total Node.js interoperation. There is probably workaround for this, but I have to find this. However, I also got this error when loading in the Katex dependencies from [deno gfm](https://deno.land/x/gfm@0.2.1), which is used in the officially supported Fresh framework.
+My experience with Deno has been pretty good, though there are a few things I struggled with. Installing and using Deno has been a breeze. The native typescript support is fantastic, and the global cache means your repository doesn't get cluttered with nonsense - and you save disk space. My main problem is that some TypeScript dependency resolution fails. For example, this website is using [PrismJS](https://prismjs.com) to highlight code blocks. However, the type specifications for language extensions fail to load, causing around 1 second of latency between builds while it tries to fetch the (non-existent) dependencies. This is a compatibility issue - loading ESModules from a CDN often results in a lack of type definitions, especially for packages which don't include types out of the box. I haven't had luck with _any_ CDN, which is a huge problem for Deno's proposition to use CDN based dependency management. More on this [below](#dependency_management).
 
 Aside from these few issues, my experience with Deno has been pretty good. It's fantastic for spinning up quick TS scripts, and using `deno compile` makes it easy to spin up executables. Though, I wonder to what extent this is a good idea. Why not opt for a scripting language that has been designed for server-side use, like Python or Ruby, and which have sane defaults? Perhaps Deno's safety model is appealing, though I wonder if the executable sizes and speeds are worth the tradeoff. (I'll have to look into that.)
 
@@ -123,13 +123,13 @@ Aside from these few issues, my experience with Deno has been pretty good. It's 
 
 Anyways, let's talk about how this site was actually built.
 
-[Fresh](https://fresh.deno.dev) is a server-side rendering framework based on the [islands architecture](https://jasonformat.com/islands-architecture/). It's built with speed in mind - and yeah, it's fast! I have not measured the latency or compared it to Node.js, but there is a palpable difference in performance. Fresh gives you the advantage of a modern development experience using Preact (a lightweight React alternative) and comes with a Twind plugin (a lightweight Tailwind alternative). So, you get the convenience of working with JSX/TSX and CSS-in-JS and the speed of server-side rendering.
+[Fresh](https://fresh.deno.dev) is a server-side rendering framework based on the [islands architecture](https://jasonformat.com/islands-architecture/). It's built with speed in mind - and yeah, it's fast! I have not measured the latency or compared it to Node.js, but there is a palpable difference in performance. Fresh gives you the advantage of a modern development experience using [Preact](https://preactjs.com) (a lightweight React alternative) and comes with a [Twind](https://twind.style) plugin (a lightweight Tailwind alternative). So, you get the convenience of working with JSX/TSX and CSS-in-JS and the speed of server-side rendering.
 
 Almost everything is statically rendered on the backend. Only the components stored in the `islands/` directory will be rendered client-side. The biggest trade-off of this design IMO is that you may not get access to tools like the React inspector. For this website, that was not an issue anyways.
 
-### Markdown and Dependency Management
+### Dependency Management
 
-To create the blog, I followed [this blog post](https://deno.com/blog/build-a-blog-with-fresh). However, I didn't particularly like the way gfm renders markdown, so I switched to [markdown-it](https://github.com/markdown-it/markdown-it). This was a foreign dependency!
+To create the blog, I followed [this Deno.com blog post](https://deno.com/blog/build-a-blog-with-fresh). However, I didn't particularly like the way gfm renders markdown, so I switched to [markdown-it](https://github.com/markdown-it/markdown-it). This was a foreign dependency!
 
 There are several ways to install dependencies in Deno. The primary option is to use a direct URL import.
 
@@ -139,11 +139,9 @@ import { foobar } from "https://some.example.url/mod.ts";
 
 If you're building an executable application (like a blog), you're encouraged to use an [import map](https://deno.land/manual@v1.31.1/basics/import_maps) to manage your dependencies. However, if you're building a library, you're encouraged to use a [`deps` module](https://deno.land/manual@v1.31.1/examples/manage_dependencies). This is slightly confusing, but not a huge issue.
 
-It can be very annoying to manually enter the URLs every time you want to import something. Thankfully, there are several CDNs out there which host Deno-compatible modules. The officially deigned options are [deno.land/x/](https://deno.land/x/), which hosts Deno-specific libraries; [skypack.dev](https://skypack.dev), which is basically a browser bundler for NPM packages; and [esm.sh](https://esm.sh) which is specifically designed for ESM libraries. Deno.land/x/ works great, obviously. Skypack's search seems broken, so I haven't been able to try it. I was initially excited about esm.sh because they offer a [CLI](https://esm.sh/#cli) - but they do not offer a search functionality at all. So my process has been `npm search $PKG`; `deno task esm:add $PKG`. However, most of the modules I need are not available through esm.sh. So, I tried using [jsdelivr](https://jsdelivr.com), but Deno's import maps can't grab types independently (cannot find the module located at `index.ts`). The best option I've found is just to use the NPM package directly (`import {foo} from "npm:/SomePkg"`).
+It can be very annoying to manually enter the URLs every time you want to import something. There are several CDNs out there which claim to host Deno-compatible modules. The officially deigned options are [deno.land/x/](https://deno.land/x/), which hosts Deno-specific libraries; [skypack.dev](https://skypack.dev), which is basically a browser bundler for NPM packages; and [esm.sh](https://esm.sh) which is specifically designed for ESM libraries. Deno.land/x/ works great, obviously. Skypack's search seems broken, so I haven't been able to try it. I was initially excited about esm.sh because they offer a [CLI](https://esm.sh/#cli) - but they do not offer a search functionality at all. So my process has been `npm search $PKG`; `deno task esm:add $PKG`. However, most of the modules I need are not available through esm.sh. So, I tried using [jsdelivr](https://jsdelivr.com), but Deno's import maps can't grab types independently (cannot find the module located at `index.ts`). The best option I've found is just to use the NPM package directly (`import {foo} from "npm:/SomePkg"`).
 
 Again, because Node.js uses CommonJS, not every module will be compatible with Deno. If you run into this issue, you can polyfill the import map to override any missing dependencies, such as `fs`.
-
-`esm.sh` worked just fine for importing PrismJS. But `markdown-it` is not included on esm.sh. However, Deno now offers direct npm compatibility. You can specify a dependency as just `npm:/some-package`. This worked just fine for `markdown-it`.
 
 Honestly, Deno's dependency management - one of it's core features - is kind of a mess! There is no centralized method of specifying dependencies, which makes it inconvenient to use, and actively cost me a day and a half of fiddling around with compatible CDNs.
 
@@ -198,7 +196,9 @@ export default Prism;
    ✗ twind.config.ts
 ```
 
-#### Automatic Timestamps
+This boils down to the single responsibility principle. Each module should have one responsibility - in this case, our deps/ modules should have the responsibility of loading in dependencies.
+
+### Automatic Timestamps
 
 One of the things I changed from the Fresh blog template was to remove timestamps from the frontmatter and instead detect the last modified date. On linux, this is the file's `mtime` (modified time). Deno makes it easy to detect file stats. The code below is fairly self-explanatory:
 
@@ -226,17 +226,21 @@ The ease with which Deno can perform I/O operations is definitely one of its str
 
 Once the blog was in place and I was rendering basic Markdown, I needed to style the site. Fresh comes with a [twind](https://twind.style) plugin, and will prompt you to install it on project initialization, so I was good to go. However, rendering Markdown on the fly meant that twind wouldn't be able to pre-load the right styles. Of course, there is a solution, the [typography plugin](https://tailwindcss.com/docs/typography-plugin). Luckily, [twind supports this](https://twind.style/packages/@twind/preset-typography) (and many other plugins).
 
-Styling with Tailwind was pretty straightforward. There are a few considerations that need to be made when using Fresh, for instance you'll need to add any dynamically rendered styles to your safelist - but this strikes me as true in any dynamic environment.
+Styling with Tailwind was pretty straightforward. There are a few considerations that need to be made when using Fresh, for instance you'll need to add any dynamically rendered styles to your safelist - but this strikes me as true in any dynamic environment. Listing styles directly in javascript is nice conceptually, but ends up being a horrible mess for dynamic content. A lot of the time I'm just copy-pasting code around (Tailwind discourages creating wrapper classes). In addition, creating a single string with sometimes 13 classes in it is ugly. The easiest solution I found was to wrap them in an array and join them, though I'm sure a SCSS-like nested map would be possible.
 
-There was one issue I had when styling. I wanted to include some hand-made SVGs on the site, and I wanted them to be served as static files. I could not figure out a good way to import these files using Fresh's static serving. I ended up copying the SVG files into TSX components. This had the added benefit of making them far more interactable, though I had to manually edit the tags to remove inkscape-specific XML.
+In addition to CSS styling, I wanted to include some hand-made SVGs on the site, and I wanted them to be served as static files. I could not figure out a good way to import these files using Fresh's static serving. I ended up copying the SVG files into TSX components. This had the added benefit of making them far more interactable, though I had to manually edit the tags to remove inkscape-specific XML.
 
 This site also makes an attempt to be screen-reader and tab-through friendly. I use these technologies a lot myself.
 
 ## Deploying
 
+Once the site was built, I needed to make it available for consumption. There are two options: self-hosting and cloud hosting. I'm opting to self-host because I don't want to incur any accidental costs. I also want access to my machine from a convenient domain - and although this is possible to do through a cloud server (essentially creating a VPN), I want to reduce latency as much as possible. However, I figured that deploying to the cloud could be useful practice, so I go over that in this article as well.
+
 ### Local Deployment with Nginx
 
-In order to deploy to nginx, you need to set up a proxy. Essentially, this will tell the server to look at an application which is hosted at a localhost port. So, we need some way to daemonize our Deno process. There are many Node.js process managers, but the only one which will work with Deno (or any other interpreter) is [PM2](https://pm2.keymetrics.io). To run a deno process in PM2, use the `--interpreter` and `--interpreter-args` flags.
+#### Daemonizing Deno with PM2
+
+In order to deploy to nginx, you need to set up a proxy. Essentially, this will tell the server to look at an application which is hosted at a localhost port. So, we need some way to daemonize our Deno process. There are many Node.js process managers, but the only one which will work with Deno (or any other interpreter) is [PM2](https://pm2.keymetrics.io). PM2 will daemonize the process and load balance for you. To run a deno process in PM2, use the `--interpreter` and `--interpreter-args` flags.
 
 ```bash
 sudo npm i pm2 -g
@@ -342,6 +346,8 @@ The first thing was to install Docker on my machine. The installation was simple
 
 Then, I created a Container Registry on Azure. This can be accomplished through the portal, or [through the CLI](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli). The next step was to follow the instructions in the Quick Start blade.
 
+#### Docker Login - Password Management
+
 Logging in proved to be difficult. In order to use `docker login`, I needed to install a few password management packages. This is what worked for me:
 
 ```bash
@@ -416,6 +422,8 @@ docker push mytestdomain.azurecr.io/deno
 ```
 
 Now the container is on the repo! The next step is to get it running.
+
+#### Running the Web App
 
 This one is easy. Just create a Container Application. On the portal, you will be given the option to select your previously created registry. Select that registry, and select the container you just pushed. Make sure to enable Ingress and select the appropriate port - in this case, port 8000. Wait for it to initialize, and your application will be running on an azure server :) Easy.
 

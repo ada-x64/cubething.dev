@@ -27,7 +27,7 @@ export default function Layout({
       >
         <div class={TwClass(["mx-auto", "flex", "min-h-screen"])}>
           <MainNav route={route} />
-          <ArticleNav />
+          <ArticleNav route={route} />
           <Article title={title.toLowerCase()} children={children} />
         </div>
       </main>

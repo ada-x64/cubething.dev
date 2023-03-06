@@ -1,10 +1,10 @@
 export default function TwClass(
   params:
     | {
-      light?: string[];
-      dark?: string[];
-    }
-    | string[],
+        light?: string[];
+        dark?: string[];
+      }
+    | string[]
 ) {
   if (Array.isArray(params)) {
     return params.join(" ");
