@@ -501,6 +501,8 @@ PWD=$1
 MAIN="$PWD"/main.ts
 GIT_REVISION=$(git rev-parse HEAD)
 
+# cd to $PWD so deno imports resolve
+cd "$PWD";
 sudo deno cache "$MAIN"
 
 tee "$PWD"/run.sh << EOF
@@ -511,12 +513,16 @@ deno run -A "$MAIN"
 
 EOF
 
-sudo pm2 delete cubething.dev
-sudo pm2 start "$PWD"/run.sh --name cubething.dev
+sudo pm2 delete YOUR_SITE
+sudo pm2 start "$PWD"/run.sh --name YOUR_SITE
 sudo pm2 save
 ```
 
+Now, every time I push to the main branch on my local bare repo, it will clone the repo to /var/www and execute the deployment script. That's CD, baby!! CI would be similar, except that we would run some linting and typechecking before accepting the push. This would go in the pre-update script in the bare repo.
+
 #### GitHub Actions
+
+(todo: Automatically push from bare repo to GitHub. Implement Azure CD with Docker and Github Actions.)
 
 ## Concluding Thoughts
 
