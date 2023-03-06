@@ -3,6 +3,7 @@ import { Head } from "$fresh/src/runtime/head.ts";
 export default function HeadComponent() {
   return (
     <Head>
+      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       <link rel="stylesheet" href="/style/svg.css" />
       <link rel="stylesheet" href="/style/font.css" />
       <link rel="stylesheet" href="/style/toc.css" />
