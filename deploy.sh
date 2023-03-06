@@ -2,7 +2,7 @@
 
 PWD=$1
 
-tee "$PWD"/run.sh << EOF
+cat "$PWD"/run.sh << EOF
 
 MAIN="$PWD"/main.ts
 export DENO_PORT=3000

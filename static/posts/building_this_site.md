@@ -458,15 +458,12 @@ Copy the post-update.sample file. I've added this code to it (adapted from [@bmi
 ```bash
 #!/bin/bash
 
-TARGET="/var/www/"
-GIT_DIR="/mnt/hotplate/repos/cubething.git"
+TARGET="/var/www"
+GIT_DIR="YOUR_DIRECTORY.git"
 BRANCH="main"
+REF="$GIT_DIR"/$1
 
-OLDREV="$GIT_DIR"/$1
-NEWREV="$GIT_DIR"/$2
-REF="$GIT_DIR"/$3
-
-if [[ $REF = "$GIT_DIR"/refs/heads/$BRANCH ]];
+if [[ $REF = "$GIT_DIR"/refs/heads/"$BRANCH" ]];
 then
         echo "Ref $REF received. Deploying ${BRANCH} branch to production..."
         if [ -d "$TARGET" ]
@@ -476,11 +473,48 @@ then
         mkdir -p "$TARGET"
         git --work-tree="$TARGET" --git-dir="$GIT_DIR" checkout -f
 
-        "$TARGET"/deploy.sh "$TARGET"
+        DEPLOY="$TARGET"/deploy.sh
+
+        chmod +x "$DEPLOY"
+        $DEPLOY "$TARGET"
 
 else
         echo "Ref $REF received. Doing nothing: only the ${BRANCH} branch may be deployed on this server."
 fi
+```
+
+Since /var/www is a root directory, we'll need to execute this as root. So, rename the above to `post-update.sudo` and create the following `post-update` file:
+
+```bash
+#!/bin/bash
+sudo YOUR_DIRECTORY.git/hooks/post-update.sudo "$1"
+```
+
+This will execute the update script as root.
+
+In addition, I've updated `deploy.sh` to automatically run pm2:
+
+```bash
+#!/bin/bash
+
+PWD=$1
+
+cat "$PWD"/run.sh << EOF
+
+MAIN="$PWD"/main.ts
+export DENO_PORT=3000
+
+GIT_REVISION=\$(git rev-parse HEAD)
+export DENO_DEPLOYMENT_ID=\${GIT_REVISION}
+
+deno cache "\$MAIN"
+deno run -A "\$MAIN"
+
+EOF
+
+sudo pm2 delete YOUR_SITE
+sudo pm2 start "$PWD"/run.sh --name YOUR_SITE
+sudo pm2 save
 ```
 
 #### GitHub Actions
