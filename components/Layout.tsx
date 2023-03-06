@@ -2,8 +2,9 @@ import MainNav from "@/components/MainNav.tsx";
 import { ComponentChildren } from "preact";
 import ArticleNav from "@/components/ArticleNav.tsx";
 import Article from "@/components/Article.tsx";
-import Head from "@/components/Head.tsx";
+import HeadComponent from "@/components/Head.tsx";
 import TwClass from "@/deps/tw-class.ts";
+import { Head } from "$fresh/src/runtime/head.ts";
 
 export default function Layout({
   route,
@@ -16,7 +17,10 @@ export default function Layout({
 }) {
   return (
     <>
-      <Head />
+      <HeadComponent />
+      <Head>
+        <title>{`< ${title.toLowerCase()} />`}</title>
+      </Head>
       <main
         class={TwClass([
           "bg-stone-100",
