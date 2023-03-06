@@ -433,7 +433,57 @@ Running the build script every time is annoying. Let's integrate CI/CD.
 
 #### Git Hooks and Self-Hosted Repositories
 
-It is entirely possible to run hooks
+For a self-hosted website, it is common practice to have a bare Git repository to store your files. To create a bare git repository, do the following:
+
+```bash
+mkdir YOUR_SITE.git
+git init --bare YOUR_SITE.git
+```
+
+It's customary to add the .git extension, but as per usual extensions are semantic only. A bare repository is just the git info. There is no file replication here, only the raw compressed data. This is useful for accessing your repository from multiple machines, and for perfoming CI/CD with git hooks.
+
+Git hooks are just scripts that run on certain git events. ([More here.](https://www.atlassian.com/git/tutorials/git-hooks)) We're only going to need server-side git hooks. In particular, we'll only need `post-update`. So, let's make it!
+
+```bash
+ls YOUR_SITE.git/hooks
+applypatch-msg.sample      pre-applypatch.sample      pre-rebase.sample
+commit-msg.sample          pre-commit.sample          pre-receive.sample
+fsmonitor-watchman.sample  pre-merge-commit.sample    push-to-checkout.sample
+post-update                prepare-commit-msg.sample  update.sample
+post-update.sample         pre-push.sample
+```
+
+Copy the post-update.sample file. I've added this code to it (adapted from [@bmiddha/deploy-with-git-hooks](https://github.com/bmiddha/deploy-with-git-hooks)):
+
+```bash
+#!/bin/bash
+
+OLDREV=$1
+NEWREV=$2
+REF=$3
+
+TARGET="/var/www/"
+GIT_DIR="/mnt/hotplate/repos/cubething.git"
+BRANCH="main"
+
+while read "$OLDREV" "$NEWREV" "$REF"
+do
+        if [[ $REF = refs/heads/$BRANCH ]];
+        then
+                echo "Ref $REF received. Deploying ${BRANCH} branch to production..."
+                if [ -d "$TARGET" ]
+                then
+                    rm -rf "$TARGET"
+                fi
+                mkdir -p "$TARGET"
+                git --work-tree="$TARGET" --git-dir="$GIT_DIR" checkout -f
+                pm2 start $TARGET/deploy.sh
+
+        else
+                echo "Ref $REF received. Doing nothing: only the ${BRANCH} branch may be deployed on this server."
+        fi
+done
+```
 
 #### GitHub Actions
 
