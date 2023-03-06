@@ -4,7 +4,7 @@
 }
 
 .prose a:hover {
-  color: var(--sky-600);
+  color: var(--zinc-400);
   transition: 0.125s;
 }
 .prose a {
