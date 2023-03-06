@@ -498,22 +498,21 @@ In addition, I've updated `deploy.sh` to automatically run pm2:
 #!/bin/bash
 
 PWD=$1
+MAIN="$PWD"/main.ts
+GIT_REVISION=$(git rev-parse HEAD)
+
+sudo deno cache "$MAIN"
 
 tee "$PWD"/run.sh << EOF
 
-MAIN="$PWD"/main.ts
 export DENO_PORT=3000
-
-GIT_REVISION=\$(git rev-parse HEAD)
-export DENO_DEPLOYMENT_ID=\${GIT_REVISION}
-
-deno cache "\$MAIN"
-deno run -A "\$MAIN"
+export DENO_DEPLOYMENT_ID=${GIT_REVISION}
+deno run -A "$MAIN"
 
 EOF
 
-sudo pm2 delete YOUR_SITE
-sudo pm2 start "$PWD"/run.sh --name YOUR_SITE
+sudo pm2 delete cubething.dev
+sudo pm2 start "$PWD"/run.sh --name cubething.dev
 sudo pm2 save
 ```
 
