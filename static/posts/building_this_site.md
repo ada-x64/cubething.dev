@@ -518,7 +518,11 @@ sudo pm2 start "$PWD"/run.sh --name YOUR_SITE
 sudo pm2 save
 ```
 
-Now, every time I push to the main branch on my local bare repo, it will clone the repo to /var/www and execute the deployment script. That's CD, baby!! CI would be similar, except that we would run some linting and typechecking before accepting the push. This would go in the pre-update script in the bare repo.
+Now, every time I push to the main branch on my local bare repo, it will clone the repo to /var/www and execute the deployment script. That's CD, baby!! CI would be similar, except that we would run some linting and typechecking before accepting the push. This would go in the pre-update script in the bare repo. If everything goes well, it should look like this when you commit:
+
+```bash
+
+```
 
 #### GitHub Actions
 
