@@ -468,7 +468,7 @@ BRANCH="main"
 
 while read "$OLDREV" "$NEWREV" "$REF"
 do
-        if [[ $REF = refs/heads/$BRANCH ]];
+    if [[ $REF = "$GIT_DIR"/refs/heads/$BRANCH ]];
         then
                 echo "Ref $REF received. Deploying ${BRANCH} branch to production..."
                 if [ -d "$TARGET" ]
@@ -477,7 +477,8 @@ do
                 fi
                 mkdir -p "$TARGET"
                 git --work-tree="$TARGET" --git-dir="$GIT_DIR" checkout -f
-                pm2 start $TARGET/deploy.sh
+
+                "$TARGET"/deploy.sh "$TARGET"
 
         else
                 echo "Ref $REF received. Doing nothing: only the ${BRANCH} branch may be deployed on this server."
