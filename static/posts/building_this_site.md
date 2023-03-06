@@ -427,6 +427,16 @@ Now the container is on the repo! The next step is to get it running.
 
 This one is easy. Just create a Container Application. On the portal, you will be given the option to select your previously created registry. Select that registry, and select the container you just pushed. Make sure to enable Ingress and select the appropriate port - in this case, port 8000. Wait for it to initialize, and your application will be running on an azure server :) Easy.
 
+### CI/CD
+
+Running the build script every time is annoying. Let's integrate CI/CD.
+
+#### Git Hooks and Self-Hosted Repositories
+
+It is entirely possible to run hooks
+
+#### GitHub Actions
+
 ## Concluding Thoughts
 
 I'm pretty happy with how this is turning out so far. Once you get used to Deno and Fresh, they're pretty intuitive to use, and offer better performance and a better TypeScript experience than Node.js. The biggest issue is honestly that the ecosystem is so young, and there are not as many tutorials as I would hope. The inclusion of NPM modules as a first-class import style is a huge boon for Deno - I don't think making this website would have turned out so well without it.
