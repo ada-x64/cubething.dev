@@ -1,67 +1,73 @@
-let lastScrollY = window.scrollY;
-let lastScrollDirection = 0;
-let timeoutId = null;
-document.onreadystatechange = () => {
-  if (document.readyState === "complete") {
-    const header = document.getElementById("header");
-    const mainNav = document.getElementById("main-nav");
-    const articleNav = document.getElementById("article-nav");
+let timeout = null;
+let mainNavMouseOver = false;
+let articleNavMouseOver = false;
+let navsHidden = false;
+document.addEventListener("DOMContentLoaded", () => {
+  const mainNav = document.getElementById("main-nav");
+  const articleNav = document.getElementById("article-nav");
 
-    const hideNav = (nav) => {
+  const onMouseLeave = (nav) => {
+    if (navsHidden === true) {
       nav.style.opacity = "0";
-      nav.onmouseleave = () => {
-        nav.style.opacity = "0";
-      };
-      nav.onmouseenter = () => {
-        nav.style.opacity = "1";
-      };
-    };
-
-    const showNav = (nav) => {
+    }
+    return false;
+  };
+  const onMouseOver = (nav) => {
+    if (navsHidden === true) {
       nav.style.opacity = "1";
-      nav.onmouseleave = null;
-      nav.onmouseenter = null;
-    };
+    }
+    return true;
+  };
 
-    const setNavSmall = () => {
-      // set header to text-3xl
-      header.style.fontSize = "1.875rem";
-      header.style.lineHeight = "2.25rem";
-      // hide navs
-      hideNav(mainNav);
-      hideNav(articleNav);
-    };
+  mainNav.onmouseover = () => {
+    mainNavMouseOver = onMouseOver(mainNav);
+  };
+  mainNav.onmouseleave = () => {
+    mainNavMouseOver = onMouseLeave(mainNav);
+  };
+  articleNav.onmouseover = () => {
+    articleNavMouseOver = onMouseOver(articleNav);
+  };
+  articleNav.onmouseleave = () => {
+    articleNavMouseOver = onMouseLeave(articleNav);
+  };
 
-    const setNavBig = () => {
-      // set header to text-4xl
-      header.style.fontSize = "2.25rem";
-      header.style.lineHeight = "2.5rem";
-      // hide navs
-      showNav(mainNav);
-      showNav(articleNav);
-    };
+  const hideNav = (nav, mouseover) => {
+    if (mouseover === false) {
+      nav.style.opacity = "0";
+    }
+    navsHidden = true;
+  };
 
-    const onScroll = () => {
-      if (timeoutId === null) {
-        const scrollY = Math.floor(window.scrollY);
-        const scrollDirection = Math.sign(scrollY - lastScrollY);
-        if (lastScrollDirection != scrollDirection) {
-          scrollDirection > 0 ? setNavSmall() : setNavBig();
+  const showNav = (nav) => {
+    nav.style.opacity = "1";
+    navsHidden = false;
+  };
+
+  const hideNavs = () => {
+    hideNav(mainNav, mainNavMouseOver);
+    hideNav(articleNav, articleNavMouseOver);
+  };
+
+  const showNavs = () => {
+    showNav(mainNav);
+    showNav(articleNav);
+  };
+
+  const onScroll = () => {
+    if (timeout == null) {
+      showNavs();
+      timeout = setTimeout(() => {
+        if (window.scrollY > 0 || document.scrollY > 0) {
+          hideNavs();
         }
-        lastScrollY = scrollY;
-        lastScrollDirection = scrollDirection;
-        timeoutId = setTimeout(() => {
-          timeoutId = null;
-        }, 250);
-      }
-    };
+        timeout = null;
+      }, 2000);
+    }
+  };
 
-    window.onscroll = () => onScroll();
-    mainNav.onmouseenter = () => {
-      mainNav.style.opacity = "1";
-    };
-    mainNav.onmouseexit = () => {
-      mainNav.style.opacity = "1";
-    };
-  }
-};
+  window.onscroll = () => onScroll();
+  mainNav.addEventListener("focusin", showNavs);
+  articleNav.addEventListener("focusin", showNavs);
+  showNavs();
+});

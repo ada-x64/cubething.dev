@@ -1,29 +1,34 @@
 import MainNav from "@/components/MainNav.tsx";
 import { ComponentChildren } from "preact";
 import ArticleNav from "@/components/ArticleNav.tsx";
-import { Head } from "$fresh/src/runtime/head.ts";
 import Article from "@/components/Article.tsx";
+import Head from "@/components/Head.tsx";
+import TwClass from "@/deps/tw-class.ts";
 
 export default function Layout({
   route,
+  title,
   children,
 }: {
   route: string;
+  title: string;
   children: ComponentChildren;
 }) {
   return (
     <>
-      <Head>
-        <link rel="stylesheet" href="style/svg.css" />
-        <link rel="stylesheet" href="style/font.css" />
-        <script src="scripts/onScroll.js" />
-      </Head>
-
-      <main class="bg-stone-100 text-stone-900 dark:bg-zinc-900 dark:text-zinc-100 ">
-        <div class="mx-auto flex min-h-screen">
+      <Head />
+      <main
+        class={TwClass([
+          "bg-stone-100",
+          "text-stone-900",
+          "dark:bg-zinc-900",
+          "dark:text-zinc-100",
+        ])}
+      >
+        <div class={TwClass(["mx-auto", "flex", "min-h-screen"])}>
           <MainNav route={route} />
           <ArticleNav />
-          <Article route={route} children={children} />
+          <Article title={title.toLowerCase()} children={children} />
         </div>
       </main>
     </>

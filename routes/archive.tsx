@@ -1,5 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getPosts, Post } from "@/models/posts.ts";
+import { getPosts, Post } from "@/deps/posts.ts";
 import Layout from "@/components/Layout.tsx";
 import PostCard from "@/components/PostCard.tsx";
 
@@ -13,7 +13,7 @@ export const handler: Handlers<Post[]> = {
 export default function Archive(props: PageProps<Post[]>) {
   const posts = props.data;
   return (
-    <Layout route={props.route}>
+    <Layout title={"archive"} route={props.route}>
       <div class="pb-8 border(b gray-200)" id="intro-blurb">
         This page contains an archive of all my past blog posts. Topics
         discussed include web development, game development, philosophy, and

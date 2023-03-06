@@ -1,15 +1,18 @@
-import MarkdownIt from "@/deps/markdown-it.ts";
-import { Head } from "$fresh/src/runtime/head.ts";
+import MarkdownIt, { CurrentArticle } from "@/deps/markdown-it.ts";
 
-export default function renderMarkdown({ content }: { content: string }) {
+export default function renderMarkdown({
+  content,
+  title,
+}: {
+  content: string;
+  title: string;
+}) {
+  CurrentArticle.value = title;
   return (
     <>
-      <Head>
-        <link rel="stylesheet" href="style/code.css" />
-      </Head>
       <div
         class="prose prose-zinc dark:prose-invert mb-8"
-        dangerouslySetInnerHTML={{ __html: MarkdownIt.render(content) }}
+        dangerouslySetInnerHTML={{ __html: MarkdownIt(content).body }}
       >
       </div>
     </>

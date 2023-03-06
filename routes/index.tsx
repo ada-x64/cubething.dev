@@ -1,7 +1,8 @@
 import Layout from "@/components/Layout.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getPosts, Post } from "@/models/posts.ts";
+import { getPosts, Post } from "@/deps/posts.ts";
 import PostCard from "@/components/PostCard.tsx";
+import TwClass from "@/deps/tw-class.ts";
 
 export const handler: Handlers<Post[]> = {
   async GET(_req, ctx) {
@@ -13,12 +14,17 @@ export const handler: Handlers<Post[]> = {
 export default function Index(props: PageProps<Post[]>) {
   const posts = props.data;
   return (
-    <Layout route={props.route}>
+    <Layout title={"cubething"} route={props.route}>
       <div>
         <div class="mb-8">
           This is the personal website of{" "}
           <a
-            class="underline decoration-rose-500 decoration-wavy decoration-from-font"
+            class={TwClass([
+              "underline",
+              "decoration-rose-500",
+              "decoration-wavy",
+              "decoration-from-font",
+            ])}
             title="about"
             href="/about"
           >
@@ -28,6 +34,7 @@ export default function Index(props: PageProps<Post[]>) {
         <h2 class="text-3xl font-header text-center">Recent Posts</h2>
         <div class="mb-8" id="articles">
           {posts.map((post) => <PostCard post={post}></PostCard>)}
+ 
         </div>
       </div>
     </Layout>

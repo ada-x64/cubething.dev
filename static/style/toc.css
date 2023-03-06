@@ -1,0 +1,26 @@
+.table-of-contents {
+  font-size: small;
+  line-height: 1.25em;
+}
+
+.prose a:hover {
+  color: var(--sky-600);
+  transition: 0.125s;
+}
+.prose a {
+  color: unset;
+  transition: 0.125s;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+ol {
+  counter-reset: list-item;
+}
+li {
+  display: block;
+  counter-increment: list-item;
+}
+li:before {
+  content: counters(list-item, ".") " ";
+}

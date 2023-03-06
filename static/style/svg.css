@@ -1,12 +1,3 @@
-:root {
-  --stone-900: rgb(28 25 23);
-  --stone-100: rgb(245 245 244);
-  --zinc-900: rgb(24 24 27);
-  --zinc-100: rgb(244 244 245);
-  --rose-500: rgb(244 63 94);
-  --amber-500: rgb(245 158 11);
-}
-
 svg:hover * {
   transition: all linear 0.125s;
 }
@@ -17,10 +8,13 @@ svg * {
   transition: all linear 0.125s;
 }
 
-:not(.dark) svg:hover * {
-  stroke: var(--rose-500);
+svg:hover * {
+  stroke: var(--orange-500);
 }
-:not(.dark) svg * {
+.dark svg:hover * {
+  stroke: var(--amber-500);
+}
+svg * {
   stroke: var(--stone-900);
   fill: var(--stone-100);
 }

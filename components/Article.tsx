@@ -1,20 +1,30 @@
 import { ComponentChildren } from "preact/src/index";
-import Title from "@/islands/Title.tsx";
+import Title from "@/components/Title.tsx";
+import TwClass from "@/deps/tw-class.ts";
 
 export default function Article({
-  route,
+  title,
   children,
 }: {
-  route: string;
+  title: string;
   children: ComponentChildren;
 }) {
   return (
     <article
       id="article"
-      class="order-2 max-w-screen-md px-16 md:mx-auto flex-auto flex flex-col"
+      class={TwClass([
+        "order-2",
+        "max-w-screen-md",
+        "px-16",
+        "md:mx-auto",
+        "flex-auto",
+        "flex",
+        "flex-col",
+        "scroll-smooth",
+      ])}
       tabIndex={0}
     >
-      <Title route={route} />
+      <Title title={title} />
       {children}
     </article>
   );

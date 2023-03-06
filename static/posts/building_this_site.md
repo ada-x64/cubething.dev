@@ -5,6 +5,8 @@ snippet: How I built this website using Deno, Fresh, and Tailwind CSS. Also incl
 
 With the perpetual living death of social media, I've been looking for a place to put my spare thoughts - hopefully one that isn't owned by a corproate mass whose sole goal is to monetize my inner monologue. To that end I've decided to make a little blog. It's also served as a nice design and technical challenge, and I'm pretty happy with the results so far.
 
+[[toc]]
+
 The first step was to set up a server machine.
 
 ## Setting up the Server

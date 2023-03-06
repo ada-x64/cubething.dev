@@ -13,8 +13,8 @@ export const handler: Handlers<string> = {
 
 export default function About(props: PageProps<string>) {
   return (
-    <Layout route={props.route}>
-      <Markdown content={props.data} />
+    <Layout title="about" route={props.route}>
+      <Markdown title="about" content={props.data} />
     </Layout>
   );
 }

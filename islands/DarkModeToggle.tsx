@@ -3,8 +3,6 @@ import DarkTheme from "@/components/svg/DarkTheme.svg.tsx";
 import LightTheme from "@/components/svg/LightTheme.svg.tsx";
 import { Head } from "$fresh/src/runtime/head.ts";
 import { signal } from "@preact/signals";
-import { join } from "$std/path/mod.ts";
-import { ScriptsPath } from "@/deps/paths.ts";
 
 enum ThemeState {
   auto,
@@ -47,22 +45,18 @@ export function setTheme() {
 export default function DarkModeToggle() {
   const theme = ThemeSignal.value;
   const themeText = theme === ThemeState.auto
-    ? "Auto"
+    ? "auto"
     : theme === ThemeState.light
-    ? "Light"
+    ? "light"
     : theme === ThemeState.dark
-    ? "Dark"
+    ? "dark"
     : "ERROR";
 
+  // Color scheme is detected on load.
+  // See @/static/scripts/detectColorScheme.js
   return (
-    <>
-      <Head>
-        {/* Detect color scheme immediately to avoid FOUC */}
-        <script src={"./scripts/detectTheme.js"}></script>
-      </Head>
-      <button title={`Toggle Theme - Current: ${themeText}`} onClick={setTheme}>
-        {ThemeIcons[theme]}
-      </button>
-    </>
+    <button title={`toggle theme - current: ${themeText}`} onClick={setTheme}>
+      {ThemeIcons[theme]}
+    </button>
   );
 }

@@ -1,7 +1,8 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getPost, getTime, Post } from "@/models/posts.ts";
+import { getPost, getTime, Post } from "@/deps/posts.ts";
 import Layout from "@/components/Layout.tsx";
 import Markdown from "@/components/Markdown.tsx";
+import TwClass from "@/deps/tw-class.ts";
 
 export const handler: Handlers<Post> = {
   async GET(_req, ctx) {
@@ -14,11 +15,19 @@ export default function PostPage(props: PageProps<Post>) {
   const post = props.data;
   return (
     <>
-      <Layout route={`/${props.data.title}`}>
-        <time class="block text-gray-500 text-center -mt-2 mb-2">
+      <Layout title={post.title} route={`${props.route}`}>
+        <time
+          class={TwClass([
+            "block",
+            "text-gray-500",
+            "text-center",
+            "-mt-2",
+            "mb-2",
+          ])}
+        >
           {getTime(post.mtime)}
         </time>
-        <Markdown content={post.content} />
+        <Markdown title={post.title} content={post.content} />
       </Layout>
     </>
   );

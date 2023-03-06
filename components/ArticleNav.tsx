@@ -1,5 +1,15 @@
 import DarkModeToggle from "@/islands/DarkModeToggle.tsx";
-import Sidebar from "@/components/Sidebar.tsx";
+import Sidebar, {
+  ItemSelectableStyle,
+  ItemStyle,
+} from "@/components/Sidebar.tsx";
+
+export const navigation = [
+  {
+    name: "top",
+    href: "#",
+  },
+];
 
 export default function ArticleNav() {
   return (
@@ -10,7 +20,21 @@ export default function ArticleNav() {
       icon={<DarkModeToggle />}
       justify="left"
     >
-      <div class="flex"></div>
+      {navigation.map((item) => {
+        const classes = [ItemSelectableStyle, ItemStyle].join(" ");
+
+        return (
+          <a
+            key={item.name}
+            href={item.href}
+            title={item.name}
+            tabIndex={0}
+            class={classes}
+          >
+            {item.name}
+          </a>
+        );
+      })}
     </Sidebar>
   );
 }

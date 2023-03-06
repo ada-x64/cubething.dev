@@ -1,0 +1,14 @@
+:root {
+  --stone-900: rgb(28 25 23);
+  --stone-100: rgb(245 245 244);
+  --zinc-900: rgb(24 24 27);
+  --zinc-100: rgb(244 244 245);
+  --rose-500: rgb(244 63 94);
+  --amber-500: rgb(245 158 11);
+  --sky-600: rgb(2 132 199);
+  --orange-500: rgb(249 115 22);
+}
+
+html {
+  scroll-behavior: smooth;
+}
