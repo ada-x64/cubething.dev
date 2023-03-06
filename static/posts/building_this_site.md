@@ -499,7 +499,7 @@ In addition, I've updated `deploy.sh` to automatically run pm2:
 
 PWD=$1
 
-echo "$PWD"/run.sh << EOF
+tee "$PWD"/run.sh << EOF
 
 MAIN="$PWD"/main.ts
 export DENO_PORT=3000
