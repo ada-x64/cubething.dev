@@ -521,7 +521,36 @@ sudo pm2 save
 Now, every time I push to the main branch on my local bare repo, it will clone the repo to /var/www and execute the deployment script. That's CD, baby!! CI would be similar, except that we would run some linting and typechecking before accepting the push. This would go in the pre-update script in the bare repo. If everything goes well, it should look like this when you commit:
 
 ```bash
-
+$ git push
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 24 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 524 bytes | 524.00 KiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Ref YOUR_SITE.git/refs/heads/main received. Deploying main branch to production...
+remote:
+remote: export DENO_PORT=1234
+remote: export DENO_DEPLOYMENT_ID=(SOME_HASH)
+remote: deno run -A "/var/www/main.ts"
+remote:
+remote: [PM2] Applying action deleteProcessId on app [YOUR_APP](ids: [ 0 ])
+remote: [PM2] [YOUR_APP](0) ✓
+remote: ┌─────┬───────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+remote: │ id  │ name      │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+remote: └─────┴───────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+remote: [PM2][WARN] Current process list is not synchronized with saved list. App YOUR_APP differs. Type 'pm2 save' to synchronize.
+remote: [PM2] Starting /var/www/run.sh in fork_mode (1 instance)
+remote: [PM2] Done.
+remote: ┌─────┬──────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+remote: │ id  │ name             │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+remote: ├─────┼──────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+remote: │ 0   │ YOUR_APP         │ default     │ N/A     │ fork    │ 1187401  │ 0s     │ 0    │ online    │ 0%       │ 3.2mb    │ root     │ disabled │
+remote: └─────┴──────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+remote: [PM2] Saving current process list...
+remote: [PM2] Successfully saved in /root/.pm2/dump.pm2
+To YOUR_APP.git
+   9481533..712033f  main -> main
 ```
 
 #### GitHub Actions
