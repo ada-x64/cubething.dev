@@ -28,7 +28,10 @@ export default function HeadComponent() {
         property="og:description"
         content="Personal home page of Ada Mandala. Posts about tech, art, philosophy. // Rust, Linux, WASM // Graphics, Games // Metaphysics, Aesthetics"
       />
-      <meta property="og:image" content="/meta/preview.svg" />
+      <meta
+        property="og:image"
+        content="https://cubething.dev/meta/preview.svg"
+      />
 
       {/*<!-- Twitter -->*/}
       <meta property="twitter:card" content="summary_large_image" />
@@ -38,7 +41,10 @@ export default function HeadComponent() {
         property="twitter:description"
         content="Personal home page of Ada Mandala. Posts about tech, art, philosophy. // Rust, Linux, WASM // Graphics, Games // Metaphysics, Aesthetics"
       />
-      <meta property="twitter:image" content="/meta/preview.svg" />
+      <meta
+        property="twitter:image"
+        content="https://cubething.dev/meta/preview.svg"
+      />
     </Head>
   );
 }
