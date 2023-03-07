@@ -555,7 +555,12 @@ To YOUR_APP.git
 
 #### GitHub Actions
 
-(todo: Automatically push from bare repo to GitHub. Implement Azure CD with Docker and Github Actions.)
+I want the code for this site to be open-source, so I want it to be available on GitHub. We can do this by amending `post-update.sudo`:
+
+```bash
+git remote add github "$GITHUB_DIR"
+git push -u github main
+```
 
 ## Concluding Thoughts
 
