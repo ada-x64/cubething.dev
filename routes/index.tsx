@@ -2,7 +2,6 @@ import Layout from "@/components/Layout.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getPosts, Post } from "@/deps/posts.ts";
 import PostCard from "@/components/PostCard.tsx";
-import { TwClass } from "@/deps/styles.ts";
 
 export const handler: Handlers<Post[]> = {
   async GET(_req, ctx) {

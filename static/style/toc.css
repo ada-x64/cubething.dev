@@ -33,7 +33,7 @@
 }
 
 .prose {
-  line-height: 2em
+  line-height: 2em;
 }
 
 code {
@@ -44,9 +44,9 @@ code {
   font-weight: normal;
 }
 
-
 ol {
   counter-reset: list-item;
+  max-width: fit-content;
 }
 li {
   display: block;
