@@ -558,7 +558,12 @@ To YOUR_APP.git
 I want the code for this site to be open-source, so I want it to be available on GitHub. We can do this by amending `post-update.sudo`:
 
 ```bash
-git remote add github "$GITHUB_DIR"
+
+GITHUB_DIR="git@github.com:YOUR_UN/YOUR_REPO.git"
+
+#...
+
+git remote add github "$GITHUB_DIR" 2> /dev/null #pipe errors to null
 git push -u github main
 ```
 
