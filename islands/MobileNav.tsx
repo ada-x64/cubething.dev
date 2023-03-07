@@ -17,7 +17,12 @@ export const mainNav = [
   },
 ];
 
-export const articleNav = [];
+export const articleNav = [
+  {
+    name: "top",
+    href: "#",
+  },
+];
 
 export const openMobileNav = () => {
   const nav = document.getElementById("mobile-nav");
@@ -34,13 +39,6 @@ export const closeMobileNav = () => {
 };
 
 export default function MobileNav({ route }: { route: string }) {
-  const articleNav = route.includes("articles")
-    ? (
-      <div class={ItemContainerStyle}>
-        <ArticleNavItems navigation={[]} route={route} />
-      </div>
-    )
-    : null;
   return (
     <>
       <button
@@ -80,7 +78,9 @@ export default function MobileNav({ route }: { route: string }) {
         <div class={ItemContainerStyle}>
           <MainNavItems navigation={mainNav} route={route} />
         </div>
-        {articleNav}
+        <div class={ItemContainerStyle}>
+          <ArticleNavItems navigation={articleNav} />
+        </div>
         <div class={ItemContainerStyle}>
           <a class={ItemStyle} onClick={closeMobileNav}>
             close

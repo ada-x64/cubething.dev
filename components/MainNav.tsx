@@ -1,6 +1,6 @@
 import HomeBtn from "@/components/HomeBtn.tsx";
 import Sidebar from "@/components/Sidebar.tsx";
-import { tNav } from "@/deps/types.ts";
+import { tNav } from "@/components/ArticleNav.tsx";
 import { MainNavItems } from "@/components/MainNavItems.tsx";
 
 export const navigation: tNav = [
