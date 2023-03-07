@@ -1,16 +1,6 @@
 import { ComponentChild, ComponentChildren } from "preact";
 import TwClass from "@/deps/tw-class.ts";
-
-export const ItemSelectedStyle = TwClass(["line-through", "text-zinc-400"]);
-export const ItemStyle = TwClass([
-  "px-2",
-  "py-1",
-  "mb-1",
-  "rounded-sm",
-  "text-base",
-  "text-center",
-  "transition",
-]);
+import { ItemContainerStyle } from "@/deps/styles.ts";
 
 export default function Sidebar({
   icon,
@@ -33,14 +23,12 @@ export default function Sidebar({
         aria-label={ariaLabel}
         class={TwClass([
           "h-screen",
-          "flex",
           "flex-auto",
           "px-4",
           "text-xl",
           "font-sans",
           "sticky",
           "top-0",
-          "self-start",
           `order-${order}`,
           "opacity-100",
           "transition-all",
@@ -48,31 +36,16 @@ export default function Sidebar({
           "hover:opacity-100",
           `justify-${justify}`,
           "focus:opacity-100",
+          "md:flex",
+          "hidden",
         ])}
         tabIndex={0}
         id={id}
       >
         <div class="w-24">
-          <div
-            class={TwClass([
-              "flex",
-              "flex-col",
-              "flex-shrink-0",
-              "items-center",
-              "py-4",
-              "mb-4",
-              "border-b",
-              "border-zinc-400",
-              "dark:border-zinc-700",
-              "w-full",
-              "text-4xl",
-            ])}
-          >
-            {icon}
-          </div>
-          <div class="flex flex-col">{children}</div>
+          <div class={ItemContainerStyle.concat(" mb-4")}>{icon}</div>
+          {children}
         </div>
-        {" "}
       </nav>
     </>
   );

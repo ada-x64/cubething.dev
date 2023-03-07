@@ -5,6 +5,7 @@ import Article from "@/components/Article.tsx";
 import HeadComponent from "@/components/Head.tsx";
 import TwClass from "@/deps/tw-class.ts";
 import { Head } from "$fresh/src/runtime/head.ts";
+import MobileNav from "@/islands/MobileNav.tsx";
 
 export default function Layout({
   route,
@@ -21,19 +22,11 @@ export default function Layout({
       <Head>
         <title>{`< ${title.toLowerCase()} />`}</title>
       </Head>
-      <main
-        class={TwClass([
-          "bg-stone-100",
-          "text-stone-900",
-          "dark:bg-zinc-900",
-          "dark:text-zinc-100",
-        ])}
-      >
-        <div class={TwClass(["mx-auto", "flex", "min-h-screen"])}>
-          <MainNav route={route} />
-          <ArticleNav route={route} />
-          <Article title={title.toLowerCase()} children={children} />
-        </div>
+      <main class={TwClass(["mx-auto", "flex"])}>
+        <MainNav route={route} />
+        <ArticleNav route={route} />
+        <Article title={title.toLowerCase()} children={children} />
+        <MobileNav route={route} />
       </main>
     </>
   );

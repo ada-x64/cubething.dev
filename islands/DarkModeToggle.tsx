@@ -1,7 +1,6 @@
 import AutoTheme from "@/components/svg/AutoTheme.svg.tsx";
 import DarkTheme from "@/components/svg/DarkTheme.svg.tsx";
 import LightTheme from "@/components/svg/LightTheme.svg.tsx";
-import { Head } from "$fresh/src/runtime/head.ts";
 import { signal } from "@preact/signals";
 
 enum ThemeState {

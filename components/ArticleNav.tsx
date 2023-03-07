@@ -1,23 +1,22 @@
 import DarkModeToggle from "@/islands/DarkModeToggle.tsx";
-import Sidebar, { ItemStyle } from "@/components/Sidebar.tsx";
+import Sidebar from "@/components/Sidebar.tsx";
+import { ArticleNavItems } from "@/components/ArticleNavItems.tsx";
 
-type tNav = { name: string; href: string }[];
+export type tNav = { name: string; href: string }[];
 
-export const article_nav: tNav = [
+export const articleNav: tNav = [
   {
     name: "top",
     href: "#",
   },
 ];
 
-export const all_nav: tNav = [];
-
-const classes = ItemStyle;
+export const allNav: tNav = [];
 
 export default function ArticleNav({ route }: { route: string }) {
-  let navigation = all_nav;
+  let navigation = allNav;
   if (route.includes("articles")) {
-    navigation = navigation.concat(article_nav);
+    navigation = navigation.concat(articleNav);
   }
 
   return (
@@ -28,19 +27,7 @@ export default function ArticleNav({ route }: { route: string }) {
       icon={<DarkModeToggle />}
       justify="left"
     >
-      {navigation.map((item) => {
-        return (
-          <a
-            key={item.name}
-            href={item.href}
-            title={item.name}
-            tabIndex={0}
-            class={classes}
-          >
-            {item.name}
-          </a>
-        );
-      })}
+      <ArticleNavItems navigation={navigation} />
     </Sidebar>
   );
 }

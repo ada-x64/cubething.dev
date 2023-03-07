@@ -17,6 +17,12 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--stone-100);
+  color: var(--stone-900);
+}
+html.dark {
+  background-color: var(--zinc-900);
+  color: var(--zinc-100);
 }
 
 a {
@@ -35,4 +41,3 @@ a:hover {
 .dark a:hover {
   color: var(--zinc-400);
 }
-

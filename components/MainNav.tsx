@@ -1,10 +1,9 @@
-import HomeBtn from "@/islands/HomeBtn.tsx";
-import Sidebar, {
-  ItemSelectedStyle,
-  ItemStyle,
-} from "@/components/Sidebar.tsx";
+import HomeBtn from "@/components/HomeBtn.tsx";
+import Sidebar from "@/components/Sidebar.tsx";
+import { tNav } from "@/components/ArticleNav.tsx";
+import { MainNavItems } from "@/components/MainNavItems.tsx";
 
-export const navigation = [
+export const navigation: tNav = [
   {
     name: "about",
     href: "/about",
@@ -24,29 +23,7 @@ export default function MainNav({ route }: { route: string }) {
       icon={<HomeBtn />}
       justify="right"
     >
-      {navigation.map((item) => {
-        const current = item.href === route;
-        if (current) {
-          return (
-            <div class={[ItemStyle, ItemSelectedStyle].join(" ")}>
-              {item.name}
-            </div>
-          );
-        } else {
-          return (
-            <a
-              key={item.name}
-              href={current ? "#" : item.href}
-              title={item.name}
-              tabIndex={0}
-              class={ItemStyle}
-              aria-current={current ? "page" : undefined}
-            >
-              {item.name}
-            </a>
-          );
-        }
-      })}
+      <MainNavItems navigation={navigation} route={route} />
     </Sidebar>
   );
 }
