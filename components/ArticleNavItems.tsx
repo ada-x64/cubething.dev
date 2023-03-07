@@ -1,8 +1,23 @@
-import { tNav } from "@/components/ArticleNav.tsx";
+import { tNav } from "@/deps/types.ts";
 import { ItemListStyle, ItemStyle } from "@/deps/styles.ts";
 import { closeMobileNav } from "@/islands/MobileNav.tsx";
 
-export function ArticleNavItems({ navigation }: { navigation: tNav }) {
+export function ArticleNavItems({
+  navigation,
+  route,
+}: {
+  navigation: tNav;
+  route: string;
+}) {
+  const articleNav: tNav = [
+    {
+      name: "top",
+      href: "#",
+    },
+  ];
+  if (route.includes("articles")) {
+    navigation = navigation.concat(articleNav);
+  }
   const items = navigation.map((item) => {
     return (
       <a
