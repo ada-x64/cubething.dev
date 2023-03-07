@@ -14,14 +14,14 @@ export default function Article({
       id="article"
       class={TwClass([
         "order-2",
-        "max-w-screen-md",
         "px-4",
         "lg:px-16",
         "flex-auto",
         "flex",
         "flex-col",
         "scroll-smooth",
-        "container",
+        "w-full",
+        "md:max-w-screen-md",
       ])}
       tabIndex={0}
     >

@@ -29,13 +29,13 @@ export default {
           "margin-top": 0,
         },
         ".table-of-contents > ol": {
-          "width": "max-content",
-          "margin": "auto",
+          width: "max-content",
+          margin: "auto",
           "border-top": "1px solid var(--zinc-600)",
           "border-bottom": "1px solid var(--zinc-600)",
           "padding-top": "1em",
           "padding-bottom": "1em",
-        }
+        },
       },
     }),
   ],
@@ -45,6 +45,9 @@ export default {
       mono: ["Ubuntu Mono Nerd Font", "Ubuntu Mono", "Consolas", "mono"],
       header: ["Chillax", "sans"],
       sans: ["Synonym", "sans"],
+    },
+    container: {
+      center: true,
     },
   },
   darkMode: "class",
