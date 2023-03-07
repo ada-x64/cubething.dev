@@ -3,7 +3,7 @@ import { ComponentChildren } from "preact";
 import ArticleNav from "@/components/ArticleNav.tsx";
 import Article from "@/components/Article.tsx";
 import HeadComponent from "@/components/Head.tsx";
-import TwClass from "@/deps/tw-class.ts";
+import { TwClass } from "@/deps/styles.ts";
 import { Head } from "$fresh/src/runtime/head.ts";
 import MobileNav from "@/islands/MobileNav.tsx";
 

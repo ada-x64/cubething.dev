@@ -1,5 +1,6 @@
 import { tNav } from "@/components/ArticleNav.tsx";
 import { ItemListStyle, ItemSelectedStyle, ItemStyle } from "@/deps/styles.ts";
+import { closeMobileNav } from "@/islands/MobileNav.tsx";
 
 export function MainNavItems({
   navigation,
@@ -23,6 +24,7 @@ export function MainNavItems({
           tabIndex={0}
           class={ItemStyle}
           aria-current={current ? "page" : undefined}
+          onClick={closeMobileNav}
         >
           {item.name}
         </a>

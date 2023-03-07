@@ -1,4 +1,4 @@
-import TwClass from "@/deps/tw-class.ts";
+import { BorderColor, TwClass } from "@/deps/styles.ts";
 
 export default function Title({ title }: { title: string }) {
   return (
@@ -15,10 +15,10 @@ export default function Title({ title }: { title: string }) {
           "text-orange-500",
           "lowercase",
           "border-b",
-          "border-zinc-400",
+          BorderColor,
           "w-full",
         ],
-        dark: ["text-amber-500", "border-zinc-700"],
+        dark: ["text-amber-500"],
       })}
       style={[
         "transition: 0.125s linear;",

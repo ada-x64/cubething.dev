@@ -14,12 +14,12 @@ export default function Archive(props: PageProps<Post[]>) {
   const posts = props.data;
   return (
     <Layout title={"archive"} route={props.route}>
-      <div class="pb-8 border(b gray-200)" id="intro-blurb">
+      <div>
         This page contains an archive of all my past blog posts. Topics
         discussed include web development, game development, philosophy, and
         mathematics.
       </div>
-      <div class="mb-8" id="articles">
+      <div class="mb-8">
         {posts.map((post) => <PostCard post={post}></PostCard>)}
       </div>
     </Layout>

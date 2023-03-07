@@ -1,5 +1,5 @@
 import { ComponentChild, ComponentChildren } from "preact";
-import TwClass from "@/deps/tw-class.ts";
+import { TwClass } from "@/deps/styles.ts";
 import { ItemContainerStyle } from "@/deps/styles.ts";
 
 export default function Sidebar({

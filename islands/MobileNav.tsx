@@ -1,4 +1,4 @@
-import TwClass from "@/deps/tw-class.ts";
+import { TwClass } from "@/deps/styles.ts";
 import Cube from "@/components/svg/Cube.svg.tsx";
 import { ItemContainerStyle, ItemStyle } from "@/deps/styles.ts";
 import DarkModeToggle from "@/islands/DarkModeToggle.tsx";
@@ -24,21 +24,21 @@ export const articleNav = [
   },
 ];
 
+export const openMobileNav = () => {
+  const nav = document.getElementById("mobile-nav");
+  nav!.style.opacity = "1";
+  nav!.style.zIndex = "100";
+  document.body.style.overflow = "hidden";
+};
+
+export const closeMobileNav = () => {
+  const nav = document.getElementById("mobile-nav");
+  nav!.style.opacity = "0";
+  nav!.style.zIndex = "-100";
+  document.body.style.overflow = "auto";
+};
+
 export default function MobileNav({ route }: { route: string }) {
-  const openNav = () => {
-    const nav = document.getElementById("mobile-nav");
-    nav!.style.opacity = "1";
-    nav!.style.zIndex = "100";
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeNav = () => {
-    const nav = document.getElementById("mobile-nav");
-    nav!.style.opacity = "0";
-    nav!.style.zIndex = "-100";
-    document.body.style.overflow = "auto";
-  };
-
   return (
     <>
       <button
@@ -52,7 +52,7 @@ export default function MobileNav({ route }: { route: string }) {
           "bottom-2",
           "text-5xl",
         ])}
-        onClick={openNav}
+        onClick={openMobileNav}
       >
         <Cube />
       </button>
@@ -82,7 +82,7 @@ export default function MobileNav({ route }: { route: string }) {
           <ArticleNavItems navigation={articleNav} />
         </div>
         <div class={ItemContainerStyle}>
-          <a class={ItemStyle} onClick={closeNav}>
+          <a class={ItemStyle} onClick={closeMobileNav}>
             close
           </a>
         </div>

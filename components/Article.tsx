@@ -1,6 +1,6 @@
 import { ComponentChildren } from "preact/src/index";
 import Title from "@/components/Title.tsx";
-import TwClass from "@/deps/tw-class.ts";
+import { TwClass } from "@/deps/styles.ts";
 
 export default function Article({
   title,

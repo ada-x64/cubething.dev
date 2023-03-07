@@ -2,7 +2,7 @@ import Layout from "@/components/Layout.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getPosts, Post } from "@/deps/posts.ts";
 import PostCard from "@/components/PostCard.tsx";
-import TwClass from "@/deps/tw-class.ts";
+import { TwClass } from "@/deps/styles.ts";
 
 export const handler: Handlers<Post[]> = {
   async GET(_req, ctx) {
@@ -18,23 +18,13 @@ export default function Index(props: PageProps<Post[]>) {
       <div>
         <div class="mb-8">
           This is the personal website of{" "}
-          <a
-            class={TwClass([
-              "underline",
-              "decoration-rose-500",
-              "decoration-wavy",
-              "decoration-from-font",
-            ])}
-            title="about"
-            href="/about"
-          >
+          <a title="about" href="/about">
             Phoenix Ada Rose Mandala.
           </a>
         </div>
         <h2 class="text-3xl font-header text-center">Recent Posts</h2>
         <div class="mb-8" id="articles">
           {posts.map((post) => <PostCard post={post}></PostCard>)}
- 
         </div>
       </div>
     </Layout>

@@ -1,5 +1,6 @@
 import { tNav } from "@/components/ArticleNav.tsx";
 import { ItemListStyle, ItemStyle } from "@/deps/styles.ts";
+import { closeMobileNav } from "@/islands/MobileNav.tsx";
 
 export function ArticleNavItems({ navigation }: { navigation: tNav }) {
   const items = navigation.map((item) => {
@@ -10,6 +11,7 @@ export function ArticleNavItems({ navigation }: { navigation: tNav }) {
         title={item.name}
         tabIndex={0}
         class={ItemStyle}
+        onClick={closeMobileNav}
       >
         {item.name}
       </a>
