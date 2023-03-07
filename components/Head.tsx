@@ -28,6 +28,8 @@ export default function HeadComponent() {
         property="og:description"
         content="Personal home page of Ada Mandala. Posts about tech, art, philosophy. // Rust, Linux, WASM // Graphics, Games // Metaphysics, Aesthetics"
       />
+      <meta property="og:image:width" content="2000" />
+      <meta property="og:image:height" content="100" />
       <meta
         property="og:image"
         content="https://cubething.dev/meta/preview.svg"
