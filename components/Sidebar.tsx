@@ -36,7 +36,7 @@ export default function Sidebar({
           "hover:opacity-100",
           `justify-${justify}`,
           "focus:opacity-100",
-          "md:flex",
+          "lg:flex",
           "hidden",
         ])}
         tabIndex={0}

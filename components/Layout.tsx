@@ -22,7 +22,7 @@ export default function Layout({
       <Head>
         <title>{`< ${title.toLowerCase()} />`}</title>
       </Head>
-      <main class={TwClass(["mx-auto", "flex"])}>
+      <main class={TwClass(["flex", "justify-center"])}>
         <MainNav route={route} />
         <ArticleNav route={route} />
         <Article title={title.toLowerCase()} children={children} />

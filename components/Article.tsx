@@ -16,7 +16,7 @@ export default function Article({
         "order-2",
         "max-w-screen-md",
         "px-4",
-        "md:px-16",
+        "lg:px-16",
         "flex-auto",
         "flex",
         "flex-col",

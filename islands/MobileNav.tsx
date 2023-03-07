@@ -48,7 +48,7 @@ export default function MobileNav({ route }: { route: string }) {
           "flex",
           "justify-center",
           "align-center",
-          "md:hidden",
+          "lg:hidden",
           "fixed",
           "right-2",
           "bottom-2",
