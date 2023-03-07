@@ -427,11 +427,11 @@ Now the container is on the repo! The next step is to get it running.
 
 This one is easy. Just create a Container Application. On the portal, you will be given the option to select your previously created registry. Select that registry, and select the container you just pushed. Make sure to enable Ingress and select the appropriate port - in this case, port 8000. Wait for it to initialize, and your application will be running on an azure server :) Easy.
 
-### CI/CD
+## CI/CD
 
 Running the build script every time is annoying. Let's integrate CI/CD.
 
-#### Git Hooks and Self-Hosted Repositories
+### Git Hooks and Self-Hosted Repositories
 
 For a self-hosted website, it is common practice to have a bare Git repository to store your files. To create a bare git repository, do the following:
 
@@ -553,7 +553,7 @@ To YOUR_APP.git
    9481533..712033f  main -> main
 ```
 
-#### GitHub Actions
+### GitHub Actions
 
 I want the code for this site to be open-source, so I want it to be available on GitHub. We can do this by amending `post-update.sudo`:
 
