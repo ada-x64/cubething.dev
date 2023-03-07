@@ -562,6 +562,16 @@ git remote add github "$GITHUB_DIR"
 git push -u github main
 ```
 
+In order to push from root, we need to be authorized with GitHub. The easiest way to do this is to install the [GitHub CLI](). Once you have it installed, run the following:
+
+```bash
+sudo su
+ssh-keygen -t ed25519 -C "YOUR_GITHUB_EMAIL@example.com"
+gh auth login
+```
+
+Generate the key how you want to. When you get to the auth, be sure to select SSH and your newly created key. Then, create an authentication token using the Classic method. Paste the token into the prompt and you should be connected and logged in.
+
 ## Concluding Thoughts
 
 I'm pretty happy with how this is turning out so far. Once you get used to Deno and Fresh, they're pretty intuitive to use, and offer better performance and a better TypeScript experience than Node.js. The biggest issue is honestly that the ecosystem is so young, and there are not as many tutorials as I would hope. The inclusion of NPM modules as a first-class import style is a huge boon for Deno - I don't think making this website would have turned out so well without it.
