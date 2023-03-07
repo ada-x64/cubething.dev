@@ -1,6 +1,5 @@
 import HomeBtn from "@/islands/HomeBtn.tsx";
 import Sidebar, {
-  ItemSelectableStyle,
   ItemSelectedStyle,
   ItemStyle,
 } from "@/components/Sidebar.tsx";
@@ -27,22 +26,26 @@ export default function MainNav({ route }: { route: string }) {
     >
       {navigation.map((item) => {
         const current = item.href === route;
-        const classes = [
-          current ? ItemSelectedStyle : ItemSelectableStyle,
-          ItemStyle,
-        ].join(" ");
-        return (
-          <a
-            key={item.name}
-            href={current ? "#" : item.href}
-            title={item.name}
-            tabIndex={0}
-            class={classes}
-            aria-current={current ? "page" : undefined}
-          >
-            {item.name}
-          </a>
-        );
+        if (current) {
+          return (
+            <div class={[ItemStyle, ItemSelectedStyle].join(" ")}>
+              {item.name}
+            </div>
+          );
+        } else {
+          return (
+            <a
+              key={item.name}
+              href={current ? "#" : item.href}
+              title={item.name}
+              tabIndex={0}
+              class={ItemStyle}
+              aria-current={current ? "page" : undefined}
+            >
+              {item.name}
+            </a>
+          );
+        }
       })}
     </Sidebar>
   );

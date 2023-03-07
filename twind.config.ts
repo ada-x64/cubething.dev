@@ -10,12 +10,13 @@ export default {
     presetAutoPrefix,
     presetTailWind,
     presetTypography({
+      //vars defined in global.css
       colors: {
-        links: "rgb(244 63 94)", //rose-500
-        body: "rgb(28 25 23)", //stone-900
+        links: "var(--orange-500)",
+        body: "var(--stone-900)",
         dark: {
-          links: "rgb(245 158 11)", //amber-500
-          body: "rgb(244 244 245)", //zinc-100
+          links: "var(--amber-500)",
+          body: "var(--zinc-100)",
         },
       },
       extend: {
@@ -27,6 +28,14 @@ export default {
         "h2, h3, h4": {
           "margin-top": 0,
         },
+        ".table-of-contents > ol": {
+          "width": "max-content",
+          "margin": "auto",
+          "border-top": "1px solid var(--zinc-600)",
+          "border-bottom": "1px solid var(--zinc-600)",
+          "padding-top": "1em",
+          "padding-bottom": "1em",
+        }
       },
     }),
   ],

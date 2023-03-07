@@ -1,18 +1,13 @@
 import { ComponentChild, ComponentChildren } from "preact";
 import TwClass from "@/deps/tw-class.ts";
 
-export const ItemSelectedStyle = TwClass(["text-slate-400", "font-semibold"]);
-export const ItemSelectableStyle = TwClass({
-  light: ["text-stone-900", "hover:text-stone-400"],
-  dark: ["text-zinc-100", "hover:text-stone-400"],
-});
+export const ItemSelectedStyle = TwClass(["line-through", "text-zinc-400"]);
 export const ItemStyle = TwClass([
   "px-2",
   "py-1",
   "mb-1",
   "rounded-sm",
-  "text-sm",
-  "font-medium",
+  "text-base",
   "text-center",
   "transition",
 ]);

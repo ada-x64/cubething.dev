@@ -9,18 +9,18 @@ svg * {
 }
 
 svg:hover * {
-  stroke: var(--orange-500);
+  stroke: var(--zinc-400);
 }
 .dark svg:hover * {
   stroke: var(--amber-500);
 }
 svg * {
-  stroke: var(--stone-900);
   fill: var(--stone-100);
+  stroke: var(--stone-900);
 }
 
 .dark svg:hover * {
-  stroke: var(--amber-500);
+  stroke: var(--zinc-500);
 }
 
 .dark svg * {

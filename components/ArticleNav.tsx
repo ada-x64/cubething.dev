@@ -1,8 +1,5 @@
 import DarkModeToggle from "@/islands/DarkModeToggle.tsx";
-import Sidebar, {
-  ItemSelectableStyle,
-  ItemStyle,
-} from "@/components/Sidebar.tsx";
+import Sidebar, { ItemStyle } from "@/components/Sidebar.tsx";
 
 type tNav = { name: string; href: string }[];
 
@@ -15,7 +12,7 @@ export const article_nav: tNav = [
 
 export const all_nav: tNav = [];
 
-const classes = [ItemSelectableStyle, ItemStyle].join(" ");
+const classes = ItemStyle;
 
 export default function ArticleNav({ route }: { route: string }) {
   let navigation = all_nav;

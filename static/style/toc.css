@@ -3,16 +3,47 @@
   line-height: 1.25em;
 }
 
-.prose a:hover {
-  color: var(--zinc-400);
-  transition: 0.125s;
+.prose :is(h1, h2, h3, h4, h5, h6) {
+  text-transform: lowercase;
+  font-family: Chillax, sans;
+  text-align: center;
 }
+
+.prose :is(h1, h2, h3, h4, h5, h6) a {
+  color: var(--zinc-900);
+}
+.prose :is(h1, h2, h3, h4, h5, h6) a:hover {
+  color: var(--zinc-400);
+}
+
+.dark .prose :is(h1, h2, h3, h4, h5, h6) a {
+  color: var(--zinc-100);
+}
+.dark .prose :is(h1, h2, h3, h4, h5, h6) a:hover {
+  color: var(--zinc-400);
+}
+
 .prose a {
-  color: unset;
-  transition: 0.125s;
   text-decoration: none;
   font-weight: bold;
 }
+
+.dark .prose a {
+  font-weight: normal;
+}
+
+.prose {
+  line-height: 2em
+}
+
+code {
+  font-weight: normal;
+}
+
+.dark code {
+  font-weight: normal;
+}
+
 
 ol {
   counter-reset: list-item;

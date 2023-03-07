@@ -1,14 +1,38 @@
 :root {
   --stone-900: rgb(28 25 23);
   --stone-100: rgb(245 245 244);
-  --zinc-900: rgb(24 24 27);
-  --zinc-100: rgb(244 244 245);
+
   --rose-500: rgb(244 63 94);
   --amber-500: rgb(245 158 11);
+
+  --cyan-600: rgb(8 145 178);
   --orange-500: rgb(249 115 22);
+
+  --zinc-100: rgb(244 244 245);
   --zinc-400: rgb(161 161 170);
+  --zinc-500: rgb(113 113 122);
+  --zinc-600: rgb(82 82 91);
+  --zinc-900: rgb(24 24 27);
 }
 
 html {
   scroll-behavior: smooth;
 }
+
+a {
+  color: var(--orange-500);
+  text-decoration: none;
+  font-weight: bold;
+}
+a:hover {
+  color: var(--zinc-500);
+  transition: 0.125s;
+}
+.dark a {
+  color: var(--amber-500);
+  font-weight: normal;
+}
+.dark a:hover {
+  color: var(--zinc-400);
+}
+
