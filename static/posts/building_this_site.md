@@ -564,6 +564,7 @@ GITHUB_DIR="git@github.com:YOUR_UN/YOUR_REPO.git"
 #...
 
 git remote add github "$GITHUB_DIR" 2> /dev/null #pipe errors to null
+git remote set-url github "$GITHUB_DIR"
 git push -u github main
 ```
 
