@@ -7,5 +7,3 @@ Content presented here is subject to change. For an overview of the contents, se
 ## GitHub Users
 
 This code is automatically updated through git hooks whenever a deployment is made. GitHub Action deployments are a TODO.
-
-(test)
