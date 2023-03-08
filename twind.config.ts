@@ -10,15 +10,6 @@ export default {
     presetAutoPrefix,
     presetTailWind,
     presetTypography({
-      //vars defined in global.css
-      colors: {
-        links: "var(--orange-500)",
-        body: "var(--stone-900)",
-        dark: {
-          links: "var(--amber-500)",
-          body: "var(--zinc-100)",
-        },
-      },
       extend: {
         "h1, h2, h3, h4": {
           "text-transform": "lowercase",

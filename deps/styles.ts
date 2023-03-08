@@ -41,3 +41,13 @@ export const ItemContainerStyle = TwClass([
   "w-full",
   "text-4xl",
 ]);
+
+export const TimeStyle = TwClass([
+  "block",
+  "text-stone-500",
+  "dark:text-zinc-500",
+  "dark:font-bold",
+  "text-center",
+  "-mt-2",
+  "mb-2",
+]);
