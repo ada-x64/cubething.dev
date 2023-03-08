@@ -3,7 +3,7 @@ export default function f({ size }: { size?: string | number }) {
     <svg
       width={size ?? "1em"}
       height={size ?? "1em"}
-      viewBox="-10 -10 110 110"
+      viewBox="0 0 100 100"
       version="1.1"
       id="svg5"
       xmlns="http://www.w3.org/2000/svg"

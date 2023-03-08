@@ -1,29 +1,20 @@
-svg:hover * {
+:is(svg:hover, button:focus svg) * {
   transition: all linear 0.125s;
+  stroke: var(--link);
 }
 
 svg * {
   stroke-width: 3;
   stroke-linejoin: round;
   transition: all linear 0.125s;
+      fill: var(--bg);
+  stroke: var(--text);
 }
 
-svg:hover * {
-  stroke: var(--zinc-400);
+.dark :is(svg:hover, button:focus svg) * {
+  stroke: var(--dark-link);
 }
-.dark svg:hover * {
-  stroke: var(--amber-500);
-}
-svg * {
-  fill: var(--stone-100);
-  stroke: var(--stone-900);
-}
-
-.dark svg:hover * {
-  stroke: var(--zinc-500);
-}
-
 .dark svg * {
-  fill: var(--zinc-900);
-  stroke: var(--zinc-100);
+  fill: var(--dark-bg);
+  stroke: var(--dark-text);
 }

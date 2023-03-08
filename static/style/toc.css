@@ -10,26 +10,42 @@
 }
 
 .prose :is(h1, h2, h3, h4, h5, h6) a {
-  color: var(--zinc-900);
+  color: var(--text);
+  text-decoration: none; /*Inbound link - no decoration*/
 }
 .prose :is(h1, h2, h3, h4, h5, h6) a:hover {
-  color: var(--zinc-400);
+  color: var(--link);
+}
+.prose :is(h1, h2, h3, h4, h5, h6, ol, li) a::after {
+  content: "#";
 }
 
 .dark .prose :is(h1, h2, h3, h4, h5, h6) a {
-  color: var(--zinc-100);
+  color: var(--dark-text);
 }
 .dark .prose :is(h1, h2, h3, h4, h5, h6) a:hover {
-  color: var(--zinc-400);
+  color: var(--dark-link);
 }
 
 .prose a {
   text-decoration: none;
   font-weight: bold;
+  transition: 100ms;
 }
 
-.dark .prose a {
-  font-weight: normal;
+.prose a:hover {
+  color: var(--accent);
+  transition: 100ms;
+}
+
+.dark .prose a:hover {
+  color: var(--dark-accent);
+}
+
+.prose a::after {
+  content: "↗";
+  font-size: 0.666rem;
+  vertical-align: sub;
 }
 
 .prose {
@@ -48,6 +64,22 @@ ol {
   counter-reset: list-item;
   max-width: fit-content;
 }
+
+.prose ol a {
+  color: var(--accent);
+  font-family: Chillax, sans-serif;
+  text-decoration: none; /*Inbound link - no decoration*/
+}
+.prose ol a:hover {
+  color: var(--link);
+}
+.dark .prose ol a {
+  color: var(--dark-accent);
+}
+.dark .prose ol a:hover {
+  color: var(--dark-link);
+}
+
 li {
   display: block;
   counter-increment: list-item;

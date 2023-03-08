@@ -1,7 +1,7 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getPosts, Post } from "@/deps/posts.ts";
-import Layout from "@/components/Layout.tsx";
-import PostCard from "@/components/PostCard.tsx";
+import Layout from "@/components/layout/Layout.tsx";
+import PostCard from "@/components/pageComponent/PostCard.tsx";
 
 export const handler: Handlers<Post[]> = {
   async GET(_req, ctx) {
@@ -20,7 +20,9 @@ export default function Archive(props: PageProps<Post[]>) {
         mathematics.
       </div>
       <div class="mb-8">
-        {posts.map((post) => <PostCard post={post}></PostCard>)}
+        {posts.map((post) => (
+          <PostCard post={post}></PostCard>
+        ))}
       </div>
     </Layout>
   );

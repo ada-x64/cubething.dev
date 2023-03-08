@@ -22,7 +22,7 @@ export default function Sidebar({
       <nav
         aria-label={ariaLabel}
         class={TwClass([
-          "h-screen",
+          "h-fit",
           "flex-auto",
           "px-4",
           "text-xl",

@@ -160,6 +160,7 @@
     "https://esm.sh/*@preact/signals-core@1.0.1": "d1c9883f882fa2a4e33d1249c7dc4257055e247ae0118e1947ed6577d6e8fef8",
     "https://esm.sh/*@preact/signals@1.0.3": "e744832aa044e7b789b4c1ba3e0098afaeab8555036e5386024885774dfc6ce1",
     "https://esm.sh/stable/preact@10.13.0/deno/hooks.js": "edbcf1ae84cca4c7c9c6354e713737db9ab967586e48132dd0d0b6ac5822108b",
+    "https://esm.sh/stable/preact@10.13.0/deno/hooks/src/index.js": "236eda33c57d91082a362f67edfc2d9965a7858ebecd65df7c84a8e0d84fcb4d",
     "https://esm.sh/stable/preact@10.13.0/deno/jsx-runtime.js": "7abe1e12e6f6ee97babb72059772586183e1bc7fa33f03cf079717dc8a041bea",
     "https://esm.sh/stable/preact@10.13.0/deno/preact.js": "20da7180ef91ea6de3814b14bbfbcac7bb40b4d4ed193a5843513f1a9b3665c7",
     "https://esm.sh/stable/preact@10.13.0/deno/src/index.js": "156da0159f4976bc0a12a130e7c9cc4f424448a5e8b6a982b5ecbc87a110812f",
@@ -181,6 +182,7 @@
     "https://esm.sh/v107/preact-render-to-string@5.2.6/X-ZS8q/src/index.d.ts": "b1d73703252c8570fdf2952475805f5808ba3511fefbd93a3e7bd8406de7dcd0",
     "https://esm.sh/v107/preact@10.13.0": "78b7e26b5fa9e813450b7bc1006da2bc34242924606ec448b69ac4b731d246ba",
     "https://esm.sh/v107/preact@10.13.0/hooks": "35c08a7d9fac440cfc12a698abaa6a16d6c1922bf2c6b141527628280505bcaa",
+    "https://esm.sh/v107/preact@10.13.0/hooks/src/index": "e67a5badb095e4b2d5547460489137b2f579172d54c805affbf1d9b6f9ff0eff",
     "https://esm.sh/v107/preact@10.13.0/hooks/src/index.d.ts": "5c29febb624fc25d71cb0e125848c9b711e233337a08f7eacfade38fd4c14cc3",
     "https://esm.sh/v107/preact@10.13.0/jsx-runtime": "b49b3c9d2e54324d8bcfc183921a5e3ad058a8561b4a70e3c661de431a3071d1",
     "https://esm.sh/v107/preact@10.13.0/jsx-runtime/src/index.d.ts": "e153460ed2b3fe2ad8b93696ecd48fbf73cd628b0b0ea6692b71804a3af69dfd",
@@ -196,19 +198,38 @@
     "https://esm.sh/v110/@preact/signals-core@1.0.1/X-ZS8q/deno/signals-core.js": "0b0f3cf517d6e7881d004d840d95f07bd0cf687d4e30f02a3fe4307c3a0e5012",
     "https://esm.sh/v110/@preact/signals-core@1.0.1/X-ZS8q/dist/signals-core": "a2af85ee605ed9fce4c800d162613fed096be3015ceff642d37860464e12ebcc",
     "https://esm.sh/v110/@preact/signals-core@1.0.1/X-ZS8q/dist/signals-core.d.ts": "7a2bc0ea4bb4197fe888236017e1429cb3129ca64eb37146f11f102d9513c54d",
+    "https://esm.sh/v110/@preact/signals@1.0.3/X-ZS8q/deno/dist/signals.js": "8baf7e146e43223dd546a4f283b742bf5555370887de68d8ef8686d849cec173",
     "https://esm.sh/v110/@preact/signals@1.0.3/X-ZS8q/deno/signals.js": "c2807ebadd1f0786d208bb474a5a879cdc2558ec130d6a3d2f38a4ca33726c96",
-    "https://esm.sh/v110/@preact/signals@1.0.3/X-ZS8q/dist/signals.d.ts": "f4fbae092f6622b348cc45503aef1a2076ea0c4bf37ab78a691a77220217a027"
+    "https://esm.sh/v110/@preact/signals@1.0.3/X-ZS8q/dist/signals": "e4b53becc3666a3ef032817f82936570725bc42b28a580315be7478d333073dc",
+    "https://esm.sh/v110/@preact/signals@1.0.3/X-ZS8q/dist/signals.d.ts": "f4fbae092f6622b348cc45503aef1a2076ea0c4bf37ab78a691a77220217a027",
+    "https://esm.sh/v111/preact@10.13.0/hooks/src/index.d.ts": "5c29febb624fc25d71cb0e125848c9b711e233337a08f7eacfade38fd4c14cc3",
+    "https://esm.sh/v111/preact@10.13.0/src/index.d.ts": "65398710de6aa0a07412da79784e05e6e96763f51c7c91b77344d2d0af06385c",
+    "https://esm.sh/v111/preact@10.13.0/src/jsx.d.ts": "fde41cfb4944bcc5005e653c989ef8f85deb1cbb5364a1726654993937cd08d0"
   },
   "npm": {
     "specifiers": {
+      "@preact/signals-core@1.0.1": "@preact/signals-core@1.0.1",
+      "@preact/signals@1.0.3": "@preact/signals@1.0.3_preact@10.13.0",
       "@types/markdown-it": "@types/markdown-it@12.2.3",
       "@types/prismjs@1.26.0": "@types/prismjs@1.26.0",
       "markdown-it": "markdown-it@13.0.1",
       "markdown-it-anchor": "markdown-it-anchor@8.6.7_@types+markdown-it@12.2.3_markdown-it@13.0.1",
       "markdown-it-toc-done-right": "markdown-it-toc-done-right@4.2.0",
+      "preact@10.13.0": "preact@10.13.0",
       "prismjs": "prismjs@1.29.0"
     },
     "packages": {
+      "@preact/signals-core@1.0.1": {
+        "integrity": "sha512-1yBu72jd80QWdp8WvNFBg7K+0REv+NqJg1CGIwAl5kJ+qE7I06Lm2+K3z2qVZmABiDjQgjU2vKA9yEjniWv5uA==",
+        "dependencies": {}
+      },
+      "@preact/signals@1.0.3_preact@10.13.0": {
+        "integrity": "sha512-aBUYPBzdw+UD99t3n2v+OKecjaA2SnvImLDKH7jZtgwPE6E4Jr+B+H3P1tYty+bRsIKnHuFcvYUIZJAP1armFw==",
+        "dependencies": {
+          "@preact/signals-core": "@preact/signals-core@1.0.1",
+          "preact": "preact@10.13.0"
+        }
+      },
       "@types/linkify-it@3.0.2": {
         "integrity": "sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==",
         "dependencies": {}
@@ -265,6 +286,10 @@
       },
       "mdurl@1.0.1": {
         "integrity": "sha512-/sKlQJCBYVY9Ers9hqzKou4H6V5UWc/M59TH2dvkt+84itfnq7uFOMLpOiOS4ujvHP4etln18fmIxA5R5fll0g==",
+        "dependencies": {}
+      },
+      "preact@10.13.0": {
+        "integrity": "sha512-ERdIdUpR6doqdaSIh80hvzebHB7O6JxycOhyzAeLEchqOq/4yueslQbfnPwXaNhAYacFTyCclhwkEbOumT0tHw==",
         "dependencies": {}
       },
       "prismjs@1.29.0": {

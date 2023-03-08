@@ -1,6 +1,7 @@
 import AutoTheme from "@/components/svg/AutoTheme.svg.tsx";
 import DarkTheme from "@/components/svg/DarkTheme.svg.tsx";
 import LightTheme from "@/components/svg/LightTheme.svg.tsx";
+import { focusMobileNav } from "@/islands/MobileNav.tsx";
 import { signal } from "@preact/signals";
 
 enum ThemeState {
@@ -39,6 +40,7 @@ export function setTheme() {
   localStorage.setItem("theme", theme.toString());
   ThemeSignal.value = theme;
   theme === ThemeState.auto ? checkAuto() : checkManual();
+  focusMobileNav();
 }
 
 export default function DarkModeToggle() {

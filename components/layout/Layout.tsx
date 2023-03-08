@@ -1,11 +1,10 @@
-import MainNav from "@/components/MainNav.tsx";
 import { ComponentChildren } from "preact";
-import ArticleNav from "@/components/ArticleNav.tsx";
-import Article from "@/components/Article.tsx";
-import HeadComponent from "@/components/Head.tsx";
+import Article from "@/components/pageComponent/Article.tsx";
+import HeadComponent from "@/components/layout/Head.tsx";
 import { TwClass } from "@/deps/styles.ts";
 import { Head } from "$fresh/src/runtime/head.ts";
 import MobileNav from "@/islands/MobileNav.tsx";
+import NavBtn from "@/islands/NavBtn.tsx";
 
 export default function Layout({
   route,
@@ -20,13 +19,11 @@ export default function Layout({
     <>
       <HeadComponent />
       <Head>
-        <title>{`< ${title.toLowerCase()} />`}</title>
+        <title>{`cubething.dev → ${title.toLowerCase()}`}</title>
       </Head>
+      <NavBtn route={route} />
       <main class={TwClass(["flex", "justify-center"])}>
-        <MainNav route={route} />
-        <ArticleNav route={route} />
         <Article title={title.toLowerCase()} children={children} />
-        <MobileNav route={route} />
       </main>
     </>
   );

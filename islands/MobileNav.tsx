@@ -1,9 +1,9 @@
-import { TwClass } from "@/deps/styles.ts";
-import Cube from "@/components/svg/Cube.svg.tsx";
+import { LocalAction, TwClass } from "@/deps/styles.ts";
 import { ItemContainerStyle, ItemStyle } from "@/deps/styles.ts";
 import DarkModeToggle from "@/islands/DarkModeToggle.tsx";
-import { MainNavItems } from "@/components/MainNavItems.tsx";
-import { ArticleNavItems } from "@/components/ArticleNavItems.tsx";
+import { MainNavItems } from "@/components/nav/MainNavItems.tsx";
+import { ArticleNavItems } from "@/components/nav/ArticleNavItems.tsx";
+import { navSignal } from "@/islands/NavBtn.tsx";
 
 export const mainNav = [
   { name: "home", href: "/" },
@@ -24,54 +24,86 @@ export const articleNav = [
   },
 ];
 
+export const getMobileNav = () => {
+  return {
+    wrapper: document.getElementById("mobile-nav-wrapper"),
+    nav: document.getElementById("mobile-nav"),
+  };
+};
+
+export const focusMobileNav = () => {
+  setTimeout(() => {
+    getMobileNav().nav!.focus();
+  }, 100);
+};
+
+export const toggleMobileNav = () => {
+  navSignal.value ? closeMobileNav() : openMobileNav();
+};
+
 export const openMobileNav = () => {
-  const nav = document.getElementById("mobile-nav");
-  nav!.style.opacity = "1";
-  nav!.style.zIndex = "100";
-  document.body.style.overflow = "hidden";
+  navSignal.value = true;
+  //timeout - wait for redraw
+  setTimeout(() => {
+    const { wrapper, nav } = getMobileNav();
+    wrapper!.style.opacity = "1";
+    nav!.focus();
+  }, 100);
 };
 
 export const closeMobileNav = () => {
-  const nav = document.getElementById("mobile-nav");
-  nav!.style.opacity = "0";
-  nav!.style.zIndex = "-100";
-  document.body.style.overflow = "auto";
+  const { wrapper } = getMobileNav();
+  wrapper!.style.opacity = "0";
+  setTimeout(() => {
+    navSignal.value = false;
+  }, 100);
 };
 
+export const onBlur = () => {
+  setTimeout(() => {
+    const { nav } = getMobileNav();
+    if (nav!.contains(document.activeElement) === false) {
+      closeMobileNav();
+    }
+  }, 100);
+};
+
+const WrapperStyle = TwClass([
+  "fixed",
+  "transition-all",
+  "ease-linear",
+  "top-0",
+  "w-screen",
+  "h-screen",
+  "flex",
+  "justify-center",
+  "items-center",
+  "z-50",
+]);
+
+const NavStyle = TwClass([
+  "flex",
+  "flex-col",
+  "bg-stone-100",
+  "dark:bg-zinc-900",
+  "w-80",
+  "min-h-1/2",
+  "top-1/4",
+  "border-2",
+  "border-stone-900",
+  "dark:border-zinc-100",
+  "rounded-md",
+]);
+
 export default function MobileNav({ route }: { route: string }) {
-  return (
-    <>
-      <button
-        class={TwClass([
-          "flex",
-          "justify-center",
-          "align-center",
-          "lg:hidden",
-          "fixed",
-          "right-2",
-          "bottom-2",
-          "text-5xl",
-        ])}
-        onClick={openMobileNav}
-      >
-        <Cube />
-      </button>
-      <nav
-        id="mobile-nav"
-        class={TwClass([
-          "fixed",
-          "container",
-          "w-full",
-          "h-full",
-          "transition-all",
-          "ease-linear",
-          "flex",
-          "flex-col",
-          "bg-stone-100",
-          "dark:bg-zinc-900",
-        ])}
-        style="opacity: 0; z-index: -100"
-      >
+  return !navSignal.value ? null : (
+    <div
+      id="mobile-nav-wrapper"
+      class={WrapperStyle}
+      style="opacity:0"
+      tabIndex={-1}
+    >
+      <nav id="mobile-nav" class={NavStyle} onBlur={onBlur} tabIndex={-1}>
         <div class={ItemContainerStyle}>
           <DarkModeToggle />
         </div>
@@ -82,11 +114,15 @@ export default function MobileNav({ route }: { route: string }) {
           <ArticleNavItems navigation={articleNav} />
         </div>
         <div class={ItemContainerStyle}>
-          <a class={ItemStyle} onClick={closeMobileNav}>
+          <button
+            class={TwClass([LocalAction, ItemStyle])}
+            title="close this navigation modal"
+            onClick={closeMobileNav}
+          >
             close
-          </a>
+          </button>
         </div>
       </nav>
-    </>
+    </div>
   );
 }

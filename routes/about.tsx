@@ -1,6 +1,6 @@
-import Layout from "@/components/Layout.tsx";
+import Layout from "@/components/layout/Layout.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
-import Markdown from "@/components/Markdown.tsx";
+import Markdown from "@/components/pageComponent/Markdown.tsx";
 import { DataPath } from "@/deps/paths.ts";
 import { join } from "$std/path/mod.ts";
 

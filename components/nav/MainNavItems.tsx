@@ -1,5 +1,11 @@
-import { tNav } from "@/components/ArticleNav.tsx";
-import { ItemListStyle, ItemSelectedStyle, ItemStyle } from "@/deps/styles.ts";
+import { tNav } from "@/deps/types.ts";
+import {
+  ItemListStyle,
+  ItemSelectedStyle,
+  ItemStyle,
+  OutboundLink,
+  TwClass,
+} from "@/deps/styles.ts";
 import { closeMobileNav } from "@/islands/MobileNav.tsx";
 
 export function MainNavItems({
@@ -22,7 +28,7 @@ export function MainNavItems({
           href={current ? "#" : item.href}
           title={item.name}
           tabIndex={0}
-          class={ItemStyle}
+          class={TwClass([ItemStyle, OutboundLink])}
           aria-current={current ? "page" : undefined}
           onClick={closeMobileNav}
         >
