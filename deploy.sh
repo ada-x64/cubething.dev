@@ -15,6 +15,6 @@ deno run -A "$MAIN"
 
 EOF
 
-sudo pm2 delete cubething.dev
+sudo pm2 delete cubething.dev 2> /dev/null
 sudo pm2 start "$PWD"/run.sh --name cubething.dev
 sudo pm2 save
