@@ -13,7 +13,7 @@ export const handler: Handlers<Post[]> = {
 export default function Index(props: PageProps<Post[]>) {
   const posts = props.data;
   return (
-    <Layout title={"cubething"} route={props.route}>
+    <Layout title={"home"} route={props.route}>
       <div>
         <div class="mb-8">
           This is the personal website of{" "}

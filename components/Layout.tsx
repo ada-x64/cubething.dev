@@ -20,7 +20,7 @@ export default function Layout({
     <>
       <HeadComponent />
       <Head>
-        <title>{`< ${title.toLowerCase()} />`}</title>
+        <title>{`cubething.dev → ${title.toLowerCase()}`}</title>
       </Head>
       <main class={TwClass(["flex", "justify-center"])}>
         <MainNav route={route} />
