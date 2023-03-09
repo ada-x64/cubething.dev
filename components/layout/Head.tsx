@@ -10,7 +10,6 @@ export default function HeadComponent() {
       <link rel="stylesheet" href="/style/toc.css" />
       <link rel="stylesheet" href="/style/global.css" />
       <link rel="stylesheet" href="/style/code.css" />
-      <script src="/scripts/onScroll.js" />
       <script src="/scripts/detectTheme.js"></script>
 
       {/*<!-- Primary Meta Tags -->*/}

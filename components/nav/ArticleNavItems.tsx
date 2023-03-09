@@ -1,5 +1,5 @@
-import { tNav } from "@/components/ArticleNav.tsx";
-import { ItemListStyle, ItemStyle } from "@/deps/styles.ts";
+import { tNav } from "@/deps/types.ts";
+import { InboundLink, ItemListStyle, ItemStyle } from "@/deps/styles.ts";
 import { closeMobileNav } from "@/islands/MobileNav.tsx";
 
 export function ArticleNavItems({ navigation }: { navigation: tNav }) {
@@ -10,7 +10,7 @@ export function ArticleNavItems({ navigation }: { navigation: tNav }) {
         href={item.href}
         title={item.name}
         tabIndex={0}
-        class={ItemStyle}
+        class={ItemStyle.concat(InboundLink)}
         onClick={closeMobileNav}
       >
         {item.name}

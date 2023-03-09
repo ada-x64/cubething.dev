@@ -1,4 +1,4 @@
-svg:hover * {
+:is(svg:hover, button:focus svg) * {
   transition: all linear 0.125s;
   stroke: var(--link);
 }
@@ -7,11 +7,11 @@ svg * {
   stroke-width: 3;
   stroke-linejoin: round;
   transition: all linear 0.125s;
-  fill: var(--bg);
+      fill: var(--bg);
   stroke: var(--text);
 }
 
-.dark svg:hover * {
+.dark :is(svg:hover, button:focus svg) * {
   stroke: var(--dark-link);
 }
 .dark svg * {
