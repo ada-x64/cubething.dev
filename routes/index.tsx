@@ -2,7 +2,7 @@ import Layout from "@/components/layout/Layout.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getPosts, Post } from "@/deps/posts.ts";
 import PostCard from "@/components/pageComponent/PostCard.tsx";
-import { OutboundLink } from "../deps/styles.ts";
+import { OutboundLink } from "@/deps/styles.ts";
 
 export const handler: Handlers<Post[]> = {
   async GET(_req, ctx) {
@@ -14,7 +14,7 @@ export const handler: Handlers<Post[]> = {
 export default function Index(props: PageProps<Post[]>) {
   const posts = props.data;
   return (
-    <Layout title={"home"} route={props.route}>
+    <Layout title={"cubething"} route={props.route}>
       <div>
         <div class="mb-8">
           This is the personal website of{" "}

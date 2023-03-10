@@ -4,9 +4,11 @@ import { TwClass } from "@/deps/styles.ts";
 
 export default function Article({
   title,
+  route,
   children,
 }: {
   title: string;
+  route: string;
   children: ComponentChildren;
 }) {
   return (
@@ -25,7 +27,7 @@ export default function Article({
       ])}
       tabIndex={0}
     >
-      <Title title={title} />
+      <Title title={title} route={route} />
       {children}
     </article>
   );

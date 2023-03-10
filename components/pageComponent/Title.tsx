@@ -5,7 +5,18 @@ import {
   TwClass,
 } from "@/deps/styles.ts";
 
-export default function Title({ title }: { title: string }) {
+export default function Title({
+  title,
+  route,
+}: {
+  title: string;
+  route: string;
+}) {
+  const anchorTitle = route === "/"
+    ? "home page"
+    : route.includes("article")
+    ? `article: ${title} - click to go home`
+    : `${title} - click to go home`;
   return (
     <h1
       id="header"
@@ -25,7 +36,7 @@ export default function Title({ title }: { title: string }) {
     >
       <a
         href="/"
-        title={`article: ${title} - click to go home`}
+        title={anchorTitle}
         class={TwClass([AccentText, OutboundIndicator])}
       >
         {`< ${title} />`}
