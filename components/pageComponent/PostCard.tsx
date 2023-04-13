@@ -1,5 +1,6 @@
-import { getTime, Post } from "@/deps/posts.ts";
-import { OutboundLink, Palette, TimeStyle, TwClass } from "@/deps/styles.ts";
+import { Post } from "@/deps/posts.ts";
+import { getTime } from "@/deps/time.ts";
+import { OutboundLink, TimeStyle, TwClass } from "@/deps/styles.ts";
 import { BorderColor } from "@/deps/styles.ts";
 
 export default function PostCard(props: { post: Post }) {

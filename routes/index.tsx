@@ -7,6 +7,7 @@ import { OutboundLink } from "@/deps/styles.ts";
 export const handler: Handlers<Post[]> = {
   async GET(_req, ctx) {
     const posts = await getPosts(3);
+    // const gallery = await getGallery(3);
     return ctx.render(posts);
   },
 };
@@ -23,13 +24,25 @@ export default function Index(props: PageProps<Post[]>) {
           </a>
           .
         </div>
+        {
+          /*
+        <h2 class="text-3xl font-header text-center">
+          <a href="gfx/about" title="gfx" class={OutboundLink}>
+            recent gfx
+          </a>
+        </h2>
+        <div class="mb-8" id="gfx-gallery">
+          {gallery.map((item) => <GalleryItem item={thumbnail} />)}
+        </div>
+          */
+        }
         <h2 class="text-3xl font-header text-center">
           <a href="archive" title="archive" class={OutboundLink}>
             recent posts
           </a>
         </h2>
         <div class="mb-8" id="articles">
-          {posts.map((post) => <PostCard post={post}></PostCard>)}
+          {posts.map((post) => <PostCard post={post} />)}
         </div>
       </div>
     </Layout>
