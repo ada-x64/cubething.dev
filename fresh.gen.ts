@@ -7,10 +7,13 @@ import * as $0 from "./routes/about.tsx";
 import * as $1 from "./routes/archive.tsx";
 import * as $2 from "./routes/articles/[slug].tsx";
 import * as $3 from "./routes/contact.tsx";
-import * as $4 from "./routes/index.tsx";
+import * as $4 from "./routes/gfx/[slug].tsx";
+import * as $5 from "./routes/gfx/about.tsx";
+import * as $6 from "./routes/index.tsx";
 import * as $$0 from "./islands/DarkModeToggle.tsx";
-import * as $$1 from "./islands/MobileNav.tsx";
-import * as $$2 from "./islands/NavBtn.tsx";
+import * as $$1 from "./islands/GfxIframe.tsx";
+import * as $$2 from "./islands/MobileNav.tsx";
+import * as $$3 from "./islands/NavBtn.tsx";
 
 const manifest = {
   routes: {
@@ -18,12 +21,15 @@ const manifest = {
     "./routes/archive.tsx": $1,
     "./routes/articles/[slug].tsx": $2,
     "./routes/contact.tsx": $3,
-    "./routes/index.tsx": $4,
+    "./routes/gfx/[slug].tsx": $4,
+    "./routes/gfx/about.tsx": $5,
+    "./routes/index.tsx": $6,
   },
   islands: {
     "./islands/DarkModeToggle.tsx": $$0,
-    "./islands/MobileNav.tsx": $$1,
-    "./islands/NavBtn.tsx": $$2,
+    "./islands/GfxIframe.tsx": $$1,
+    "./islands/MobileNav.tsx": $$2,
+    "./islands/NavBtn.tsx": $$3,
   },
   baseUrl: import.meta.url,
   config,

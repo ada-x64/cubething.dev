@@ -3,7 +3,7 @@ import { getTime } from "@/deps/time.ts";
 import Markdown from "@/components/pageComponent/Markdown.tsx";
 import { TimeStyle, TwClass } from "@/deps/styles.ts";
 import { getGfxModule, GfxModule } from "@/deps/gfx-module.ts";
-import GfxIframe from "@/components/pageComponent/GfxIframe.tsx";
+import GfxIframe from "@/islands/GfxIframe.tsx";
 import { join } from "$std/path/mod.ts";
 import HeadComponent from "@/components/layout/Head.tsx";
 import Head from "@/components/layout/Head.tsx";
@@ -56,8 +56,9 @@ export default function GfxPage(props: PageProps<GfxModule>) {
         <div>
           <GfxIframe
             title={module.title}
-            width={1080}
-            height={768}
+            width={1024}
+            /* It doesn't like having the exact height. */
+            height={780}
             src={join("/gfx-modules", module.slug, "index.html")}
           >
           </GfxIframe>
