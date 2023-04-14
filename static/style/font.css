@@ -4,6 +4,11 @@
 }
 
 @font-face {
+  font-family: "Fira Code Nerd Font";
+  src: url("../font/Fira Code Regular Nerd Font Complete Mono.ttf");
+}
+
+@font-face {
   font-family: "Ubuntu Mono";
   src: url("../font/UbuntuMono-R.ttf");
 }
