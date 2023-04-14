@@ -1,5 +1,6 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getPost, getTime, Post } from "@/deps/posts.ts";
+import { getPost, Post } from "@/deps/posts.ts";
+import { getTime } from "@/deps/time.ts";
 import Layout from "@/components/layout/Layout.tsx";
 import Markdown from "@/components/pageComponent/Markdown.tsx";
 import { TimeStyle, TwClass } from "@/deps/styles.ts";

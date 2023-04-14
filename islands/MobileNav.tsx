@@ -12,8 +12,12 @@ export const mainNav = [
     href: "/about",
   },
   {
-    name: "archive",
-    href: "/archive",
+    name: "gfx",
+    href: "/gfx",
+  },
+  {
+    name: "articles",
+    href: "/articles",
   },
 ];
 
