@@ -22,8 +22,8 @@ export default function GfxCard({
     )
     .join(" ");
 
-  const imgOrder = index % 2 == 0 ? "order-1" : "order-3";
-  const textAlign = index % 2 == 0 ? "text-right" : "text-left";
+  const imgOrder = index % 2 == 0 ? "order-3" : "order-1";
+  const textAlign = index % 2 == 0 ? "text-left" : "text-right";
 
   return (
     <div class={TwClass(["mt-4", "pt-4", "border-t", BorderColor])}>

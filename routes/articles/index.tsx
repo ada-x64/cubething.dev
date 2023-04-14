@@ -13,16 +13,14 @@ export const handler: Handlers<Post[]> = {
 export default function Archive(props: PageProps<Post[]>) {
   const posts = props.data;
   return (
-    <Layout title={"archive"} route={props.route}>
+    <Layout title={"articles"} route={props.route}>
       <div>
         This page contains an archive of all my past blog posts. Topics
         discussed include web development, game development, philosophy, and
         mathematics.
       </div>
       <div class="mb-8">
-        {posts.map((post) => (
-          <PostCard post={post}></PostCard>
-        ))}
+        {posts.map((post) => <PostCard post={post}></PostCard>)}
       </div>
     </Layout>
   );

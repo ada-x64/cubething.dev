@@ -2,7 +2,7 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import Layout from "@/components/layout/Layout.tsx";
 import { getGfxModules, GfxModule } from "@/deps/gfx-module.ts";
 import GfxCard from "@/components/pageComponent/GfxCard.tsx";
-import { OutboundLink } from "../deps/styles.ts";
+import { OutboundLink } from "@/deps/styles.ts";
 
 export const handler: Handlers<GfxModule[]> = {
   async GET(_req, ctx) {
@@ -14,9 +14,9 @@ export const handler: Handlers<GfxModule[]> = {
 export default function Archive(props: PageProps<GfxModule[]>) {
   const modules = props.data;
   return (
-    <Layout title={"gallery"} route={props.route}>
+    <Layout title={"gfx"} route={props.route}>
       <div>
-        This page contains a listing of all my previous graphics showcases. The
+        This page contains a gallery of all my previous graphics showcases. The
         graphics on this page are largely developed with{" "}
         <a href="https://github.com/ada-x64/sundile_rs" class={OutboundLink}>
           Sundile

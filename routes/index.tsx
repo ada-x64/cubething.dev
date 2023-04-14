@@ -2,7 +2,7 @@ import Layout from "@/components/layout/Layout.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getPosts, Post } from "@/deps/posts.ts";
 import PostCard from "@/components/pageComponent/PostCard.tsx";
-import { OutboundLink } from "@/deps/styles.ts";
+import { OutboundLink, TwClass } from "@/deps/styles.ts";
 import { getGfxModules, GfxModule } from "@/deps/gfx-module.ts";
 import GfxCard from "@/components/pageComponent/GfxCard.tsx";
 
@@ -23,7 +23,7 @@ export default function Index(props: PageProps<Props>) {
   return (
     <Layout title={"cubething"} route={props.route}>
       <div>
-        <div class="mb-8">
+        <div class={TwClass(["mb-8", "text-center"])}>
           This is the personal website of{" "}
           <a title="about" href="/about" class={OutboundLink}>
             Phoenix Ada Rose Mandala
@@ -31,7 +31,7 @@ export default function Index(props: PageProps<Props>) {
           .
         </div>
         <h2 class="text-3xl font-header text-center">
-          <a href="gfx/about" title="gallery" class={OutboundLink}>
+          <a href="/gfx" title="gfx" class={OutboundLink}>
             recent gfx
           </a>
         </h2>
@@ -41,7 +41,7 @@ export default function Index(props: PageProps<Props>) {
           ))}
         </div>
         <h2 class="text-3xl font-header text-center">
-          <a href="archive" title="archive" class={OutboundLink}>
+          <a href="/articles" title="articles" class={OutboundLink}>
             recent articles
           </a>
         </h2>

@@ -4,13 +4,12 @@
 
 import config from "./deno.json" assert { type: "json" };
 import * as $0 from "./routes/about.tsx";
-import * as $1 from "./routes/archive.tsx";
-import * as $2 from "./routes/articles/[slug].tsx";
+import * as $1 from "./routes/articles/[slug].tsx";
+import * as $2 from "./routes/articles/index.tsx";
 import * as $3 from "./routes/contact.tsx";
-import * as $4 from "./routes/gallery.tsx";
-import * as $5 from "./routes/gfx/[slug].tsx";
-import * as $6 from "./routes/gfx/about.tsx";
-import * as $7 from "./routes/index.tsx";
+import * as $4 from "./routes/gfx/[slug].tsx";
+import * as $5 from "./routes/gfx/index.tsx";
+import * as $6 from "./routes/index.tsx";
 import * as $$0 from "./islands/DarkModeToggle.tsx";
 import * as $$1 from "./islands/GfxIframe.tsx";
 import * as $$2 from "./islands/MobileNav.tsx";
@@ -19,13 +18,12 @@ import * as $$3 from "./islands/NavBtn.tsx";
 const manifest = {
   routes: {
     "./routes/about.tsx": $0,
-    "./routes/archive.tsx": $1,
-    "./routes/articles/[slug].tsx": $2,
+    "./routes/articles/[slug].tsx": $1,
+    "./routes/articles/index.tsx": $2,
     "./routes/contact.tsx": $3,
-    "./routes/gallery.tsx": $4,
-    "./routes/gfx/[slug].tsx": $5,
-    "./routes/gfx/about.tsx": $6,
-    "./routes/index.tsx": $7,
+    "./routes/gfx/[slug].tsx": $4,
+    "./routes/gfx/index.tsx": $5,
+    "./routes/index.tsx": $6,
   },
   islands: {
     "./islands/DarkModeToggle.tsx": $$0,
