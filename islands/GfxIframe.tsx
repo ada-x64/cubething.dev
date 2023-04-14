@@ -10,7 +10,7 @@ export default function GfxIframe({
   height: number;
 }) {
   if (window.innerWidth < 1028) {
-    return "Sorry, this only works on desktop!";
+    return <p>"Sorry, this only works on desktop for now!"</p>;
   } else {
     return (
       <iframe

@@ -3,17 +3,23 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { getPosts, Post } from "@/deps/posts.ts";
 import PostCard from "@/components/pageComponent/PostCard.tsx";
 import { OutboundLink } from "@/deps/styles.ts";
+import { getGfxModules, GfxModule } from "@/deps/gfx-module.ts";
+import GfxCard from "@/components/pageComponent/GfxCard.tsx";
 
-export const handler: Handlers<Post[]> = {
+type Props = {
+  posts: Post[];
+  gallery: GfxModule[];
+};
+
+export const handler: Handlers<Props> = {
   async GET(_req, ctx) {
     const posts = await getPosts(3);
-    // const gallery = await getGallery(3);
-    return ctx.render(posts);
+    const gallery = await getGfxModules(3);
+    return ctx.render({ posts, gallery });
   },
 };
 
-export default function Index(props: PageProps<Post[]>) {
-  const posts = props.data;
+export default function Index(props: PageProps<Props>) {
   return (
     <Layout title={"cubething"} route={props.route}>
       <div>
@@ -24,25 +30,23 @@ export default function Index(props: PageProps<Post[]>) {
           </a>
           .
         </div>
-        {
-          /*
         <h2 class="text-3xl font-header text-center">
-          <a href="gfx/about" title="gfx" class={OutboundLink}>
+          <a href="gfx/about" title="gallery" class={OutboundLink}>
             recent gfx
           </a>
         </h2>
         <div class="mb-8" id="gfx-gallery">
-          {gallery.map((item) => <GalleryItem item={thumbnail} />)}
+          {props.data.gallery.map((module, i) => (
+            <GfxCard module={module} index={i} />
+          ))}
         </div>
-          */
-        }
         <h2 class="text-3xl font-header text-center">
           <a href="archive" title="archive" class={OutboundLink}>
-            recent posts
+            recent articles
           </a>
         </h2>
         <div class="mb-8" id="articles">
-          {posts.map((post) => <PostCard post={post} />)}
+          {props.data.posts.map((post) => <PostCard post={post} />)}
         </div>
       </div>
     </Layout>
