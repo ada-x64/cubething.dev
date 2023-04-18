@@ -1,5 +1,4 @@
 import { ComponentChildren } from "preact";
-import Article from "@/components/pageComponent/Article.tsx";
 import HeadComponent from "@/components/layout/Head.tsx";
 import { TwClass } from "@/deps/styles.ts";
 import { Head } from "$fresh/src/runtime/head.ts";

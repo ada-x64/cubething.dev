@@ -8,6 +8,7 @@ import { join } from "$std/path/mod.ts";
 import Title from "@/components/pageComponent/Title.tsx";
 import Layout from "@/components/layout/Layout.tsx";
 import MainContent from "@/components/pageComponent/MainContent.tsx";
+import Footer from "@/components/pageComponent/Footer.tsx";
 
 export const handler: Handlers<GfxModule> = {
   async GET(_req, ctx) {
@@ -48,6 +49,7 @@ export default function GfxPage(props: PageProps<GfxModule>) {
         </div>
 
         <Markdown title={module.title} content={module.text_content} />
+        <Footer />
       </MainContent>
     </Layout>
   );

@@ -2,6 +2,7 @@ import { ComponentChildren } from "preact/src/index";
 import Title from "@/components/pageComponent/Title.tsx";
 import { TwClass } from "@/deps/styles.ts";
 import MainContent from "@/components/pageComponent/MainContent.tsx";
+import Footer from "@/components/pageComponent/Footer.tsx";
 
 export default function Article({
   title,
@@ -28,6 +29,7 @@ export default function Article({
     >
       <Title title={title} route={route} />
       {children}
+      <Footer />
     </MainContent>
   );
 }

@@ -40,10 +40,15 @@ export default function GfxCard({
             <div class="mt-4 font-normal">{module.snippet}</div>
           </div>
           <img
-            class={TwClass(["border-1", "rounded", BorderColor, imgOrder])}
+            class={TwClass([
+              "border-1",
+              "rounded",
+              BorderColor,
+              imgOrder,
+              "w-[150px]",
+              "mx-0.5",
+            ])}
             src={`/gfx-modules/${module.slug}/preview.png`}
-            width={150}
-            height={150}
             alt={module.title}
           />
         </div>

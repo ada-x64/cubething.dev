@@ -37,9 +37,16 @@ export default function Index(props: PageProps<Props>) {
     <Layout title={"cubething"} route={props.route}>
       <Article title="cubething" route={props.route}>
         <ArticleBlurb>
-          This is the personal website of Phoenix Ada Rose Mandala. On this site
-          you'll find experiments in web graphics and articles about various
-          topics.
+          This is the personal website of{" "}
+          <a
+            title="about"
+            href="/about"
+            class={TwClass([OutboundLink, "inline-block"])}
+          >
+            Ada Mandala.
+          </a>{" "}
+          On this site you'll find experiments in web graphics and articles
+          about various topics.
         </ArticleBlurb>
         <a href="/gfx" title="gfx">
           <h2 class={h2Class}>{"< gfx />"}</h2>
