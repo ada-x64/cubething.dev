@@ -26,11 +26,7 @@ export default function Layout({
       <main class={TwClass(["flex", "justify-center"])}>
         <MainNav route={route} />
         <ArticleNav route={route} />
-        <Article
-          title={title.toLowerCase()}
-          children={children}
-          route={route}
-        />
+        {children}
       </main>
     </>
   );

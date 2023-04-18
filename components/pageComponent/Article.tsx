@@ -1,6 +1,7 @@
 import { ComponentChildren } from "preact/src/index";
 import Title from "@/components/pageComponent/Title.tsx";
 import { TwClass } from "@/deps/styles.ts";
+import MainContent from "@/components/pageComponent/MainContent.tsx";
 
 export default function Article({
   title,
@@ -12,10 +13,9 @@ export default function Article({
   children: ComponentChildren;
 }) {
   return (
-    <article
+    <MainContent
       id="article"
-      class={TwClass([
-        "order-2",
+      twClass={TwClass([
         "px-4",
         "lg:px-16",
         "flex-auto",
@@ -25,10 +25,9 @@ export default function Article({
         "w-full",
         "md:max-w-screen-md",
       ])}
-      tabIndex={0}
     >
       <Title title={title} route={route} />
       {children}
-    </article>
+    </MainContent>
   );
 }

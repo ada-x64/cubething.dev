@@ -3,6 +3,8 @@ import Layout from "@/components/layout/Layout.tsx";
 import { getGfxModules, GfxModule } from "@/deps/gfx-module.ts";
 import GfxCard from "@/components/pageComponent/GfxCard.tsx";
 import { OutboundLink } from "@/deps/styles.ts";
+import Article from "@/components/pageComponent/Article.tsx";
+import ArticleBlurb from "@/components/pageComponent/ArticleBlurb.tsx";
 
 export const handler: Handlers<GfxModule[]> = {
   async GET(_req, ctx) {
@@ -15,19 +17,21 @@ export default function Archive(props: PageProps<GfxModule[]>) {
   const modules = props.data;
   return (
     <Layout title={"gfx"} route={props.route}>
-      <div>
-        This page contains a gallery of all my previous graphics showcases. The
-        graphics on this page are largely developed with{" "}
-        <a href="https://github.com/ada-x64/sundile_rs" class={OutboundLink}>
-          Sundile
-        </a>
-        , my game engine.
-      </div>
-      <div class="mb-8">
-        {modules.map((module, i) => (
-          <GfxCard module={module} index={i}></GfxCard>
-        ))}
-      </div>
+      <Article title={"gfx"} route={props.route}>
+        <ArticleBlurb>
+          This page contains a gallery of all my previous graphics showcases.
+          The graphics on this page are largely developed with{" "}
+          <a href="https://github.com/ada-x64/sundile_rs" class={OutboundLink}>
+            Sundile
+          </a>
+          , my game engine.
+        </ArticleBlurb>
+        <div class="mb-8">
+          {modules.map((module, i) => (
+            <GfxCard module={module} index={i}></GfxCard>
+          ))}
+        </div>
+      </Article>
     </Layout>
   );
 }
