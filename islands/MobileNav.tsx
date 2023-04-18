@@ -4,29 +4,7 @@ import DarkModeToggle from "@/islands/DarkModeToggle.tsx";
 import { MainNavItems } from "@/components/nav/MainNavItems.tsx";
 import { ArticleNavItems } from "@/components/nav/ArticleNavItems.tsx";
 import { navSignal } from "@/islands/NavBtn.tsx";
-
-export const mainNav = [
-  { name: "home", href: "/" },
-  {
-    name: "about",
-    href: "/about",
-  },
-  {
-    name: "gfx",
-    href: "/gfx",
-  },
-  {
-    name: "articles",
-    href: "/articles",
-  },
-];
-
-export const articleNav = [
-  {
-    name: "top",
-    href: "#",
-  },
-];
+import { articleNav, mainNav } from "@/deps/nav.ts";
 
 export const getMobileNav = () => {
   return {

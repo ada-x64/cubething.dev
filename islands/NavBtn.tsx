@@ -18,7 +18,7 @@ export const navSignal = signal(false);
 
 export default function NavBtn({ route }: { route: string }) {
   return (
-    <nav class={TwClass(["flex", "justify-end"])}>
+    <nav class={TwClass(["flex", "justify-end", "lg:hidden"])}>
       <button
         id="mobile-nav-button"
         title="toggle navigation modal"

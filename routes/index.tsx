@@ -30,7 +30,7 @@ export default function Index(props: PageProps<Props>) {
           </a>
           .
         </div>
-        <h2 class="text-3xl font-header text-center">
+        <h2 class="text-2xl font-header text-center">
           <a href="/gfx" title="gfx" class={OutboundLink}>
             recent gfx
           </a>
@@ -40,7 +40,7 @@ export default function Index(props: PageProps<Props>) {
             <GfxCard module={module} index={i} />
           ))}
         </div>
-        <h2 class="text-3xl font-header text-center">
+        <h2 class="text-2xl font-header text-center">
           <a href="/articles" title="articles" class={OutboundLink}>
             recent articles
           </a>
