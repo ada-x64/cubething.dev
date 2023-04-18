@@ -1,13 +1,8 @@
 import DarkModeToggle from "@/islands/DarkModeToggle.tsx";
-import Sidebar from "@/components/Sidebar.tsx";
-import { ArticleNavItems } from "@/components/ArticleNavItems.tsx";
-
-export const articleNav: tNav = [
-  {
-    name: "top",
-    href: "#",
-  },
-];
+import Sidebar from "@/components/nav/Sidebar.tsx";
+import { ArticleNavItems } from "@/components/nav/ArticleNavItems.tsx";
+import { tNav } from "@/deps/types.ts";
+import { articleNav } from "@/deps/nav.ts";
 
 export const allNav: tNav = [];
 

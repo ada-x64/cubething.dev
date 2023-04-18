@@ -1,3 +1,5 @@
+import { TwClass } from "@/deps/styles.ts";
+
 export default function GfxIframe({
   title,
   src,
@@ -19,6 +21,7 @@ export default function GfxIframe({
         width={width}
         height={height}
         src={src}
+        class={TwClass(["m-8"])}
       >
       </iframe>
     );

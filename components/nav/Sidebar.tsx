@@ -39,7 +39,7 @@ export default function Sidebar({
           "lg:flex",
           "hidden",
         ])}
-        tabIndex={0}
+        tabIndex={-1}
         id={id}
       >
         <div class="w-24">
