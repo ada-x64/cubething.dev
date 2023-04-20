@@ -1,6 +1,7 @@
 {
   "version": "2",
   "remote": {
+    "http://localhost:8000/gfx-modules/model-import/target.js": "33aacf9562b64d2fe1aabc1fe2a2c0f65cd52d15c97ec08e615d379e2f01d87d",
     "https://deno.land/std@0.140.0/_util/assert.ts": "e94f2eb37cebd7f199952e242c77654e43333c1ac4c5c700e929ea3aa5489f74",
     "https://deno.land/std@0.140.0/_util/os.ts": "3b4c6e27febd119d36a416d7a97bd3b0251b77c88942c8f16ee5953ea13e2e49",
     "https://deno.land/std@0.140.0/fs/_util.ts": "0fb24eb4bfebc2c194fb1afdb42b9c3dda12e368f43e8f2321f84fc77d42cb0f",
@@ -161,6 +162,7 @@
     "https://esm.sh/*@preact/signals@1.0.3": "43ef3a83dcde43e66b59f04333f22a7451839a82e2039638f0939c5044ec7b54",
     "https://esm.sh/preact@10.13.0?target=deno": "c81e1bc4d2226e046ad09e25405dd720363c4be7a10524255d7fce024a5a971f",
     "https://esm.sh/stable/preact@10.13.0/deno/hooks.js": "c80e3351cc5d12d6b57164490a281d17d346076da3431aa6db053ec0e94f5893",
+    "https://esm.sh/stable/preact@10.13.0/deno/hooks/src/index.js": "236eda33c57d91082a362f67edfc2d9965a7858ebecd65df7c84a8e0d84fcb4d",
     "https://esm.sh/stable/preact@10.13.0/deno/jsx-runtime.js": "f3ced92e64eb79a80daa9b68441327e04a5764d4eb67d0aa645440aeadc39c4c",
     "https://esm.sh/stable/preact@10.13.0/deno/preact.mjs": "397debd0481cd8f07b00f1b0103d1aea73839399b55cbf0345ec9c09dec768c0",
     "https://esm.sh/stable/preact@10.13.0/deno/src/index.js": "156da0159f4976bc0a12a130e7c9cc4f424448a5e8b6a982b5ecbc87a110812f",
@@ -182,6 +184,7 @@
     "https://esm.sh/v107/preact-render-to-string@5.2.6/X-ZS8q/src/index.d.ts": "b1d73703252c8570fdf2952475805f5808ba3511fefbd93a3e7bd8406de7dcd0",
     "https://esm.sh/v107/preact@10.13.0": "78b7e26b5fa9e813450b7bc1006da2bc34242924606ec448b69ac4b731d246ba",
     "https://esm.sh/v107/preact@10.13.0/hooks": "35c08a7d9fac440cfc12a698abaa6a16d6c1922bf2c6b141527628280505bcaa",
+    "https://esm.sh/v107/preact@10.13.0/hooks/src/index": "e67a5badb095e4b2d5547460489137b2f579172d54c805affbf1d9b6f9ff0eff",
     "https://esm.sh/v107/preact@10.13.0/hooks/src/index.d.ts": "5c29febb624fc25d71cb0e125848c9b711e233337a08f7eacfade38fd4c14cc3",
     "https://esm.sh/v107/preact@10.13.0/jsx-runtime": "b49b3c9d2e54324d8bcfc183921a5e3ad058a8561b4a70e3c661de431a3071d1",
     "https://esm.sh/v107/preact@10.13.0/jsx-runtime/src/index.d.ts": "e153460ed2b3fe2ad8b93696ecd48fbf73cd628b0b0ea6692b71804a3af69dfd",
@@ -196,6 +199,9 @@
     "https://esm.sh/v110/@preact/signals-core@1.0.1/X-ZS8q/deno/dist/signals-core.js": "57d28c7244247120ea3059eb14b74cca29d905728f7469d99eb2f9b65475518e",
     "https://esm.sh/v110/@preact/signals-core@1.0.1/X-ZS8q/dist/signals-core": "a2af85ee605ed9fce4c800d162613fed096be3015ceff642d37860464e12ebcc",
     "https://esm.sh/v110/@preact/signals-core@1.0.1/X-ZS8q/dist/signals-core.d.ts": "7a2bc0ea4bb4197fe888236017e1429cb3129ca64eb37146f11f102d9513c54d",
+    "https://esm.sh/v111/preact@10.13.0/hooks/src/index.d.ts": "5c29febb624fc25d71cb0e125848c9b711e233337a08f7eacfade38fd4c14cc3",
+    "https://esm.sh/v111/preact@10.13.0/src/index.d.ts": "65398710de6aa0a07412da79784e05e6e96763f51c7c91b77344d2d0af06385c",
+    "https://esm.sh/v111/preact@10.13.0/src/jsx.d.ts": "fde41cfb4944bcc5005e653c989ef8f85deb1cbb5364a1726654993937cd08d0",
     "https://esm.sh/v115/@preact/signals-core@1.0.1/X-ZS8q/deno/signals-core.mjs": "282d95163f271fd406e9971b19c43321144effbe8c1934b03f9e6cc6c96d56cf",
     "https://esm.sh/v115/@preact/signals-core@1.0.1/X-ZS8q/dist/signals-core.d.ts": "7a2bc0ea4bb4197fe888236017e1429cb3129ca64eb37146f11f102d9513c54d",
     "https://esm.sh/v115/@preact/signals@1.0.3/X-ZS8q/deno/signals.mjs": "d6a26e41496e6a6b75be60bae065b161e051a93594a3f53b42a64eb709b774ee",

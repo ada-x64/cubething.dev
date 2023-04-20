@@ -1,14 +1,14 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getTime } from "@/deps/time.ts";
-import Markdown from "@/components/pageComponent/Markdown.tsx";
+import Markdown from "@/components/article/Markdown.tsx";
 import { TimeStyle, TwClass } from "@/deps/styles.ts";
 import { getGfxModule, GfxModule } from "@/deps/gfx-module.ts";
 import GfxIframe from "@/islands/GfxIframe.tsx";
 import { join } from "$std/path/mod.ts";
-import Title from "@/components/pageComponent/Title.tsx";
+import Title from "@/components/layout/Title.tsx";
 import Layout from "@/components/layout/Layout.tsx";
-import MainContent from "@/components/pageComponent/MainContent.tsx";
-import Footer from "@/components/pageComponent/Footer.tsx";
+import MainContent from "@/components/layout/MainContent.tsx";
+import Footer from "@/components/layout/Footer.tsx";
 
 export const handler: Handlers<GfxModule> = {
   async GET(_req, ctx) {
@@ -44,7 +44,8 @@ export default function GfxPage(props: PageProps<GfxModule>) {
             width={1024}
             /* It doesn't like having the exact height. */
             height={780}
-            src={join("/gfx-modules", module.slug, "index.html")}
+            slug={module.slug}
+            origin={props.url.origin}
           />
         </div>
 

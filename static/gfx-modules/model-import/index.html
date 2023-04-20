@@ -16,66 +16,12 @@
       max-height: 500px;
       max-width: 250px;
     }
-    canvas {
-      border-radius: 0.25rem;
-      border-width: 1px;
-      border-color: rgba(63, 63, 70);
-    }
   </style>
-  <script type="module">
-    import Engine from "./target.js";
-    import init from "./target.js";
-
-    // Console hooks.
-    const Level = Object.freeze({
-      LOG: Symbol("log"),
-      WARN: Symbol("warn"),
-      ERROR: Symbol("error"),
-      DEBUG: Symbol("debug"),
-      INFO: Symbol("info"),
-    });
-    let log = [];
-    let mklog = (console_fn, level) => {
-      return (...args) => {
-        log.push({
-          timestamp: new Date().toLocaleString(),
-          level: Symbol.keyFor(level),
-          args: [...args],
-        });
-        let fn = console_fn;
-        fn(...args);
-      };
-    };
-
-    console.log = mklog(console.log, Level.LOG);
-    console.warn = mklog(console.warn, Level.WARN);
-    console.error = mklog(console.error, Level.ERROR);
-    console.debug = mklog(console.debug, Level.DEBUG);
-    console.info = mklog(console.info, Level.INFO);
-
-    // This will throw an error, so we can't put it in our try block. Annoying.
-    let res = await init();
-
-    // Try to load game.
-    try {
-      // This should never return.
-      Engine.run();
-    } catch (e) {
-      // On failure, show the troubleshooting section and remove the canvas.
-      console.error(e);
-      document
-        .querySelector(".troubleshooting")
-        .style.setProperty("display", "");
-      document.querySelector(".logs").textContent = JSON.stringify(
-        log,
-        null,
-        "\t"
-      );
-      document.querySelector("canvas").remove();
-    }
-  </script>
+  <script src="./consoleHooks.js"></script>
+  <script src="./loadModule.js"></script>
 </head>
 <body>
+  <div id="sundile-canvas-wrapper"></div>
   <div class="troubleshooting" style="display: none">
     <h1>It seems something has gone wrong!</h1>
     <p>
