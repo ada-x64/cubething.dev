@@ -1,29 +1,81 @@
-import { TwClass } from "@/deps/styles.ts";
+import { Head } from "$fresh/src/runtime/head.ts";
+
+enum Level {
+  LOG,
+  WARN,
+  ERROR,
+  DEBUG,
+  INFO,
+}
+
+type LogTargetWrapper = {
+  timestamp: Date;
+  level: Level;
+  args: any[];
+};
+
+type LogWrapper = LogTargetWrapper[];
+
+function wrapLogs() {
+  const log: LogWrapper = [];
+
+  const mklog = (console_fn: typeof console.log, level: Level) => {
+    return (...args: any[]) => {
+      log.push({
+        timestamp: new Date(),
+        level,
+        args,
+      });
+      console_fn(...args);
+    };
+  };
+
+  console.log = mklog(console.log, Level.LOG);
+  console.warn = mklog(console.warn, Level.WARN);
+  console.error = mklog(console.error, Level.ERROR);
+  console.debug = mklog(console.debug, Level.DEBUG);
+  console.info = mklog(console.info, Level.INFO);
+}
+
+// You must define MODULE_SRC before loading this.
+function loadModule() {
+  import(src).then((init) => {
+    console.log(init);
+    try {
+      init.default().then((finalize) => finalize().run());
+    } catch (e) {
+      // On failure, show the troubleshooting section and remove the canvas.
+      console.error(e);
+      document
+        .querySelector(".troubleshooting")
+        .style.setProperty("display", "");
+      document.querySelector(".logs").textContent = JSON.stringify(
+        log,
+        null,
+        "\t",
+      );
+      document.querySelector("canvas").remove();
+    }
+  });
+}
 
 export default function GfxIframe({
   title,
-  src,
+  slug,
   width,
   height,
+  origin,
 }: {
   title: string;
-  src: string;
+  slug: string;
   width: number;
   height: number;
+  origin: string;
 }) {
-  if (window.innerWidth < 1028) {
-    return <p>"Sorry, this only works on desktop for now!"</p>;
-  } else {
-    return (
-      <iframe
-        id="gfx-iframe"
-        title={title}
-        width={width}
-        height={height}
-        src={src}
-        class={TwClass(["m-8"])}
-      >
-      </iframe>
-    );
-  }
+  wrapLogs();
+  const importModuleScript = `
+            let origin = window.location.origin;
+            import(\`\${origin}/scripts/importGfxModule.js\`)
+                .then((module) => module.default(\`\${origin}/gfx-modules/${slug}/target.js\`));
+        `;
 }

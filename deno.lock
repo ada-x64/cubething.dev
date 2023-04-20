@@ -1,6 +1,7 @@
 {
   "version": "2",
   "remote": {
+    "http://localhost:8000/gfx-modules/model-import/target.js": "33aacf9562b64d2fe1aabc1fe2a2c0f65cd52d15c97ec08e615d379e2f01d87d",
     "https://deno.land/std@0.140.0/_util/assert.ts": "e94f2eb37cebd7f199952e242c77654e43333c1ac4c5c700e929ea3aa5489f74",
     "https://deno.land/std@0.140.0/_util/os.ts": "3b4c6e27febd119d36a416d7a97bd3b0251b77c88942c8f16ee5953ea13e2e49",
     "https://deno.land/std@0.140.0/fs/_util.ts": "0fb24eb4bfebc2c194fb1afdb42b9c3dda12e368f43e8f2321f84fc77d42cb0f",

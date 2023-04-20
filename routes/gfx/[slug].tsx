@@ -44,7 +44,8 @@ export default function GfxPage(props: PageProps<GfxModule>) {
             width={1024}
             /* It doesn't like having the exact height. */
             height={780}
-            src={join("/gfx-modules", module.slug, "index.html")}
+            slug={module.slug}
+            origin={props.url.origin}
           />
         </div>
 
