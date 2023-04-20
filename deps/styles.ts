@@ -49,7 +49,8 @@ export const Link = TwClass([
 export const OutboundIndicator = TwClass([
   "after:text-xs",
   "after:align-bottom",
-  "after:content-['↗']",
+  // "after:content-['🡵']",
+  "after:content-['➚']",
 ]);
 
 export const InboundIndicator = TwClass([
