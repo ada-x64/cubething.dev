@@ -29,3 +29,7 @@ html.dark {
   background-color: var(--dark-bg);
   color: var(--dark-text);
 }
+
+#sundile-canvas-wrapper canvas {
+  border-radius: 0.5em;
+}
