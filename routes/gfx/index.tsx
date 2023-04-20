@@ -1,10 +1,10 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import Layout from "@/components/layout/Layout.tsx";
 import { getGfxModules, GfxModule } from "@/deps/gfx-module.ts";
-import GfxCard from "@/components/pageComponent/GfxCard.tsx";
+import GfxCard from "@/components/gfx/GfxCard.tsx";
 import { OutboundLink } from "@/deps/styles.ts";
-import Article from "@/components/pageComponent/Article.tsx";
-import ArticleBlurb from "@/components/pageComponent/ArticleBlurb.tsx";
+import Article from "@/components/article/Article.tsx";
+import ArticleBlurb from "@/components/article/ArticleBlurb.tsx";
 
 export const handler: Handlers<GfxModule[]> = {
   async GET(_req, ctx) {

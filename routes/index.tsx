@@ -1,12 +1,12 @@
 import Layout from "@/components/layout/Layout.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getPosts, Post } from "@/deps/posts.ts";
-import PostCard from "@/components/pageComponent/PostCard.tsx";
+import PostCard from "@/components/article/PostCard.tsx";
 import { BorderColor, OutboundLink, TwClass } from "@/deps/styles.ts";
 import { getGfxModules, GfxModule } from "@/deps/gfx-module.ts";
-import GfxCard from "@/components/pageComponent/GfxCard.tsx";
-import Article from "@/components/pageComponent/Article.tsx";
-import ArticleBlurb from "@/components/pageComponent/ArticleBlurb.tsx";
+import GfxCard from "@/components/gfx/GfxCard.tsx";
+import Article from "@/components/article/Article.tsx";
+import ArticleBlurb from "@/components/article/ArticleBlurb.tsx";
 
 type Props = {
   posts: Post[];

@@ -2,9 +2,9 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { getPost, Post } from "@/deps/posts.ts";
 import { getTime } from "@/deps/time.ts";
 import Layout from "@/components/layout/Layout.tsx";
-import Markdown from "@/components/pageComponent/Markdown.tsx";
+import Markdown from "@/components/article/Markdown.tsx";
 import { TimeStyle, TwClass } from "@/deps/styles.ts";
-import Article from "@/components/pageComponent/Article.tsx";
+import Article from "@/components/article/Article.tsx";
 
 export const handler: Handlers<Post> = {
   async GET(_req, ctx) {

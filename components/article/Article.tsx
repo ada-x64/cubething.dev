@@ -1,8 +1,8 @@
 import { ComponentChildren } from "preact/src/index";
-import Title from "@/components/pageComponent/Title.tsx";
+import Title from "@/components/layout/Title.tsx";
 import { TwClass } from "@/deps/styles.ts";
-import MainContent from "@/components/pageComponent/MainContent.tsx";
-import Footer from "@/components/pageComponent/Footer.tsx";
+import MainContent from "@/components/layout/MainContent.tsx";
+import Footer from "@/components/layout/Footer.tsx";
 
 export default function Article({
   title,
