@@ -2,6 +2,7 @@ name: CD
 
 env:
   AZURE_WEBAPP_NAME: cubething
+  TAG: ${{ github.sha }}
 
 on:
   push:
@@ -31,13 +32,11 @@ jobs:
       - name: Lowercase the repo name and username
         run: echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
 
-      - uses: actions/checkout@v3
       - name: Build the Docker image
-        run:
-          docker build . --file Dockerfile --build-arg GIT_REVISION=$(git rev-parse HEAD) -t cubething.dev:$(date +%s);
-          export TAG="${{ env.REPO }}:${{ github.sha }}";
-          docker tag cubething.dev ghcr.io/$TAG;
-          docker push ghcr.io/$TAG;
+        run: docker build . --file Dockerfile --build-arg GIT_REVISION=$(git rev-parse HEAD) -t ghcr.io/${{env.REPO}}:${{ env.TAG }};
+
+      - name: Push the Docker image
+        run: docker push ghcr.io/${{env.REPO}}:${{ env.TAG }};
 
   deploy:
     permissions:
