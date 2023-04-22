@@ -1,9 +1,12 @@
 # cubething.dev
 
-This is the source code for https://cubething.dev , the personal website of Phoenix Ada Rose Mandala (this user).
+This is the source code for [cubething.dev](https://cubething.dev), my personal website.
 
-Content presented here is subject to change. For an overview of the contents, see https://cubething.dev/articles/building_this_site.
+It's built with Deno. It includes web graphics with WASM.
 
-## GitHub Users
+## Testing Deployment
 
-This code is automatically updated through git hooks whenever a deployment is made. GitHub Action deployments are a TODO.
+```bash
+gh extension install https://github.com/nektos/gh-act
+gh act -a $AUTHORIZED_USER -s GITHUB_TOKEN
+```

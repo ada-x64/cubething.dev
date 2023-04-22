@@ -1,0 +1,12 @@
+*
+!components/**
+!deps/**
+!islands/**
+!routes/**
+!static/**
+
+!*.json
+!*.ts
+!fresh.gen.ts
+
+cspell.json
