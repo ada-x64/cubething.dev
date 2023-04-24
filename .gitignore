@@ -1,1 +1,14 @@
-cspell.json
+#"git-include" pattern
+./*
+!components/**
+!deps/**
+!islands/**
+!routes/**
+!static/**
+
+!.dockerignore
+!.github/
+!*.json
+!*.ts
+!fresh.gen.ts
+!README.md
