@@ -1,42 +1,5 @@
 import { BorderColor, TimeStyle, TwClass } from "@/deps/styles.ts";
-import { useEffect, useLayoutEffect, useState } from "preact/hooks";
-
-// enum Level {
-//   LOG,
-//   WARN,
-//   ERROR,
-//   DEBUG,
-//   INFO,
-// }
-//
-// type LogTargetWrapper = {
-//   timestamp: Date;
-//   level: Level;
-//   args: any[];
-// };
-//
-// type LogWrapper = LogTargetWrapper[];
-//
-// function wrapLogs() {
-//   const log: LogWrapper = [];
-//
-//   const mklog = (console_fn: typeof console.log, level: Level) => {
-//     return (...args: any[]) => {
-//       log.push({
-//         timestamp: new Date(),
-//         level,
-//         args,
-//       });
-//       console_fn(...args);
-//     };
-//   };
-//
-//   console.log = mklog(console.log, Level.LOG);
-//   console.warn = mklog(console.warn, Level.WARN);
-//   console.error = mklog(console.error, Level.ERROR);
-//   console.debug = mklog(console.debug, Level.DEBUG);
-//   console.info = mklog(console.info, Level.INFO);
-// }
+import { useLayoutEffect, useState } from "preact/hooks";
 
 enum StreamState {
   Unloaded,
@@ -44,24 +7,10 @@ enum StreamState {
   Loaded,
 }
 
-export default function GfxIframe({
-  title,
-  slug,
-  width,
-  height,
-}: {
-  title: string;
-  slug: string;
-  width: number;
-  height: number;
-}) {
+export default function GfxIframe({ slug }: { slug: string }) {
   const importModuleSrc = `${globalThis.origin}/scripts/loadGfxModule.js`;
-  const targetModuleSrc = `${globalThis.origin}/gfx-modules/${slug}/target.js`;
-  // const importModuleScript = `
-  //           let origin = window.location.origin;
-  //           import(${importModuleSrc})
-  //               .then((module) => module.default(${targetModuleSrc}));
-  //       `;
+  const targetModuleSrc =
+    `${globalThis.origin}/gfx-modules/${slug}/target.min.js`;
 
   const [streamState, setStreamState] = useState(StreamState.Unloaded);
   const [inner, setInner] = useState(<></>);

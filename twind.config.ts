@@ -1,14 +1,12 @@
-import { Options } from "twind_fresh_plugin/twind.ts";
-
-// twind preset
+import { defineConfig } from "@twind/core";
 import presetAutoPrefix from "@twind/preset-autoprefix";
 import presetTailWind from "@twind/preset-tailwind";
 import presetTypography from "@twind/preset-typography";
 
-export default {
+export default defineConfig({
   presets: [
-    presetAutoPrefix,
-    presetTailWind,
+    presetAutoPrefix(),
+    presetTailWind(),
     presetTypography({
       extend: {
         "h1, h2, h3, h4": {
@@ -30,7 +28,6 @@ export default {
       },
     }),
   ],
-  selfURL: import.meta.url,
   theme: {
     fontFamily: {
       mono: [
@@ -47,5 +44,7 @@ export default {
     },
   },
   darkMode: "class",
-  safelist: ["text-3xl", "text-4xl", "text-5xl", "visible", "collapsed"],
-} as Options;
+  // safelist: ["text-3xl", "text-4xl", "text-5xl", "visible", "collapsed"],
+});
+
+export const configUrl = import.meta.url;
