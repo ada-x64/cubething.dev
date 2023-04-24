@@ -8,10 +8,13 @@
 !routes/**
 !static/**
 
+!.gitignore
 !.dockerignore
-!.github/
-!*.json
-cspell.json
-!*.ts
+
+!deno.json
+!import_map.json
+!deno.lock
+!main.ts
+!dev.ts
 !fresh.gen.ts
 !README.md
