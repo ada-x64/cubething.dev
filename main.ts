@@ -7,10 +7,10 @@
 import { start } from "$fresh/server.ts";
 import manifest from "@/fresh.gen.ts";
 
-import twindPlugin from "twind_fresh_plugin/twind.ts";
-import twindConfig from "@/twind.config.ts";
+import freshwind from "freshwind/plugin.ts";
+import config, { configUrl } from "@/twind.config.ts";
 
 await start(manifest, {
   port: parseInt(Deno.env.get("DENO_PORT") ?? "8000"),
-  plugins: [twindPlugin(twindConfig)],
+  plugins: [freshwind(config, configUrl)],
 });

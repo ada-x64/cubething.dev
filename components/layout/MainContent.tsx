@@ -1,4 +1,4 @@
-import { ComponentChildren } from "preact/src/index";
+import { ComponentChildren } from "preact";
 import { TwClass } from "@/deps/styles.ts";
 
 export default function MainContent({

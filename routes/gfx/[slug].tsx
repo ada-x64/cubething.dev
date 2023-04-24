@@ -4,7 +4,6 @@ import Markdown from "@/components/article/Markdown.tsx";
 import { TimeStyle, TwClass } from "@/deps/styles.ts";
 import { getGfxModule, GfxModule } from "@/deps/gfx-module.ts";
 import GfxIframe from "@/islands/GfxIframe.tsx";
-import { join } from "$std/path/mod.ts";
 import Title from "@/components/layout/Title.tsx";
 import Layout from "@/components/layout/Layout.tsx";
 import MainContent from "@/components/layout/MainContent.tsx";
@@ -38,16 +37,7 @@ export default function GfxPage(props: PageProps<GfxModule>) {
           {getTime(module.mtime)}
         </time>
 
-        <div>
-          <GfxIframe
-            title={module.title}
-            width={1024}
-            /* It doesn't like having the exact height. */
-            height={780}
-            slug={module.slug}
-            origin={props.url.origin}
-          />
-        </div>
+        <GfxIframe slug={module.slug} />
 
         <Markdown title={module.title} content={module.text_content} />
         <Footer />

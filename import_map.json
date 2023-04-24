@@ -1,35 +1,27 @@
 {
   "imports": {
+    "$fresh/": "https://deno.land/x/fresh@1.1.5/",
+    "preact": "https://esm.sh/preact@10.13.1",
+    "preact/": "https://esm.sh/preact@10.13.1/",
+    "preact-render-to-string": "https://esm.sh/*preact-render-to-string@5.2.6",
+    "@preact/signals": "https://esm.sh/*@preact/signals@1.1.3",
+    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.2.3",
+    "twind": "https://esm.sh/twind@0.16.19",
+    "twind/": "https://esm.sh/twind@0.16.19/",
+
     "@/": "./",
     "$std/": "https://deno.land/std@0.177.0/",
-    "$fresh/": "https://deno.land/x/fresh@1.1.3/",
-    "twind_fresh_plugin/": "https://deno.land/x/fresh_twindv1_plugin@v1.2.1/",
-    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.0.1",
-    "@preact/signals": "https://esm.sh/*@preact/signals@1.0.3",
-    "@twind/core": "https://esm.sh/v107/*@twind/core@1.1.3",
-    "@twind/preset-autoprefix": "https://esm.sh/v107/*@twind/preset-autoprefix@1.0.7",
-    "@twind/preset-tailwind": "https://esm.sh/v107/*@twind/preset-tailwind@1.1.4",
-    "@twind/preset-tailwind/": "https://esm.sh/v107/*@twind/preset-tailwind@1.1.4/",
-    "@twind/preset-typography": "https://esm.sh/v107/*@twind/preset-typography@1.0.7",
-    "preact-render-to-string": "https://esm.sh/v107/*preact-render-to-string@5.2.6",
-    "preact-render-to-string/": "https://esm.sh/v107/*preact-render-to-string@5.2.6/",
-    "preact": "https://esm.sh/v107/preact@10.13.0",
-    "preact/": "https://esm.sh/v107/preact@10.13.0/",
-    "ayu": "./ayu-colors/src/colors.ts"
+    "freshwind/": "https://deno.land/x/freshwind@4.0.0/",
+
+    "@twind/core": "https://cdn.jsdelivr.net/npm/@twind/core@1.1.3/+esm",
+    "@twind/preset-autoprefix": "https://cdn.jsdelivr.net/npm/@twind/preset-autoprefix@1.0.7/+esm",
+    "@twind/preset-tailwind": "https://cdn.jsdelivr.net/npm/@twind/preset-tailwind@1.1.4/+esm",
+    "@twind/preset-tailwind/": "https://cdn.jsdelivr.net/npm/@twind/preset-tailwind@1.1.4/",
+    "@twind/preset-typography": "https://cdn.jsdelivr.net/npm/@twind/preset-typography@1.0.7/+esm"
   },
   "scopes": {
     "https://deno.land/x/fresh_twindv1_plugin@v1.2.1/": {
-      "twind": "https://esm.sh/v107/*@twind/core@1.1.3"
-    },
-    "https://esm.sh/v107/": {
-      "argparse": "https://esm.sh/v107/argparse@2.0.1",
-      "csstype": "https://esm.sh/v107/csstype@3.1.1",
-      "entities": "https://esm.sh/v107/entities@3.0.1",
-      "linkify-it": "https://esm.sh/v107/linkify-it@4.0.1",
-      "mdurl": "https://esm.sh/v107/mdurl@1.0.1",
-      "pretty-format": "https://esm.sh/v107/pretty-format@3.8.0",
-      "style-vendorizer": "https://esm.sh/v107/style-vendorizer@2.2.3",
-      "uc.micro": "https://esm.sh/v107/uc.micro@1.0.6"
+      "twind": "https://cdn.jsdelivr.net/npm/@twind/core@1.1.3"
     }
   }
 }

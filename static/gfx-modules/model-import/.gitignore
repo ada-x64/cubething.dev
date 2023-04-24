@@ -1,0 +1,6 @@
+*
+!.gitignore
+!*.min.js
+!*.wasm
+!README.md
+!preview.png
