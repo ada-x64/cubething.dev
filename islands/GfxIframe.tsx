@@ -49,16 +49,14 @@ export default function GfxIframe({
   slug,
   width,
   height,
-  origin,
 }: {
   title: string;
   slug: string;
   width: number;
   height: number;
-  origin: string;
 }) {
-  const importModuleSrc = `${origin}/scripts/loadGfxModule.js`;
-  const targetModuleSrc = `${origin}/gfx-modules/${slug}/target.js`;
+  const importModuleSrc = `${globalThis.origin}/scripts/loadGfxModule.js`;
+  const targetModuleSrc = `${globalThis.origin}/gfx-modules/${slug}/target.js`;
   // const importModuleScript = `
   //           let origin = window.location.origin;
   //           import(${importModuleSrc})

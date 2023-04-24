@@ -1,5 +1,7 @@
 #"git-include" pattern
 ./*
+*/**
+!.github/**
 !components/**
 !deps/**
 !islands/**
