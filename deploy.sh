@@ -1,8 +1,16 @@
 #!/bin/bash
 
-PWD=$1
+if [[ -n $1 ]]; then
+	PWD="$1"
+else
+	PWD=$(pwd)
+fi
+
 MAIN="$PWD"/main.ts
 GIT_REVISION=$(git rev-parse HEAD)
+
+echo $MAIN
+
 
 cd "$PWD";
 sudo deno cache "$MAIN"
