@@ -1,20 +1,12 @@
 #"git-include" pattern
 *.*
 */**
-!.github/**
-!components/**
-!deps/**
-!islands/**
-!routes/**
-!static/**
 
 !.gitignore
-!.dockerignore
 
-!deno.json
-!import_map.json
-!deno.lock
-!main.ts
-!dev.ts
-!fresh.gen.ts
+!*.github/workflows/main.yml
+!src/**
+
+!.dockerignore
+!Dockerfile
 !README.md

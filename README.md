@@ -4,6 +4,14 @@ This is the source code for [cubething.dev](https://cubething.dev), my personal 
 
 It's built with Deno. It includes web graphics with WASM.
 
+## Running
+
+```bash
+cd src/
+deno cache -r main.ts
+deno task start
+```
+
 ## Testing Deployment
 
 ```bash
