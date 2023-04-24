@@ -1,5 +1,5 @@
 #"git-include" pattern
-./*
+*.*
 */**
 !.github/**
 !components/**
@@ -11,6 +11,7 @@
 !.dockerignore
 !.github/
 !*.json
+cspell.json
 !*.ts
 !fresh.gen.ts
 !README.md
