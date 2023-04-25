@@ -1,16 +1,11 @@
 #"git-include" pattern
-./*
+*.*
 */**
-!.github/**
-!components/**
-!deps/**
-!islands/**
-!routes/**
-!static/**
+
+!.gitignore
+
+!*.github/workflows/main.yml
+!src/**
 
 !.dockerignore
-!.github/
-!*.json
-!*.ts
-!fresh.gen.ts
-!README.md
+!Dockerfile
