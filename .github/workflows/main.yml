@@ -7,6 +7,8 @@ env:
 on:
   push:
     branches: ["main"]
+  pull_request:
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -35,6 +37,7 @@ jobs:
         run: docker push ghcr.io/${{env.REPO}}:${{ env.TAG }};
 
   deploy:
+    if: github.ref_name == 'main'
     permissions:
       contents: none
     runs-on: ubuntu-latest
