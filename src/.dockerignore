@@ -8,5 +8,3 @@
 !*.json
 !*.ts
 !fresh.gen.ts
-
-cspell.json

@@ -29,7 +29,7 @@ jobs:
         run: echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --build-arg GIT_REVISION=$(git rev-parse HEAD) -t ghcr.io/${{env.REPO}}:${{ env.TAG }};
+        run: docker build ./src --file src/Dockerfile --build-arg GIT_REVISION=$(git rev-parse HEAD) -t ghcr.io/${{env.REPO}}:${{ env.TAG }};
 
       - name: Push the Docker image
         run: docker push ghcr.io/${{env.REPO}}:${{ env.TAG }};
