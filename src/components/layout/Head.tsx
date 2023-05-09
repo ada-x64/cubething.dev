@@ -6,12 +6,15 @@ export default function HeadComponent() {
       <link rel="icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
       <link rel="icon" href="/favicon.png" type="image/png" />
       <link rel="stylesheet" href="/style/svg.css" />
-      <link rel="stylesheet" href="/style/font.css" />
       <link rel="stylesheet" href="/style/toc.css" />
       <link rel="stylesheet" href="/style/global.css" />
       <link rel="stylesheet" href="/style/code.css" />
       <link
         href="https://api.fontshare.com/v2/css?f[]=chillax@600&f[]=synonym@400&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://cdn.cubething.dev/font/FiraCode.css"
         rel="stylesheet"
       />
       <script src="/scripts/detectTheme.js"></script>
