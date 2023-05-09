@@ -1,5 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getTime } from "@/deps/time.ts";
+import { formatTime } from "@/deps/time.ts";
 import Markdown from "@/components/article/Markdown.tsx";
 import { TimeStyle, TwClass } from "@/deps/styles.ts";
 import { getGfxModule, GfxModule } from "@/deps/gfx-module.ts";
@@ -34,7 +34,7 @@ export default function GfxPage(props: PageProps<GfxModule>) {
       <MainContent twClass={article_class}>
         <Title title={module.title} route={props.route} />
         <time class={TwClass([TimeStyle, "text-center", "-mt-2", "mb-2"])}>
-          {getTime(module.mtime)}
+          {formatTime(module.mtime)}
         </time>
 
         <GfxIframe slug={module.slug} />

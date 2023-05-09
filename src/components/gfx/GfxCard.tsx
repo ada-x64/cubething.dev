@@ -5,7 +5,7 @@ import {
   TimeStyle,
   TwClass,
 } from "@/deps/styles.ts";
-import { getTime } from "@/deps/time.ts";
+import { formatTime } from "@/deps/time.ts";
 
 export default function GfxCard({
   module,
@@ -35,7 +35,7 @@ export default function GfxCard({
           <div class={TwClass(["order-2", textAlign])}>
             <h3 class={"text-lg font-header font-bold"}>{module.title}</h3>
             <time class={TwClass([TimeStyle, "text-sm"])}>
-              {getTime(module.mtime)}
+              {formatTime(module.mtime)}
             </time>
             <div class="mt-4 font-normal">{module.snippet}</div>
           </div>

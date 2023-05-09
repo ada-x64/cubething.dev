@@ -1,18 +1,18 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getPosts, Post } from "@/deps/posts.ts";
+import { getPostMetadata, PostMetadata } from "@/deps/posts.tsx";
 import Layout from "@/components/layout/Layout.tsx";
 import PostCard from "@/components/article/PostCard.tsx";
 import Article from "@/components/article/Article.tsx";
 import ArticleBlurb from "@/components/article/ArticleBlurb.tsx";
 
-export const handler: Handlers<Post[]> = {
+export const handler: Handlers<PostMetadata[]> = {
   async GET(_req, ctx) {
-    const posts = await getPosts();
+    const posts = await getPostMetadata();
     return ctx.render(posts);
   },
 };
 
-export default function Archive(props: PageProps<Post[]>) {
+export default function Archive(props: PageProps<PostMetadata[]>) {
   const posts = props.data;
   return (
     <Layout title={"articles"} route={props.route}>
@@ -23,7 +23,9 @@ export default function Archive(props: PageProps<Post[]>) {
           mathematics.
         </ArticleBlurb>
         <div class="mb-8">
-          {posts.map((post) => <PostCard post={post}></PostCard>)}
+          {posts.map((post) => (
+            <PostCard post={post}></PostCard>
+          ))}
         </div>
       </Article>
     </Layout>
