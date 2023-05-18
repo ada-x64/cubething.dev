@@ -7,8 +7,8 @@ import Article from "@/components/article/Article.tsx";
 
 export const handler: Handlers<Post> = {
   async GET(_req, ctx) {
-    console.log(ctx.params);
-    const post = await getPost(ctx.params.slug);
+    console.log("params:", ctx.params);
+    const post = await getPost(ctx.params.slug, ctx.params);
     return post === null ? ctx.renderNotFound() : ctx.render(post);
   },
 };

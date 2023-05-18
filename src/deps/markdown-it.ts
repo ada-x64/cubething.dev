@@ -1,5 +1,4 @@
-import Prism from "@/deps/prismjs.ts";
-
+import HighlightCode from "./code-highlight.ts";
 import { signal } from "https://esm.sh/v110/@preact/signals-core@1.0.1/X-ZS8q/dist/signals-core";
 const Articles = signal<{ [index: string]: { toc: string; body: string } }>({});
 const CurrentArticle = signal<string>("");
@@ -18,7 +17,7 @@ const exp = (content: string) => {
   const body = MarkdownIt({
     html: true,
     highlight: (str: string, lang: string) => {
-      return Prism.highlight(str, Prism.languages[lang], lang);
+      return HighlightCode(str, lang);
     },
   })
     .use(MarkdownItAnchor, {
