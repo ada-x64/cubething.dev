@@ -17,6 +17,11 @@ export default function HeadComponent() {
         href="https://cdn.cubething.dev/font/FiraCode.css"
         rel="stylesheet"
       />
+      {/*<!-- Starry-night code highlighter theme -->*/}
+      <link
+        rel="stylesheet"
+        href="https://esm.sh/@wooorm/starry-night@2/style/dark.css"
+      />
       <script src="/scripts/detectTheme.js"></script>
 
       {/*<!-- Primary Meta Tags -->*/}
