@@ -1,6 +1,6 @@
 import { BorderColor, TimeStyle, TwClass } from "@/deps/styles.ts";
 import { useLayoutEffect, useState } from "preact/hooks";
-import { GfxModule } from "../deps/gfx-module.ts";
+import { GfxModule } from "@/cdn/gfx-module.ts";
 
 enum StreamState {
   Unloaded,

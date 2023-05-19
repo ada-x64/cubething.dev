@@ -1,5 +1,5 @@
 import { CDN_URL } from "@/deps/paths.ts";
-import { PostMetadataResponse } from "@/deps/metadata.ts";
+import { PostMetadataResponse } from "@/cdn/metadata.ts";
 
 // NOTE: No post cache. Rendered posts are cached at markdown-it.ts Articles object
 // No point to having post request cache. Need to check if it's been updated every time.
@@ -28,7 +28,7 @@ export interface Post {
 }
 
 export async function getPostMetadata(max?: number): Promise<PostMetadata[]> {
-  const resp = await fetch("https://cdn.cubething.dev/posts/");
+  const resp = await fetch(CDN_URL + "/posts/");
   const json = await resp.json();
   const metadata: { [x: string]: PostMetadataResponse } = json;
   const mapped = [];

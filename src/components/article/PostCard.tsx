@@ -1,4 +1,4 @@
-import { PostMetadata } from "@/deps/posts.ts";
+import { PostMetadata } from "@/cdn/posts.ts";
 import { OutboundLink, TwClass } from "@/deps/styles.ts";
 import { BorderColor } from "@/deps/styles.ts";
 import CdnTime from "@/components/layout/CdnTime.tsx";

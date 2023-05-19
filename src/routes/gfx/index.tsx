@@ -1,6 +1,6 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import Layout from "@/components/layout/Layout.tsx";
-import { getGfxModuleMetadata, GfxModuleMetadata } from "@/deps/gfx-module.ts";
+import { getGfxModuleMetadata, GfxModuleMetadata } from "@/cdn/gfx-module.ts";
 import GfxCard from "@/components/gfx/GfxCard.tsx";
 import { OutboundLink } from "@/deps/styles.ts";
 import Article from "@/components/article/Article.tsx";

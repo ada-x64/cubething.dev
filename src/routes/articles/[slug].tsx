@@ -1,5 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getPost, Post } from "@/deps/posts.ts";
+import { getPost, Post } from "@/cdn/posts.ts";
 import Layout from "@/components/layout/Layout.tsx";
 import Markdown from "@/components/article/Markdown.tsx";
 import Article from "@/components/article/Article.tsx";
@@ -7,7 +7,6 @@ import CdnTime from "@/components/layout/CdnTime.tsx";
 
 export const handler: Handlers<Post> = {
   async GET(_req, ctx) {
-    console.log("params:", ctx.params);
     const post = await getPost(ctx.params.slug);
     return post === null ? ctx.renderNotFound() : ctx.render(post);
   },

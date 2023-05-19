@@ -1,4 +1,4 @@
-import { tNav } from "@/deps/types.ts";
+import { tNav } from "@/deps/nav.ts";
 import {
   ItemListStyle,
   ItemSelectedStyle,

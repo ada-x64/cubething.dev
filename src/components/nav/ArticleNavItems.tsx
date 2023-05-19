@@ -1,4 +1,4 @@
-import { tNav } from "@/deps/types.ts";
+import { tNav } from "@/deps/nav.ts";
 import { InboundLink, ItemListStyle, ItemStyle } from "@/deps/styles.ts";
 import { closeMobileNav } from "@/islands/MobileNav.tsx";
 

@@ -1,8 +1,7 @@
 import DarkModeToggle from "@/islands/DarkModeToggle.tsx";
 import Sidebar from "@/components/nav/Sidebar.tsx";
 import { ArticleNavItems } from "@/components/nav/ArticleNavItems.tsx";
-import { tNav } from "@/deps/types.ts";
-import { articleNav } from "@/deps/nav.ts";
+import { articleNav, tNav } from "@/deps/nav.ts";
 
 export const allNav: tNav = [];
 

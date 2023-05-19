@@ -1,7 +1,7 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import Markdown from "@/components/article/Markdown.tsx";
 import { TwClass } from "@/deps/styles.ts";
-import { getGfxModule, GfxModule } from "@/deps/gfx-module.ts";
+import { getGfxModule, GfxModule } from "@/cdn/gfx-module.ts";
 import GfxCanvas from "@/islands/GfxCanvas.tsx";
 import Title from "@/components/layout/Title.tsx";
 import Layout from "@/components/layout/Layout.tsx";
@@ -18,7 +18,6 @@ export const handler: Handlers<GfxModule> = {
 
 export default function GfxPage(props: PageProps<GfxModule>) {
   const module = props.data;
-  console.log(module);
 
   const article_class = TwClass([
     "px-4",

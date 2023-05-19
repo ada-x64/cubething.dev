@@ -1,4 +1,4 @@
-import { GfxModuleMetadata } from "@/deps/gfx-module.ts";
+import { GfxModuleMetadata } from "@/cdn/gfx-module.ts";
 import { BorderColor, OutboundLink, TwClass } from "@/deps/styles.ts";
 import CdnTime from "@/components/layout/CdnTime.tsx";
 

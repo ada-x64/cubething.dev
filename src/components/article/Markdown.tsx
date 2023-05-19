@@ -9,7 +9,6 @@ export default function renderMarkdown({
   title: string;
 }) {
   content = content.replace(/---\n(.*\n)*---\n/, "");
-  console.log(content);
   CurrentArticle.value = title;
   return (
     <div

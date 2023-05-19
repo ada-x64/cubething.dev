@@ -1,4 +1,5 @@
 import { BorderColor, OutboundLink, TwClass } from "@/deps/styles.ts";
+import { CDN_URL } from "@/deps/paths.ts";
 
 export default function Contact() {
   return (
@@ -14,7 +15,7 @@ export default function Contact() {
       ])}
     >
       <a
-        href="/doc/resume.pdf"
+        href={CDN_URL + "/about/resume.pdf"}
         target="_blank"
         title="open resume in new tab"
         class={TwClass([OutboundLink])}

@@ -1,7 +1,5 @@
-import {
-  GfxMetadataResponse,
-  GfxMetadataResponseMap,
-} from "@/deps/metadata.ts";
+import { GfxMetadataResponse, GfxMetadataResponseMap } from "@/cdn/metadata.ts";
+import { CDN_URL } from "@/deps/paths.ts";
 
 export interface GfxModule {
   slug: string;
@@ -40,7 +38,7 @@ function getLatestDate(value: GfxMetadataResponse): Date {
 export async function getGfxModuleMetadata(
   max?: number
 ): Promise<GfxModuleMetadata[]> {
-  const resp = await fetch("https://cdn.cubething.dev/gfx/");
+  const resp = await fetch(CDN_URL + "/gfx/");
   const json = (await resp.json()) as GfxMetadataResponseMap;
   const metadata: GfxModuleMetadata[] = [];
   for (const [key, value] of Object.entries(json)) {
@@ -69,12 +67,10 @@ export async function getGfxModuleMetadata(
 }
 
 export async function getGfxModule(slug: string): Promise<GfxModule | null> {
-  const metaResp = await fetch("https://cdn.cubething.dev/gfx/" + slug);
+  const metaResp = await fetch(CDN_URL + "/gfx/" + slug);
   const metadata = (await metaResp.json()) as GfxMetadataResponse;
 
-  const textResp = await fetch(
-    "https://cdn.cubething.dev/gfx/" + slug + "/README.md"
-  );
+  const textResp = await fetch(CDN_URL + "/gfx/" + slug + "/README.md");
   const textContent = await textResp.text();
 
   return {

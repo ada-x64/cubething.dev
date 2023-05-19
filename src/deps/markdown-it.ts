@@ -33,7 +33,6 @@ const exp = (content: string) => {
     ...Articles.value,
     [CurrentArticle.value]: { toc, body },
   };
-  console.log(Articles.value);
   return Articles.value[CurrentArticle.value];
 };
 export default exp;
