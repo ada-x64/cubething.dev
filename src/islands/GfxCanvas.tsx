@@ -1,5 +1,6 @@
 import { BorderColor, TimeStyle, TwClass } from "@/deps/styles.ts";
 import { useLayoutEffect, useState } from "preact/hooks";
+import { GfxModule } from "../deps/gfx-module.ts";
 
 enum StreamState {
   Unloaded,
@@ -7,10 +8,9 @@ enum StreamState {
   Loaded,
 }
 
-export default function GfxIframe({ slug }: { slug: string }) {
+export default function GfxCanvas({ module }: { module: GfxModule }) {
   const importModuleSrc = `${globalThis.origin}/scripts/loadGfxModule.js`;
-  const targetModuleSrc =
-    `${globalThis.origin}/gfx-modules/${slug}/target.min.js`;
+  const targetModuleSrc = module.modulePath;
 
   const [streamState, setStreamState] = useState(StreamState.Unloaded);
   const [inner, setInner] = useState(<></>);
@@ -31,7 +31,6 @@ export default function GfxIframe({ slug }: { slug: string }) {
   );
 
   useLayoutEffect(() => {
-    console.log("streamState = ", streamState);
     switch (streamState) {
       case StreamState.Unloaded:
         setInner(loadButton);

@@ -10,7 +10,7 @@ import * as $3 from "./routes/gfx/[slug].tsx";
 import * as $4 from "./routes/gfx/index.tsx";
 import * as $5 from "./routes/index.tsx";
 import * as $$0 from "./islands/DarkModeToggle.tsx";
-import * as $$1 from "./islands/GfxIframe.tsx";
+import * as $$1 from "./islands/GfxCanvas.tsx";
 import * as $$2 from "./islands/MobileNav.tsx";
 import * as $$3 from "./islands/NavBtn.tsx";
 
@@ -25,7 +25,7 @@ const manifest = {
   },
   islands: {
     "./islands/DarkModeToggle.tsx": $$0,
-    "./islands/GfxIframe.tsx": $$1,
+    "./islands/GfxCanvas.tsx": $$1,
     "./islands/MobileNav.tsx": $$2,
     "./islands/NavBtn.tsx": $$3,
   },

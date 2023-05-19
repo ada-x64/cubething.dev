@@ -1,14 +1,8 @@
 import { CDN_URL } from "@/deps/paths.ts";
-import { formatTime } from "@/deps/time.ts";
-import { TimeStyle, TwClass } from "@/deps/styles.ts";
+import { PostMetadataResponse } from "@/deps/metadata.ts";
 
 // NOTE: No post cache. Rendered posts are cached at markdown-it.ts Articles object
 // No point to having post request cache. Need to check if it's been updated every time.
-
-export interface Post {
-  content: string;
-  metadata: PostMetadata;
-}
 
 export class PostMetadata {
   slug: string;
@@ -18,7 +12,7 @@ export class PostMetadata {
   lastCommit: Date;
   contentPath: URL;
 
-  constructor(slug: string, postMetadata: PostResponse) {
+  constructor(slug: string, postMetadata: PostMetadataResponse) {
     this.slug = slug;
     const frontmatter = postMetadata.frontmatter;
     this.title = frontmatter.title;
@@ -27,60 +21,23 @@ export class PostMetadata {
     this.lastCommit = new Date(postMetadata.lastCommitDate);
     this.contentPath = new URL(postMetadata.url);
   }
-
-  getTime(inline: boolean) {
-    const publishedAt = new Date(this.publishedAt);
-    const lastCommit = new Date(this.lastCommit);
-    let style = TwClass([TimeStyle]);
-    if (inline) {
-      style = TwClass([style, "text-sm"]);
-    } else {
-      style = TwClass([style, "text-center", "-mt-2", "mb-2"]);
-    }
-
-    let time;
-    if (publishedAt !== lastCommit) {
-      time = (
-        <>
-          First published {formatTime(publishedAt)}
-          {(() => {
-            if (!inline) {
-              return <br />;
-            } else {
-              return " | ";
-            }
-          })()}
-          Updated {formatTime(lastCommit)}
-        </>
-      );
-    } else {
-      time = <>{formatTime(publishedAt)}</>;
-    }
-
-    return <time class={style}> {time}</time>;
-  }
 }
-
-export interface PostResponse {
-  url: string;
-  lastCommitDate: string;
-  contentType: string;
-  frontmatter: {
-    title: string;
-    publishedAt: string;
-    snippet: string;
-  };
+export interface Post {
+  content: string;
+  metadata: PostMetadata;
 }
 
 export async function getPostMetadata(max?: number): Promise<PostMetadata[]> {
   const resp = await fetch("https://cdn.cubething.dev/posts/");
   const json = await resp.json();
-  const metadata: { [x: string]: PostResponse } = json;
+  const metadata: { [x: string]: PostMetadataResponse } = json;
   const mapped = [];
   for (const key in metadata) {
-    const value = metadata[key];
-    mapped.push(new PostMetadata(key, metadata[key]));
+    mapped.push(new PostMetadata(key.replace(".md", ""), metadata[key]));
   }
+
+  mapped.sort((a, b) => +b.publishedAt - +a.publishedAt);
+
   if (max) {
     return mapped.slice(0, max);
   } else {

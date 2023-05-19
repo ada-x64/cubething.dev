@@ -1,19 +1,19 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import Layout from "@/components/layout/Layout.tsx";
-import { getGfxModules, GfxModule } from "@/deps/gfx-module.ts";
+import { getGfxModuleMetadata, GfxModuleMetadata } from "@/deps/gfx-module.ts";
 import GfxCard from "@/components/gfx/GfxCard.tsx";
 import { OutboundLink } from "@/deps/styles.ts";
 import Article from "@/components/article/Article.tsx";
 import ArticleBlurb from "@/components/article/ArticleBlurb.tsx";
 
-export const handler: Handlers<GfxModule[]> = {
+export const handler: Handlers<GfxModuleMetadata[]> = {
   async GET(_req, ctx) {
-    const modules = await getGfxModules();
+    const modules = await getGfxModuleMetadata();
     return ctx.render(modules);
   },
 };
 
-export default function Archive(props: PageProps<GfxModule[]>) {
+export default function Archive(props: PageProps<GfxModuleMetadata[]>) {
   const modules = props.data;
   return (
     <Layout title={"gfx"} route={props.route}>
@@ -28,7 +28,7 @@ export default function Archive(props: PageProps<GfxModule[]>) {
         </ArticleBlurb>
         <div class="mb-8">
           {modules.map((module, i) => (
-            <GfxCard module={module} index={i}></GfxCard>
+            <GfxCard module={module} index={i} />
           ))}
         </div>
       </Article>
