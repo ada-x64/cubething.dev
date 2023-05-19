@@ -37,6 +37,7 @@ export class PostMetadata {
     } else {
       style = TwClass([style, "text-center", "-mt-2", "mb-2"]);
     }
+
     let time;
     if (publishedAt !== lastCommit) {
       time = (
@@ -55,12 +56,12 @@ export class PostMetadata {
     } else {
       time = <>{formatTime(publishedAt)}</>;
     }
+
     return <time class={style}> {time}</time>;
   }
 }
 
 export interface PostResponse {
-  name: string;
   url: string;
   lastCommitDate: string;
   contentType: string;
@@ -74,16 +75,17 @@ export interface PostResponse {
 export async function getPostMetadata(max?: number): Promise<PostMetadata[]> {
   const resp = await fetch("https://cdn.cubething.dev/posts/");
   const json = await resp.json();
-  const metadata: PostResponse[] = Object.values(json);
-
-  return metadata
-    .map((d) => {
-      const url = new URL(d.url);
-      const filename =
-        url.pathname.split("/").find((s) => s.endsWith(".md")) ?? "";
-      return new PostMetadata(filename.replace(".md", ""), d);
-    })
-    .slice(max ? max + 1 : undefined);
+  const metadata: { [x: string]: PostResponse } = json;
+  const mapped = [];
+  for (const key in metadata) {
+    const value = metadata[key];
+    mapped.push(new PostMetadata(key, metadata[key]));
+  }
+  if (max) {
+    return mapped.slice(0, max);
+  } else {
+    return mapped;
+  }
 }
 
 export async function getPost(slug: string): Promise<Post> {

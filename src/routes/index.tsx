@@ -61,7 +61,7 @@ export default function Index(props: PageProps<Props>) {
         </a>
         <div id="articles">
           {props.data.posts.map((post) => (
-            <PostCard post={post} />
+            <PostCard post={post}></PostCard>
           ))}
         </div>
       </Article>
