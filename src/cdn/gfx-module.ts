@@ -29,7 +29,7 @@ function getLatestDate(value: GfxMetadataResponse): Date {
     Math.max(
       +new Date(value["target.min.js"].lastCommitDate),
       +new Date(value["README.md"].lastCommitDate),
-      +new Date(value["preview.png"].lastCommitDate),
+      +new Date(value["preview.webp"].lastCommitDate),
       +new Date(value["target_bg.wasm"].lastCommitDate)
     )
   );
@@ -52,7 +52,7 @@ export async function getGfxModuleMetadata(
       publishedAt: new Date(value["README.md"].frontmatter.publishedAt),
       lastCommit: getLatestDate(value),
       readmePath: new URL(value["README.md"].url),
-      previewPath: new URL(value["preview.png"].url),
+      previewPath: new URL(value["preview.webp"].url),
       modulePath: new URL(value["target.min.js"].url),
     });
   }
@@ -83,36 +83,3 @@ export async function getGfxModule(slug: string): Promise<GfxModule | null> {
     modulePath: metadata["target.min.js"].url,
   };
 }
-
-// export async function getGfxModules(max?: number): Promise<GfxModule[]> {
-//   const dirs = Deno.readDir(GfxPath);
-//   const promises = [];
-//   let count = 0;
-//   for await (const dir of dirs) {
-//     if (max && count++ > max) {
-//       break;
-//     }
-//     const slug = dir.name;
-//     promises.push(getGfxModule(slug));
-//   }
-//   const posts = (await Promise.all(promises)) as GfxModule[];
-//   posts.sort((a, b) =>
-//     a.mtime && b.mtime ? b.mtime.getTime() - a.mtime.getTime() : Infinity
-//   );
-//   return posts;
-// }
-
-// export async function getGfxModule(slug: string): Promise<GfxModule | null> {
-//   const path = join(GfxPath, slug);
-//   const readme_path = join(path, "README.md");
-//   const readme = await Deno.readTextFile(readme_path);
-//   const mtime = (await Deno.stat(path)).mtime;
-//   const { attrs, body } = extract<Record<string, string>>(readme);
-//   return {
-//     slug,
-//     title: attrs.title,
-//     mtime,
-//     text_content: body,
-//     snippet: attrs.snippet,
-//   };
-// }

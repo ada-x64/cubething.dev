@@ -26,6 +26,6 @@ export type GfxMetadataResponseMap = {
 export type GfxMetadataResponse = {
   "target_bg.wasm": MetadataResponse;
   "README.md": PostMetadataResponse;
-  "preview.png": MetadataResponse;
+  "preview.webp": MetadataResponse;
   "target.min.js": MetadataResponse;
 };

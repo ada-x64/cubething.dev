@@ -42,11 +42,12 @@ export default function GfxCard({
               "rounded",
               BorderColor,
               imgOrder,
-              "w-[150px]",
               "mx-0.5",
             ])}
             src={module.previewPath.toString()}
             alt={module.title}
+            width={156} // 4 * 3 * 14 -> closest to 150
+            height={117} // 168 / 4
           />
         </div>
       </a>

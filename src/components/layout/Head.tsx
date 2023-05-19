@@ -6,10 +6,8 @@ export default function HeadComponent() {
     <Head>
       <link rel="icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
       <link rel="icon" href="/favicon.png" type="image/png" />
-      <link rel="stylesheet" href="/style/svg.css" />
       <link rel="stylesheet" href="/style/toc.css" />
       <link rel="stylesheet" href="/style/global.css" />
-      <link rel="stylesheet" href="/style/code.css" />
       <link href={CDN_URL + "/font/Fonts.css"} rel="stylesheet" />
       {/*<!-- Starry-night code highlighter theme -->*/}
       <link
@@ -33,10 +31,7 @@ export default function HeadComponent() {
         property="og:description"
         content="Personal home page of Ada Mandala. Posts about tech, art, philosophy. // Rust, Linux, WASM // Graphics, Games // Metaphysics, Aesthetics"
       />
-      <meta
-        property="og:image"
-        content="https://cubething.dev/meta/preview.png"
-      />
+      <meta property="og:image" content={CDN_URL + "/meta/preview.png"} />
 
       {/*<!-- Twitter -->*/}
       <meta property="twitter:card" content="summary_large_image" />
@@ -46,10 +41,7 @@ export default function HeadComponent() {
         property="twitter:description"
         content="Personal home page of Ada Mandala. Posts about tech, art, philosophy. // Rust, Linux, WASM // Graphics, Games // Metaphysics, Aesthetics"
       />
-      <meta
-        property="twitter:image"
-        content="https://cubething.dev/meta/preview.png"
-      />
+      <meta property="twitter:image" content={CDN_URL + "/meta/preview.png"} />
     </Head>
   );
 }

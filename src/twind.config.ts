@@ -30,12 +30,7 @@ export default defineConfig({
   ],
   theme: {
     fontFamily: {
-      mono: [
-        "Fira Code Nerd Font",
-        "Ubuntu Mono Nerd Font",
-        "Consolas",
-        "mono",
-      ],
+      mono: ["Fira Code Nerd Font", "Fira Code", "Consolas", "mono"],
       header: ["Chillax", "sans"],
       sans: ["Synonym", "sans"],
     },

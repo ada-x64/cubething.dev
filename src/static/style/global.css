@@ -4,8 +4,8 @@
   --text: #1c1917;
   /* stone-400 */
   --link: #a8a29e;
-  /* stone-100 */
-  --bg: #f5f5f4;
+  /* stone-50 */
+  --bg: #fafaf9;
   /* orange-500 */
   --accent: #f97316;
 
@@ -32,4 +32,25 @@ html.dark {
 
 #sundile-canvas-wrapper canvas {
   border-radius: 0.5em;
+}
+
+:is(svg:hover, button:focus svg) * {
+  transition: all linear 0.125s;
+  stroke: var(--accent);
+}
+
+svg * {
+  stroke-width: 3;
+  stroke-linejoin: round;
+  transition: all linear 0.125s;
+  fill: var(--bg);
+  stroke: var(--text);
+}
+
+.dark :is(svg:hover, button:focus svg) * {
+  stroke: var(--dark-accent);
+}
+.dark svg * {
+  fill: var(--dark-bg);
+  stroke: var(--dark-text);
 }
