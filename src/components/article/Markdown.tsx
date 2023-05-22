@@ -8,12 +8,12 @@ export default function renderMarkdown({
   content: string;
   title: string;
 }) {
+  content = content.replace(/---\n(.*\n)*---\n/, "");
   CurrentArticle.value = title;
   return (
     <div
       class={TwClass(["prose", "prose-zinc", "dark:prose-invert", "mb-8"])}
       dangerouslySetInnerHTML={{ __html: MarkdownIt(content).body }}
-    >
-    </div>
+    ></div>
   );
 }

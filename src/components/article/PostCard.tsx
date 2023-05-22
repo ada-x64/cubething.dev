@@ -1,9 +1,9 @@
-import { Post } from "@/deps/posts.ts";
-import { getTime } from "@/deps/time.ts";
-import { OutboundLink, TimeStyle, TwClass } from "@/deps/styles.ts";
+import { PostMetadata } from "@/cdn/posts.ts";
+import { OutboundLink, TwClass } from "@/deps/styles.ts";
 import { BorderColor } from "@/deps/styles.ts";
+import CdnTime from "@/components/layout/CdnTime.tsx";
 
-export default function PostCard(props: { post: Post }) {
+export default function PostCard(props: { post: PostMetadata }) {
   const { post } = props;
 
   const hoverStyle = OutboundLink.split(" ")
@@ -19,9 +19,11 @@ export default function PostCard(props: { post: Post }) {
       <a href={`/articles/${post.slug}`}>
         <div class={hoverStyle} tabIndex={0}>
           <h3 class={"text-lg font-header font-bold"}>{post.title}</h3>
-          <time class={TwClass([TimeStyle, "text-sm"])}>
-            {getTime(post.mtime)}
-          </time>
+          <CdnTime
+            inline={true}
+            lastCommit={post.lastCommit}
+            publishedAt={post.publishedAt}
+          />
           <div class="mt-4 font-normal">{post.snippet}</div>
         </div>
       </a>

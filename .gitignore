@@ -1,11 +1,9 @@
 #"git-include" pattern
-*.*
-*/**
+/*
 
 !.gitignore
+!README.md
 
-!*.github/workflows/main.yml
-!src/**
+!src/
+!.github/
 
-!.dockerignore
-!Dockerfile

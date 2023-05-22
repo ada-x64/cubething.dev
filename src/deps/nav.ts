@@ -1,3 +1,5 @@
+export type tNav = { name: string; href: string }[];
+
 export const mainNav = [
   { name: "home", href: "/" },
   {

@@ -14,7 +14,9 @@ enum ThemeState {
 const ThemeIcons = [<AutoTheme />, <LightTheme />, <DarkTheme />];
 
 function getTheme() {
-  return parseInt(localStorage.getItem("theme") ?? "0");
+  return typeof localStorage !== "undefined" && localStorage
+    ? parseInt(localStorage.getItem("theme") ?? "0")
+    : 0;
 }
 
 const ThemeSignal = signal(getTheme());
@@ -37,7 +39,9 @@ export function setTheme() {
   };
 
   theme = (theme + 1) % ThemeState.LEN;
-  localStorage.setItem("theme", theme.toString());
+  if (typeof localStorage !== "undefined" && localStorage) {
+    localStorage.setItem("theme", theme.toString());
+  }
   ThemeSignal.value = theme;
   theme === ThemeState.auto ? checkAuto() : checkManual();
   focusMobileNav();
@@ -45,13 +49,14 @@ export function setTheme() {
 
 export default function DarkModeToggle() {
   const theme = ThemeSignal.value;
-  const themeText = theme === ThemeState.auto
-    ? "auto"
-    : theme === ThemeState.light
-    ? "light"
-    : theme === ThemeState.dark
-    ? "dark"
-    : "ERROR";
+  const themeText =
+    theme === ThemeState.auto
+      ? "auto"
+      : theme === ThemeState.light
+      ? "light"
+      : theme === ThemeState.dark
+      ? "dark"
+      : "ERROR";
 
   // Color scheme is detected on load.
   // See @/static/scripts/detectColorScheme.js

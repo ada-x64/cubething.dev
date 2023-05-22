@@ -1,15 +1,14 @@
-import Prism from "@/deps/prismjs.ts";
-
+import HighlightCode from "@/deps/code-highlight.ts";
 import { signal } from "https://esm.sh/v110/@preact/signals-core@1.0.1/X-ZS8q/dist/signals-core";
 const Articles = signal<{ [index: string]: { toc: string; body: string } }>({});
 const CurrentArticle = signal<string>("");
 export { Articles, CurrentArticle };
 
-import MarkdownItAnchor from "npm:/markdown-it-anchor";
-import MarkdownItToc from "npm:/markdown-it-toc-done-right";
+import MarkdownItAnchor from "https://cdn.jsdelivr.net/npm/markdown-it-anchor@8.6.7/+esm";
+import MarkdownItToc from "https://cdn.jsdelivr.net/npm/markdown-it-toc-done-right@4.2.0/+esm";
 
-//@deno-types="npm:/@types/markdown-it"
-import MarkdownIt from "npm:/markdown-it";
+//@deno-types="https://cdn.jsdelivr.net/npm/@types/markdown-it@12.2.3/+esm"
+import MarkdownIt from "https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/+esm";
 const exp = (content: string) => {
   if (Articles.value[CurrentArticle.value]) {
     return Articles.value[CurrentArticle.value];
@@ -18,7 +17,7 @@ const exp = (content: string) => {
   const body = MarkdownIt({
     html: true,
     highlight: (str: string, lang: string) => {
-      return Prism.highlight(str, Prism.languages[lang], lang);
+      return HighlightCode(str, lang);
     },
   })
     .use(MarkdownItAnchor, {
@@ -34,7 +33,6 @@ const exp = (content: string) => {
     ...Articles.value,
     [CurrentArticle.value]: { toc, body },
   };
-  console.log(Articles.value);
   return Articles.value[CurrentArticle.value];
 };
 export default exp;

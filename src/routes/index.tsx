@@ -1,22 +1,23 @@
 import Layout from "@/components/layout/Layout.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getPosts, Post } from "@/deps/posts.ts";
+import { getPostMetadata, PostMetadata } from "@/cdn/posts.ts";
 import PostCard from "@/components/article/PostCard.tsx";
 import { BorderColor, OutboundLink, TwClass } from "@/deps/styles.ts";
-import { getGfxModules, GfxModule } from "@/deps/gfx-module.ts";
+import { getGfxModuleMetadata, GfxModuleMetadata } from "@/cdn/gfx-module.ts";
 import GfxCard from "@/components/gfx/GfxCard.tsx";
 import Article from "@/components/article/Article.tsx";
 import ArticleBlurb from "@/components/article/ArticleBlurb.tsx";
 
 type Props = {
-  posts: Post[];
-  gallery: GfxModule[];
+  posts: PostMetadata[];
+  gallery: GfxModuleMetadata[];
 };
 
 export const handler: Handlers<Props> = {
   async GET(_req, ctx) {
-    const posts = await getPosts(3);
-    const gallery = await getGfxModules(3);
+    _req.method;
+    const posts = await getPostMetadata(3);
+    const gallery = await getGfxModuleMetadata(3);
     return ctx.render({ posts, gallery });
   },
 };
@@ -60,7 +61,9 @@ export default function Index(props: PageProps<Props>) {
           <h2 class={h2Class}>{"< articles />"}</h2>
         </a>
         <div id="articles">
-          {props.data.posts.map((post) => <PostCard post={post} />)}
+          {props.data.posts.map((post) => (
+            <PostCard post={post}></PostCard>
+          ))}
         </div>
       </Article>
     </Layout>

@@ -8,13 +8,14 @@ export default function loadGfx(src) {
       try {
         mod.wasm_main();
       } catch (e) {
+        console.error(e);
         document
           .querySelector(".troubleshooting")
           .style.setProperty("display", "");
         document.querySelector(".logs").textContent = JSON.stringify(
           log,
           null,
-          "\t",
+          "\t"
         );
         document.querySelector("canvas").remove();
       }

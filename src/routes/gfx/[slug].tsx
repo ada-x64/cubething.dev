@@ -1,13 +1,13 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getTime } from "@/deps/time.ts";
 import Markdown from "@/components/article/Markdown.tsx";
-import { TimeStyle, TwClass } from "@/deps/styles.ts";
-import { getGfxModule, GfxModule } from "@/deps/gfx-module.ts";
-import GfxIframe from "@/islands/GfxIframe.tsx";
+import { TwClass } from "@/deps/styles.ts";
+import { getGfxModule, GfxModule } from "@/cdn/gfx-module.ts";
+import GfxCanvas from "@/islands/GfxCanvas.tsx";
 import Title from "@/components/layout/Title.tsx";
 import Layout from "@/components/layout/Layout.tsx";
 import MainContent from "@/components/layout/MainContent.tsx";
 import Footer from "@/components/layout/Footer.tsx";
+import CdnTime from "@/components/layout/CdnTime.tsx";
 
 export const handler: Handlers<GfxModule> = {
   async GET(_req, ctx) {
@@ -33,13 +33,13 @@ export default function GfxPage(props: PageProps<GfxModule>) {
     <Layout title={module.title} route={props.route}>
       <MainContent twClass={article_class}>
         <Title title={module.title} route={props.route} />
-        <time class={TwClass([TimeStyle, "text-center", "-mt-2", "mb-2"])}>
-          {getTime(module.mtime)}
-        </time>
-
-        <GfxIframe slug={module.slug} />
-
-        <Markdown title={module.title} content={module.text_content} />
+        <CdnTime
+          inline={false}
+          lastCommit={module.lastCommit}
+          publishedAt={module.publishedAt}
+        />
+        <GfxCanvas module={module} />
+        <Markdown title={module.title} content={module.textContent} />
         <Footer />
       </MainContent>
     </Layout>
