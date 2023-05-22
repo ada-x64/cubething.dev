@@ -1,59 +1,62 @@
-name: CD
-
-env:
-  AZURE_WEBAPP_NAME: cubething
-  TAG: ${{ github.sha }}
-
-on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-
-      - name: GHCR Login
-        run: echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
-
-      - name: Lowercase the repo name and username
-        run: echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
-
-      - name: Build the Docker image
-        run: docker build ./src --file src/Dockerfile --build-arg GIT_REVISION=$(git rev-parse HEAD) -t ghcr.io/${{env.REPO}}:${{ env.TAG }};
-
-      - name: Push the Docker image
-        run: docker push ghcr.io/${{env.REPO}}:${{ env.TAG }};
-
-  deploy:
-    if: github.ref_name == 'main'
-    permissions:
-      contents: none
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: "Development"
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
-    steps:
-      - name: Lowercase the repo name and username
-        run: echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
-
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          images: "ghcr.io/${{ env.REPO }}:${{ github.sha }}"
+# This is no longer used.
+# Deno deploy hosts for free with much shorter ping times.
+#
+# name: CD
+#
+# env:
+#   AZURE_WEBAPP_NAME: cubething
+#   TAG: ${{ github.sha }}
+#
+# on:
+#   push:
+#     branches: ["main"]
+#   pull_request:
+#     branches: ["main"]
+#   workflow_dispatch:
+#
+# permissions:
+#   contents: read
+#
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#
+#     steps:
+#       - uses: actions/checkout@v3
+#
+#       - name: Set up Docker Buildx
+#         uses: docker/setup-buildx-action@v1
+#
+#       - name: GHCR Login
+#         run: echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+#
+#       - name: Lowercase the repo name and username
+#         run: echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
+#
+#       - name: Build the Docker image
+#         run: docker build ./src --file src/Dockerfile --build-arg GIT_REVISION=$(git rev-parse HEAD) -t ghcr.io/${{env.REPO}}:${{ env.TAG }};
+#
+#       - name: Push the Docker image
+#         run: docker push ghcr.io/${{env.REPO}}:${{ env.TAG }};
+#
+#   deploy:
+#     if: github.ref_name == 'main'
+#     permissions:
+#       contents: none
+#     runs-on: ubuntu-latest
+#     needs: build
+#     environment:
+#       name: "Development"
+#       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+#
+#     steps:
+#       - name: Lowercase the repo name and username
+#         run: echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
+#
+#       - name: Deploy to Azure Web App
+#         id: deploy-to-webapp
+#         uses: azure/webapps-deploy@v2
+#         with:
+#           app-name: ${{ env.AZURE_WEBAPP_NAME }}
+#           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+#           images: "ghcr.io/${{ env.REPO }}:${{ github.sha }}"

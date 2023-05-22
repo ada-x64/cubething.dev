@@ -27,7 +27,7 @@ export default function GfxCard({
           class={TwClass([hoverStyle, "flex", "justify-between"])}
           tabIndex={0}
         >
-          <div class={TwClass(["order-2", textAlign])}>
+          <div class={TwClass(["order-2", "sm:max-w-[50%]", textAlign])}>
             <h3 class={"text-lg font-header font-bold"}>{module.title}</h3>
             <CdnTime
               inline={true}
@@ -43,11 +43,13 @@ export default function GfxCard({
               BorderColor,
               imgOrder,
               "mx-0.5",
+              "h-fit",
+              "self-center",
             ])}
             src={module.previewPath.toString()}
             alt={module.title}
             width={156} // 4 * 3 * 14 -> closest to 150
-            height={117} // 168 / 4
+            height={117} // 156 / 4
           />
         </div>
       </a>
