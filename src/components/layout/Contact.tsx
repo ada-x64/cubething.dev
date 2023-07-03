@@ -23,6 +23,13 @@ export default function Contact() {
         resume
       </a>
       <a
+        href="https://hachyderm.io/@cubething"
+        rel="me"
+        class={TwClass([OutboundLink])}
+      >
+        mastodon
+      </a>
+      <a
         href="https://www.linkedin.com/in/ada-mandala/"
         title="open linkedin in new tab"
         target="_blank"
