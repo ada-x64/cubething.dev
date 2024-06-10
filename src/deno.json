@@ -1,6 +1,7 @@
 {
   "tasks": {
-    "start": "deno run -A --watch=routes/,components/,islands/,static/scripts dev.ts"
+    "dev": "deno run -A --reload --watch=routes/,components/,islands/,static/scripts dev.ts",
+    "prod": "export PROD=true; deno run -A --reload --watch=routes/,components/,islands/,static/scripts dev.ts"
   },
   "importMap": "./import_map.jsonc",
   "compilerOptions": {
